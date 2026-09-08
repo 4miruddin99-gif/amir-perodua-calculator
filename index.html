@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AMIR PERODUA Loan Calculator</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f3f4f6;
+color:#111827;
+}
+
+.app{
+max-width:550px;
+margin:auto;
+padding:15px;
+}
+
+.header{
+background:#111827;
+color:white;
+padding:25px;
+border-radius:22px;
+text-align:center;
+margin-bottom:15px;
+}
+
+.header h1{
+margin:0;
+font-size:27px;
+}
+
+.header p{
+margin:7px 0 0;
+font-size:12px;
+letter-spacing:2px;
+color:#d1d5db;
+}
+
+.card{
+background:white;
+border-radius:22px;
+padding:18px;
+box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.car{
+height:190px;
+background:#e5e7eb;
+border-radius:18px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+font-size:70px;
+margin-bottom:15px;
+}
+
+.car-name{
+font-size:20px;
+font-weight:bold;
+margin-top:10px;
+}
+
+label{
+display:block;
+font-size:13px;
+font-weight:bold;
+margin-top:14px;
+margin-bottom:6px;
+}
+
+input,select{
+width:100%;
+padding:14px;
+font-size:17px;
+border:1px solid #d1d5db;
+border-radius:12px;
+background:white;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.years{
+display:flex;
+gap:8px;
+}
+
+.years button{
+flex:1;
+padding:13px;
+border:none;
+border-radius:12px;
+font-weight:bold;
+font-size:15px;
+background:#e5e7eb;
+}
+
+.years button.active{
+background:#111827;
+color:white;
+}
+
+.result{
+background:#111827;
+color:white;
+border-radius:20px;
+text-align:center;
+padding:22px;
+margin-top:20px;
+}
+
+.result small{
+color:#d1d5db;
+letter-spacing:1px;
+}
+
+.monthly{
+font-size:38px;
+font-weight:bold;
+margin:8px 0;
+}
+
+.details{
+font-size:12px;
+color:#d1d5db;
+line-height:1.8;
+}
+
+.actions{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.actions button{
+flex:1;
+border:none;
+padding:14px;
+border-radius:12px;
+font-weight:bold;
+font-size:14px;
+}
+
+.reset{
+background:#e5e7eb;
+}
+
+.whatsapp{
+background:#25D366;
+color:white;
+}
+
+.note{
+font-size:10px;
+color:#6b7280;
+text-align:center;
+margin-top:12px;
+line-height:1.5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="header">
+<h1>AMIR PERODUA</h1>
+<p>LOAN CALCULATOR • TIKTOK LIVE EDITION</p>
+</div>
+
+<div class="card">
+
+<div class="car">
+<div id="carEmoji">🚗</div>
+<div class="car-name" id="carName">PERODUA BEZZA</div>
+</div>
+
+<label>PILIH MODEL KERETA</label>
+
+<select id="model" onchange="changeModel()">
+<option value="Bezza">Perodua Bezza</option>
+<option value="Axia">Perodua Axia</option>
+<option value="Myvi">Perodua Myvi</option>
+<option value="Ativa">Perodua Ativa</option>
+<option value="Alza">Perodua Alza</option>
+<option value="Aruz">Perodua Aruz</option>
+<option value="Traz">Perodua Traz</option>
+</select>
+
+<div class="row">
+
+<div>
+<label>HARGA KERETA (RM)</label>
+<input id="price" type="number" value="49980" oninput="calculate()">
+</div>
+
+<div>
+<label>DOWNPAYMENT (RM)</label>
+<input id="dp" type="number" value="5000" oninput="calculate()">
+</div>
+
+</div>
+
+<label>INTEREST RATE (%)</label>
+<input id="rate" type="number" value="3.00" step="0.01" oninput="calculate()">
+
+<label>TEMPOH LOAN</label>
+
+<div class="years">
+<button onclick="setYear(5,this)">5 TAHUN</button>
+<button onclick="setYear(7,this)">7 TAHUN</button>
+<button class="active" onclick="setYear(9,this)">9 TAHUN</button>
+</div>
+
+<div class="result">
+
+<small>ANGGARAN BULANAN</small>
+
+<div class="monthly" id="monthly">
+RM 0 / BULAN
+</div>
+
+<div class="details" id="details">
+Jumlah Loan: RM 0<br>
+Jumlah Interest: RM 0
+</div>
+
+</div>
+
+<div class="actions">
+
+<button class="reset" onclick="resetCalc()">
+↻ RESET
+</button>
+
+<button class="whatsapp" onclick="sendWhatsApp()">
+WHATSAPP
+</button>
+
+</div>
+
+<div class="note">
+Anggaran sahaja. Kelulusan dan kadar sebenar tertakluk kepada pihak bank.
+</div>
+
+</div>
+</div>
+
+<script>
+
+let years = 9;
+
+const cars = {
+Bezza:{price:49980,emoji:"🚗"},
+Axia:{price:42000,emoji:"🚙"},
+Myvi:{price:47000,emoji:"🚗"},
+Ativa:{price:65000,emoji:"🚙"},
+Alza:{price:68000,emoji:"🚐"},
+Aruz:{price:75000,emoji:"🚙"},
+Traz:{price:80000,emoji:"🚙"}
+};
+
+function money(number){
+return "RM " + Math.round(number).toLocaleString("en-MY");
+}
+
+function changeModel(){
+
+let selected = document.getElementById("model").value;
+
+document.getElementById("carName").innerText =
+"PERODUA " + selected.toUpperCase();
+
+document.getElementById("carEmoji").innerText =
+cars[selected].emoji;
+
+document.getElementById("price").value =
+cars[selected].price;
+
+calculate();
+}
+
+function setYear(year,button){
+
+years = year;
+
+document.querySelectorAll(".years button")
+.forEach(function(btn){
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+calculate();
+}
+
+function calculate(){
+
+let price =
+Number(document.getElementById("price").value) || 0;
+
+let dp =
+Number(document.getElementById("dp").value) || 0;
+
+let rate =
+(Number(document.getElementById("rate").value) || 0) / 100;
+
+let loan = Math.max(0,price-dp);
+
+let interest =
+loan * rate * years;
+
+let total =
+loan + interest;
+
+let monthly =
+total / (years * 12);
+
+document.getElementById("monthly").innerText =
+money(monthly) + " / BULAN";
+
+document.getElementById("details").innerHTML =
+"Jumlah Loan: " + money(loan) +
+"<br>Jumlah Interest: " + money(interest);
+
+}
+
+function resetCalc(){
+
+document.getElementById("model").value = "Bezza";
+
+document.getElementById("price").value = 49980;
+
+document.getElementById("dp").value = 5000;
+
+document.getElementById("rate").value = 3;
+
+years = 9;
+
+document.querySelectorAll(".years button")
+.forEach(function(btn,index){
+btn.classList.toggle("active",index === 2);
+});
+
+changeModel();
+
+}
+
+function sendWhatsApp(){
+
+let model =
+document.getElementById("model").value;
+
+let price =
+document.getElementById("price").value;
+
+let dp =
+document.getElementById("dp").value;
+
+let message =
+"Hi Amir, saya berminat dengan Perodua " +
+model +
+". Harga RM" + Number(price).toLocaleString() +
+", Deposit RM" + Number(dp).toLocaleString() +
+". Boleh bantu semak kelayakan?";
+
+window.open(
+"https://wa.me/601151283571?text=" +
+encodeURIComponent(message),
+"_blank"
+);
+
+}
+
+calculate();
+
+</script>
+
+</body>
+</html>
