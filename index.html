@@ -38,231 +38,278 @@ header{
   margin-top:4px;
 }
 
-button{
-  font:inherit;
-  cursor:pointer;
-}
-
-.edit-btn{
-  background:#eaf0f8;
-  color:#244a7c;
+.edit-top{
+  border:0;
   padding:12px 18px;
-  border-radius:14px;
+  border-radius:20px;
   font-weight:bold;
-  border:none;
+  color:#35507f;
+  background:#e9edf4;
+  cursor:pointer;
 }
 
 .wrap{
   max-width:900px;
   margin:auto;
-  padding:22px;
+  padding:20px;
 }
 
 .hero{
-  background:linear-gradient(135deg,#244a90,#486db0);
+  background:#365da8;
   color:white;
-  padding:32px;
-  border-radius:34px;
+  padding:28px;
+  border-radius:30px;
 }
 
 .hero h1{
-  margin:0 0 12px;
-  font-size:34px;
+  margin:0 0 10px;
+  font-size:32px;
 }
 
 .hero p{
-  font-size:18px;
+  margin-bottom:20px;
   opacity:.9;
 }
 
-.tabs,
-.years{
-  display:flex;
-  gap:10px;
-  margin:22px 0;
-}
-
-.tabs button,
-.years button{
-  flex:1;
-  padding:16px;
-  border-radius:14px;
-  background:white;
-  color:#274c83;
-  font-weight:bold;
-  border:1px solid #ddd;
-}
-
-.tabs button.active,
-.years button.active{
-  background:#244a90;
-  color:white;
-}
-
-.result{
-  background:white;
-  color:#111;
-  border-radius:24px;
-  padding:24px;
-  margin-top:16px;
-  font-size:28px;
-  font-weight:bold;
-}
-
-.result input{
-  border:0;
-  font-size:28px;
-  font-weight:bold;
-  width:75%;
-  outline:none;
-}
-
-.status{
-  text-align:center;
-  margin:22px 0;
-  font-size:20px;
-  font-weight:bold;
-}
-
-.ok{
-  color:#39705b;
-}
-
-.bad{
-  color:#9b4d4d;
-}
-
-.cars{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-}
-
-.car{
-  background:white;
-  border:3px solid #8aa99c;
-  border-radius:24px;
-  padding:18px;
-  box-shadow:0 5px 15px #00000012;
-}
-
-.emoji{
-  height:120px;
-  background:#eef1f5;
-  border-radius:18px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:70px;
-}
-
-.car h2{
-  margin:15px 0 6px;
-}
-
-.price{
-  color:#657083;
-}
-
-.monthly{
-  font-size:22px;
-  color:#244a90;
-  font-weight:bold;
-  margin:12px 0;
-}
-
-.car button{
-  width:100%;
-  padding:13px;
-  background:#244a90;
-  color:white;
-  border-radius:12px;
-  font-weight:bold;
-  border:none;
-}
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#0009;
-  z-index:10;
-  padding:18px;
-  overflow:auto;
-}
-
-.box{
-  max-width:700px;
-  background:white;
-  margin:30px auto;
-  padding:24px;
-  border-radius:22px;
-}
-
-.box h2{
-  margin-top:0;
-}
-
-.row{
+.tabs{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
 }
 
+.tab{
+  padding:14px;
+  border-radius:15px;
+  border:1px solid rgba(255,255,255,.6);
+  background:transparent;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.tab.active{
+  background:white;
+  color:#365da8;
+}
+
+.input-box{
+  margin-top:18px;
+  background:white;
+  border-radius:25px;
+  padding:20px;
+  display:flex;
+  align-items:center;
+}
+
+.input-box span{
+  color:#365da8;
+  font-size:26px;
+  font-weight:bold;
+  margin-right:15px;
+}
+
+.input-box input{
+  border:0;
+  outline:none;
+  width:100%;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.years{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:20px 0;
+}
+
+.year-btn{
+  border:1px solid #ccd3df;
+  background:white;
+  padding:16px;
+  border-radius:18px;
+  font-weight:bold;
+  color:#365da8;
+  cursor:pointer;
+}
+
+.year-btn.active{
+  background:#365da8;
+  color:white;
+}
+
+.status{
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  margin:25px 0 5px;
+}
+
+.ok{
+  color:#3e705a;
+}
+
+.no{
+  color:#944b4b;
+}
+
+.budget-info{
+  text-align:center;
+  color:#687386;
+  margin-bottom:20px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+
+.car{
+  background:white;
+  border:2px solid #b8d0c2;
+  border-radius:28px;
+  padding:14px;
+  cursor:pointer;
+}
+
+.car.not-ok{
+  border-color:#dfb9b9;
+}
+
+.car img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  background:#e7ebf0;
+  border-radius:20px;
+}
+
+.car h2{
+  margin:14px 0 8px;
+}
+
+.price{
+  font-size:19px;
+  font-weight:bold;
+  line-height:1.5;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:12px;
+  padding:8px 12px;
+  border-radius:20px;
+  background:#edf6f0;
+  color:#3e705a;
+  font-weight:bold;
+}
+
+.badge.no{
+  background:#f8eeee;
+  color:#944b4b;
+}
+
+.fab{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#17233d;
+  color:white;
+  border:0;
+  padding:16px 22px;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+  z-index:10;
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:100;
+  overflow:auto;
+}
+
+.modal-box{
+  background:white;
+  max-width:600px;
+  margin:40px auto;
+  padding:25px;
+  border-radius:25px;
+}
+
+.modal-box h2{
+  margin-top:0;
+}
+
+.row{
+  margin-bottom:15px;
+}
+
+.row label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+}
+
 .row input{
   width:100%;
-  padding:13px;
-  border:1px solid #ccd3dd;
-  border-radius:10px;
+  padding:14px;
+  border:1px solid #ccc;
+  border-radius:12px;
   font-size:16px;
 }
 
-.actions{
-  display:flex;
-  gap:10px;
-  margin-top:18px;
-}
-
-.actions button{
-  padding:13px 18px;
-  border-radius:10px;
-  font-weight:bold;
-  border:none;
-}
-
-.primary{
-  background:#244a90;
+.action{
+  width:100%;
+  border:0;
+  padding:15px;
+  border-radius:15px;
+  background:#365da8;
   color:white;
-}
-
-.secondary{
-  background:#e8edf3;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:8px;
+  cursor:pointer;
 }
 
 .danger{
-  background:#b43d3d;
-  color:white;
+  background:#b94a4a;
 }
 
-.admin-car{
+.close{
+  background:#777;
+}
+
+.car-list{
   border:1px solid #ddd;
-  padding:12px;
-  border-radius:12px;
-  margin-top:12px;
+  padding:15px;
+  border-radius:15px;
+  margin-bottom:12px;
 }
 
 @media(max-width:600px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .car h2{
+    font-size:18px;
+  }
+
+  .price{
+    font-size:16px;
+  }
 
   .hero h1{
     font-size:28px;
-  }
-
-  .row{
-    grid-template-columns:1fr;
-  }
-
-  .wrap{
-    padding:14px;
   }
 }
 </style>
@@ -271,18 +318,13 @@ button{
 <body>
 
 <header>
+  <div class="brand">
+    <b>AMIR PERODUA</b>
+    <small>AUTO CALCULATE SYSTEM</small>
+  </div>
 
-<div class="brand">
-<b>AMIR PERODUA</b>
-<small>AUTO CALCULATE SYSTEM</small>
-</div>
-
-<button class="edit-btn" onclick="openAdmin()">
-⚙️ EDIT
-</button>
-
+  <button class="edit-top" onclick="openAdmin()">⚙️ EDIT</button>
 </header>
-
 
 <main class="wrap">
 
@@ -290,669 +332,857 @@ button{
 
 <h1>Perodua Auto Calculator</h1>
 
-<p>Semak bajet bulanan atau kelayakan gaji customer.</p>
-
+<p id="heroText">
+Masukkan bajet customer dan semak model yang sesuai.
+</p>
 
 <div class="tabs">
-
-<button id="budgetTab"
-class="active"
-onclick="setMode('budget')">
-
+<button class="tab active" id="budgetTab" onclick="setMode('budget')">
 💰 Bajet Bulanan
-
 </button>
 
-
-<button id="salaryTab"
-onclick="setMode('salary')">
-
+<button class="tab" id="salaryTab" onclick="setMode('salary')">
 👤 Semak Gaji
-
 </button>
-
 </div>
 
-
-<div class="result">
-
-RM
+<div class="input-box">
+<span>RM</span>
 
 <input
-id="amount"
 type="number"
-value="1800"
-oninput="render()">
+id="amount"
+placeholder="1800"
+oninput="render()"
+>
 
 </div>
 
 </section>
 
-
 <div class="years">
 
-<button onclick="setYear(5)">
-5 Tahun
-</button>
+<button class="year-btn" onclick="setYear(5,this)">5 Tahun</button>
 
-<button onclick="setYear(7)">
-7 Tahun
-</button>
+<button class="year-btn" onclick="setYear(7,this)">7 Tahun</button>
 
-<button class="active"
-onclick="setYear(9)">
-
-9 Tahun
-
-</button>
+<button class="year-btn active" onclick="setYear(9,this)">9 Tahun</button>
 
 </div>
 
-
-<div id="status"
-class="status">
-
+<div class="status">
+<span class="ok" id="okCount">0 model LULUS</span>
+•
+<span class="no" id="noCount">0 model GAGAL</span>
 </div>
 
-
-<div id="cars"
-class="cars">
-
+<div class="budget-info" id="budgetInfo">
+Masukkan bajet untuk semakan.
 </div>
+
+<div class="grid" id="carGrid"></div>
 
 </main>
 
+<button class="fab" onclick="openAdmin()">
+✏️ EDIT HARGA / GAMBAR
+</button>
 
 
 <!-- ADMIN MODAL -->
 
-<div id="adminModal"
-class="modal">
+<div class="modal" id="adminModal">
 
-<div class="box">
+<div class="modal-box">
 
-<h2>✏️ EDIT SISTEM AMIR PERODUA</h2>
+<h2>⚙️ EDIT SISTEM</h2>
 
-<p>
-Edit harga kereta.
-Perubahan akan disimpan dalam telefon ini.
-</p>
-
-<div id="adminCars"></div>
-
-<div class="actions">
-
-<button
-class="primary"
-onclick="addCar()">
-
-+ Tambah Model
-
+<button class="action" onclick="newCar()">
+➕ TAMBAH MODEL BARU
 </button>
 
+<div id="adminList"></div>
 
-<button
-class="secondary"
-onclick="closeAdmin()">
-
-Tutup
-
+<button class="action close" onclick="closeAdmin()">
+TUTUP
 </button>
 
 </div>
 
 </div>
 
+
+<!-- EDIT CAR MODAL -->
+
+<div class="modal" id="editModal">
+
+<div class="modal-box">
+
+<h2 id="editTitle">EDIT MODEL</h2>
+
+<div class="row">
+<label>Nama Model</label>
+<input id="editName">
 </div>
 
+<div class="row">
+<label>Harga Minimum</label>
+<input id="editMin" type="number">
+</div>
 
+<div class="row">
+<label>Harga Maximum</label>
+<input id="editMax" type="number">
+</div>
 
-<!-- DETAIL MODAL -->
+<div class="row">
+<label>Gambar Kereta</label>
 
-<div id="detailModal"
-class="modal">
+<input
+id="editImage"
+type="file"
+accept="image/*"
+onchange="previewImage()"
+>
 
-<div class="box">
+<img
+id="imagePreview"
+style="width:100%;margin-top:10px;border-radius:15px;display:none;"
+>
+</div>
 
-<h2 id="detailTitle"></h2>
+<button class="action" onclick="saveCar()">
+💾 SIMPAN
+</button>
 
-<p id="detailText"></p>
+<button class="action danger" onclick="deleteCar()">
+🗑️ PADAM MODEL
+</button>
 
-<div class="actions">
-
-<button
-class="primary"
-onclick="closeDetail()">
-
-Tutup
-
+<button class="action close" onclick="closeEdit()">
+BATAL
 </button>
 
 </div>
 
 </div>
-
-</div>
-
 
 
 <script>
 
+/* =========================
+DEFAULT DATA
+========================= */
 
 const defaults = [
 
 {
 name:"BEZZA",
-price:36179,
-emoji:"🚗"
+min:36197,
+max:52047,
+img:"https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 name:"AXIA",
-price:22000,
-emoji:"🚙"
+min:23276,
+max:51054,
+img:"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 name:"MYVI",
-price:46000,
-emoji:"🚘"
+min:48474,
+max:62302,
+img:"https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 name:"ALZA",
-price:62000,
-emoji:"🚐"
+min:64993,
+max:75200,
+img:"https://images.unsplash.com/photo-1551830820-330a71b99659?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 name:"ATIVA",
-price:62500,
-emoji:"🚙"
+min:62500,
+max:75000,
+img:"https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format&fit=crop&w=600&q=80"
 },
 
 {
 name:"ARUZ",
-price:72900,
-emoji:"🚗"
+min:72900,
+max:77900,
+img:"https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80"
 }
 
 ];
 
 
+/* =========================
+LOAD DATA
+========================= */
 
-let cars =
-JSON.parse(
-localStorage.getItem("amirCars")
-|| "null"
-)
-|| defaults;
+let cars;
 
-
-let years = 9;
+try{
+cars = JSON.parse(localStorage.getItem("amirCars")) || defaults;
+}catch(e){
+cars = defaults;
+}
 
 let mode = "budget";
+let years = 9;
+let editing = null;
 
 
+/* =========================
+CALCULATE MONTHLY
+========================= */
 
-function pay(price,year){
+function monthly(price){
 
-let rate = 0.0325 / 12;
+let rate = 0.0325;
+let loan = price * 0.9;
 
-let months = year * 12;
+let monthlyRate = rate / 12;
 
-return price
-*
-rate
-*
-Math.pow(
-1 + rate,
-months
+let months = years * 12;
+
+let payment =
+loan *
+(
+monthlyRate *
+Math.pow(1 + monthlyRate,months)
 )
 /
 (
-Math.pow(
-1 + rate,
-months
-)
-- 1
+Math.pow(1 + monthlyRate,months)-1
 );
+
+return payment;
 
 }
 
 
+/* =========================
+GET BUDGET
+========================= */
 
-function setMode(m){
+function currentAmount(){
 
-mode = m;
+return Number(
+document.getElementById("amount").value
+) || 0;
+
+}
+
+
+/* =========================
+MODE
+========================= */
+
+function setMode(newMode){
+
+mode = newMode;
 
 document
 .getElementById("budgetTab")
-.classList
-.toggle(
-"active",
-m === "budget"
-);
-
+.classList.remove("active");
 
 document
 .getElementById("salaryTab")
-.classList
-.toggle(
-"active",
-m === "salary"
-);
+.classList.remove("active");
 
+
+if(mode==="budget"){
+
+document
+.getElementById("budgetTab")
+.classList.add("active");
+
+document
+.getElementById("heroText")
+.innerText =
+"Masukkan bajet bulanan customer dan semak model yang sesuai.";
+
+}else{
+
+document
+.getElementById("salaryTab")
+.classList.add("active");
+
+document
+.getElementById("heroText")
+.innerText =
+"Masukkan gaji bulanan customer untuk anggaran kelayakan.";
+
+}
 
 render();
 
 }
 
 
+/* =========================
+YEAR
+========================= */
 
-function setYear(y){
+function setYear(y,button){
 
 years = y;
 
-
 document
-.querySelectorAll(".years button")
-.forEach(function(button){
-
-button
-.classList
-.toggle(
-"active",
-button.textContent.trim()
-=== y + " Tahun"
-);
-
+.querySelectorAll(".year-btn")
+.forEach(btn=>{
+btn.classList.remove("active");
 });
 
+button.classList.add("active");
 
 render();
 
 }
 
 
+/* =========================
+RENDER
+========================= */
 
 function render(){
 
-let amount =
-Number(
-document
-.getElementById("amount")
-.value
-)
-|| 0;
+let amount = currentAmount();
 
+let pass = 0;
 
 let grid =
-document
-.getElementById("cars");
-
-
-let status =
-document
-.getElementById("status");
-
+document.getElementById("carGrid");
 
 grid.innerHTML = "";
 
 
-let pass = 0;
+cars.forEach((car,index)=>{
+
+let eligible = false;
+
+let estimated = monthly(car.min);
 
 
+/* BAJET */
 
-cars.forEach(function(car,index){
-
-let monthly =
-Math.round(
-pay(
-car.price,
-years
-)
-);
-
-
-let eligible;
-
-
-if(mode === "budget"){
+if(mode==="budget"){
 
 eligible =
-monthly <= amount;
+amount > 0 &&
+estimated <= amount;
 
-}else{
+}
+
+
+/* GAJI */
+
+if(mode==="salary"){
+
+let maxCommitment =
+amount * 0.30;
 
 eligible =
-amount >= monthly / 0.15;
+amount > 0 &&
+estimated <= maxCommitment;
 
 }
 
 
 if(eligible){
-
 pass++;
-
 }
 
 
-let value;
+let card =
+document.createElement("div");
+
+card.className =
+"car " +
+(eligible ? "" : "not-ok");
 
 
-if(mode === "budget"){
+card.onclick = function(){
 
-value =
-"Anggaran RM "
-+
-monthly.toLocaleString()
-+
-"/bulan";
+showCar(index);
 
-}else{
-
-value =
-"Gaji anggaran RM "
-+
-Math.ceil(
-monthly / 0.15
-).toLocaleString();
-
-}
+};
 
 
-grid.innerHTML +=
+card.innerHTML = `
 
-'<div class="car">' +
+<img src="${car.img}">
 
-'<div class="emoji">' +
-(car.emoji || "🚗") +
-'</div>' +
+<h2>${car.name}</h2>
 
-'<h2>' +
-car.name +
-'</h2>' +
+<div class="price">
+RM ${car.min.toLocaleString()}
+–
+RM ${car.max.toLocaleString()}
+</div>
 
-'<div class="price">' +
-'Harga anggaran: RM ' +
-Number(car.price)
-.toLocaleString() +
-'</div>' +
+<div class="badge ${eligible ? "" : "no"}">
 
-'<div class="monthly">' +
-value +
-'</div>' +
+${eligible ? "✓ LULUS" : "✕ GAGAL"}
 
-'<button onclick="showCar(' +
-index +
-')">' +
+</div>
 
-'Lihat Anggaran' +
+`;
 
-'</button>' +
-
-'</div>';
+grid.appendChild(card);
 
 });
 
 
+let fail =
+cars.length - pass;
 
-status.innerHTML =
 
-'<span class="ok">' +
+document
+.getElementById("okCount")
+.innerText =
+pass + " model LULUS";
 
-pass +
 
-' model LAYAK</span>' +
+document
+.getElementById("noCount")
+.innerText =
+fail + " model GAGAL";
 
-' • ' +
 
-'<span class="bad">' +
+if(mode==="budget"){
 
-(cars.length - pass) +
-
-' model TIDAK LAYAK</span>' +
-
-'<br>' +
-
-'<small>' +
-
+document
+.getElementById("budgetInfo")
+.innerText =
+amount ?
+"Bajet RM " +
+amount.toLocaleString() +
+" • Loan " +
 years +
+" Tahun"
+:
+"Masukkan bajet untuk semakan.";
 
-' Tahun</small>';
+}else{
+
+document
+.getElementById("budgetInfo")
+.innerText =
+amount ?
+"Gaji RM " +
+amount.toLocaleString() +
+" • Anggaran komitmen 30%"
+:
+"Masukkan gaji untuk semakan.";
+
+}
 
 }
 
 
+/* =========================
+SHOW CAR DETAIL
+========================= */
 
 function showCar(index){
 
 let car = cars[index];
 
+let payment =
+monthly(car.min);
 
-let monthly =
-Math.round(
-pay(
-car.price,
-years
-)
+alert(
+car.name +
+"\n\nHarga: RM " +
+car.min.toLocaleString() +
+" - RM " +
+car.max.toLocaleString() +
+"\n\nAnggaran Bulanan (" +
+years +
+" Tahun): RM " +
+payment.toFixed(0)
 );
 
-
-document
-.getElementById("detailTitle")
-.textContent =
-car.name;
-
-
-document
-.getElementById("detailText")
-.innerHTML =
-
-'Harga anggaran: <b>RM ' +
-
-Number(car.price)
-.toLocaleString() +
-
-'</b>' +
-
-'<br><br>' +
-
-'Tempoh loan: <b>' +
-
-years +
-
-' Tahun</b>' +
-
-'<br>' +
-
-'Anggaran bulanan: <b>RM ' +
-
-monthly
-.toLocaleString() +
-
-'</b>' +
-
-'<br><br>' +
-
-'<small>*Anggaran sahaja. Kelulusan sebenar bergantung kepada bank dan profil customer.</small>';
-
-
-
-document
-.getElementById("detailModal")
-.style.display =
-"block";
-
 }
 
 
-
-function closeDetail(){
-
-document
-.getElementById("detailModal")
-.style.display =
-"none";
-
-}
-
-
+/* =========================
+ADMIN
+========================= */
 
 function openAdmin(){
 
-buildAdmin();
-
-
 document
 .getElementById("adminModal")
-.style.display =
-"block";
+.style.display = "block";
+
+renderAdmin();
 
 }
-
 
 
 function closeAdmin(){
 
 document
 .getElementById("adminModal")
+.style.display = "none";
+
+}
+
+
+function renderAdmin(){
+
+let list =
+document.getElementById("adminList");
+
+list.innerHTML = "";
+
+
+cars.forEach((car,index)=>{
+
+let div =
+document.createElement("div");
+
+div.className =
+"car-list";
+
+div.innerHTML = `
+
+<b>${car.name}</b>
+
+<br>
+
+RM ${car.min.toLocaleString()}
+–
+RM ${car.max.toLocaleString()}
+
+<button
+class="action"
+onclick="editCar(${index})"
+>
+
+EDIT MODEL
+
+</button>
+
+`;
+
+list.appendChild(div);
+
+});
+
+}
+
+
+/* =========================
+EDIT CAR
+========================= */
+
+function editCar(index){
+
+editing = index;
+
+let car = cars[index];
+
+
+document
+.getElementById("editTitle")
+.innerText =
+"EDIT " + car.name;
+
+
+document
+.getElementById("editName")
+.value =
+car.name;
+
+
+document
+.getElementById("editMin")
+.value =
+car.min;
+
+
+document
+.getElementById("editMax")
+.value =
+car.max;
+
+
+document
+.getElementById("imagePreview")
+.src =
+car.img;
+
+
+document
+.getElementById("imagePreview")
+.style.display =
+"block";
+
+
+document
+.getElementById("editImage")
+.value = "";
+
+
+document
+.getElementById("editModal")
+.style.display =
+"block";
+
+}
+
+
+/* =========================
+NEW CAR
+========================= */
+
+function newCar(){
+
+editing = null;
+
+
+document
+.getElementById("editTitle")
+.innerText =
+"TAMBAH MODEL BARU";
+
+
+document
+.getElementById("editName")
+.value = "";
+
+
+document
+.getElementById("editMin")
+.value = "";
+
+
+document
+.getElementById("editMax")
+.value = "";
+
+
+document
+.getElementById("editImage")
+.value = "";
+
+
+document
+.getElementById("imagePreview")
 .style.display =
 "none";
 
 
+document
+.getElementById("editModal")
+.style.display =
+"block";
+
+}
+
+
+/* =========================
+IMAGE PREVIEW
+========================= */
+
+function previewImage(){
+
+let file =
+document
+.getElementById("editImage")
+.files[0];
+
+
+if(!file) return;
+
+
+let reader =
+new FileReader();
+
+
+reader.onload =
+function(e){
+
+document
+.getElementById("imagePreview")
+.src =
+e.target.result;
+
+
+document
+.getElementById("imagePreview")
+.style.display =
+"block";
+
+};
+
+
+reader.readAsDataURL(file);
+
+}
+
+
+/* =========================
+SAVE CAR
+========================= */
+
+function saveCar(){
+
+let name =
+document
+.getElementById("editName")
+.value
+.trim();
+
+
+let min =
+Number(
+document
+.getElementById("editMin")
+.value
+);
+
+
+let max =
+Number(
+document
+.getElementById("editMax")
+.value
+);
+
+
+if(!name || !min || !max){
+
+alert(
+"Sila isi nama model dan harga."
+);
+
+return;
+
+}
+
+
+let image =
+document
+.getElementById("imagePreview")
+.src;
+
+
+let car = {
+
+name:name,
+
+min:min,
+
+max:max,
+
+img:image
+
+};
+
+
+if(editing === null){
+
+cars.push(car);
+
+}else{
+
+cars[editing] =
+car;
+
+}
+
+
+saveData();
+
+closeEdit();
+
+closeAdmin();
+
 render();
 
 }
 
 
+/* =========================
+DELETE CAR
+========================= */
 
-function buildAdmin(){
+function deleteCar(){
 
-let box =
-document
-.getElementById("adminCars");
+if(editing === null){
 
+closeEdit();
 
-box.innerHTML = "";
-
-
-cars.forEach(function(car,index){
-
-box.innerHTML +=
-
-'<div class="admin-car">' +
-
-'<div class="row">' +
-
-'<input value="' +
-
-car.name +
-
-'" oninput="cars[' +
-
-index +
-
-'].name=this.value;save()">' +
-
-
-'<input type="number" value="' +
-
-car.price +
-
-'" oninput="cars[' +
-
-index +
-
-'].price=Number(this.value);save()">' +
-
-'</div>' +
-
-
-'<div class="actions">' +
-
-'<button class="danger" onclick="deleteCar(' +
-
-index +
-
-')">' +
-
-'Padam' +
-
-'</button>' +
-
-'</div>' +
-
-'</div>';
-
-});
+return;
 
 }
 
 
+let confirmDelete =
+confirm(
+"Padam model ini?"
+);
 
-function save(){
+
+if(!confirmDelete) return;
+
+
+cars.splice(editing,1);
+
+saveData();
+
+closeEdit();
+
+closeAdmin();
+
+render();
+
+}
+
+
+/* =========================
+SAVE LOCAL STORAGE
+========================= */
+
+function saveData(){
 
 localStorage.setItem(
-
 "amirCars",
-
 JSON.stringify(cars)
-
 );
 
 }
 
 
+/* =========================
+CLOSE EDIT
+========================= */
 
-function deleteCar(index){
+function closeEdit(){
 
-if(
-confirm("Padam model ini?")
-){
-
-cars.splice(
-index,
-1
-);
-
-
-save();
-
-
-buildAdmin();
-
-}
+document
+.getElementById("editModal")
+.style.display =
+"none";
 
 }
 
 
-
-function addCar(){
-
-cars.push({
-
-name:"MODEL BARU",
-
-price:50000,
-
-emoji:"🚗"
-
-});
-
-
-save();
-
-
-buildAdmin();
-
-}
-
-
+/* =========================
+START
+========================= */
 
 render();
-
 
 </script>
 
