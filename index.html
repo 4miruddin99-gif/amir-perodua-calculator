@@ -1,34 +1,960 @@
 <!DOCTYPE html>
-<html lang="ms"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AMIR PERODUA Auto Calculator</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f4f6fa;color:#20293a}header{position:sticky;top:0;z-index:10;background:#fff;padding:16px 20px;border-bottom:1px solid #e3e8f0;display:flex;justify-content:space-between;align-items:center}.brand b{font-size:22px}.brand small{display:block;color:#667085;font-size:11px}.wrap{max-width:980px;margin:auto;padding:22px}.hero{background:linear-gradient(135deg,#184da9,#3979df);padding:28px;border-radius:30px;color:white}.hero h1{margin:0;font-size:36px}.hero p{font-size:18px}.mode{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}.mode button,.tabs button{border:1px solid #d7dfec;background:#fff;border-radius:18px;padding:16px;font-size:17px;font-weight:bold;color:#3161a7}.mode button.active,.tabs button.active{background:#315eb5;color:#fff}.inputbox{background:#fff;color:#20293a;border-radius:24px;padding:20px 28px;display:flex;align-items:center;gap:18px}.inputbox b{font-size:34px;color:#3159a0}.inputbox input{width:100%;border:0;outline:0;font-size:36px;font-weight:bold}.tabs{display:flex;gap:16px;margin:24px 0}.tabs button{flex:1}.summary{text-align:center;font-size:23px;font-weight:bold;margin:22px}.oktxt{color:#26744e}.notxt{color:#a9464d}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:3px solid #e0e5ec;border-radius:28px;padding:16px;cursor:pointer}.card.ok{border-color:#79a98d}.card.no{border-color:#dfa6ab}.car{height:145px;border-radius:18px;background:#eef1f5;display:flex;align-items:center;justify-content:center;font-size:75px;overflow:hidden}.car img{width:100%;height:100%;object-fit:contain}.card h2{font-size:24px;margin:16px 0 8px}.price{font-size:20px;font-weight:bold}.badge{display:inline-block;margin-top:16px;padding:10px 16px;border-radius:24px;font-size:15px;font-weight:bold}.ok .badge{background:#e7f4eb;color:#28764d}.no .badge{background:#faeaec;color:#a8454c}.detail{display:none}.back{border:0;background:none;color:#2159aa;font-size:17px;font-weight:bold;padding:0 0 16px}.detailHead,.variant{background:#fff;border-radius:22px;padding:20px;margin-bottom:14px}.variant{display:flex;justify-content:space-between;align-items:center;border:1px solid #e2e7ef}.monthly{font-size:26px;color:#198354;font-weight:bold;text-align:right}.monthly small{display:block;font-size:12px;color:#667085}.fab{position:fixed;right:18px;bottom:24px;background:#182238;color:#fff;border:0;border-radius:32px;padding:18px 25px;font-size:16px;font-weight:bold;z-index:15}.modal{display:none;position:fixed;inset:0;background:#0009;z-index:30;padding:16px;overflow:auto}.box{background:#fff;max-width:760px;margin:35px auto;border-radius:30px;padding:28px}.form input,.settings input{width:100%;padding:15px;border:1px solid #d5dce7;border-radius:14px;margin:7px 0;font-size:16px}.row{display:flex;gap:8px;margin:8px 0}.row input{flex:1;margin:0}.save{background:#215bb7;color:#fff;border:0;border-radius:14px;padding:14px 20px;font-weight:bold;font-size:16px}.edit,.close{background:#edf1f6;color:#245a9f;border:0;border-radius:14px;padding:12px 16px;font-weight:bold}.del{background:#b63843;color:#fff;border:0;border-radius:14px;padding:12px 16px}.admin{padding:16px;border:1px solid #e1e6ed;border-radius:18px;margin:10px 0;display:flex;justify-content:space-between;align-items:center}.admin small{color:#667085}.settings{background:#f6f8fc;border-radius:18px;padding:16px;margin:15px 0}@media(max-width:700px){.wrap{padding:12px}.hero{padding:26px 20px}.hero h1{font-size:28px}.grid{grid-template-columns:repeat(2,1fr);gap:14px}.car{height:120px}.card h2{font-size:20px}.price{font-size:17px}.inputbox input{font-size:30px}.summary{font-size:20px}}
-</style></head><body>
-<header><div class="brand"><b>AMIR PERODUA</b><small>AUTO CALCULATE SYSTEM</small></div><button class="edit" onclick="openAdmin()">⚙ EDIT</button></header>
-<main class="wrap"><section id="home"><div class="hero"><h1>Perodua Auto Calculator</h1><p id="heroText">Semak bajet bulanan atau kelayakan gaji customer.</p><div class="mode"><button id="budgetMode" class="active" onclick="setMode('budget')">💰 Bajet Bulanan</button><button id="salaryMode" onclick="setMode('salary')">👤 Semak Gaji</button></div><div class="inputbox"><b>RM</b><input id="budget" type="number" value="1800" oninput="render()"></div></div><div class="tabs" id="homeTabs"><button onclick="setYear(5,this)">5 Tahun</button><button onclick="setYear(7,this)">7 Tahun</button><button class="active" onclick="setYear(9,this)">9 Tahun</button></div><div class="summary" id="summary"></div><div class="grid" id="grid"></div></section>
-<section class="detail" id="detail"><button class="back" onclick="goHome()">← Kembali</button><div class="detailHead" id="detailHead"></div><div class="tabs" id="detailTabs"><button onclick="setDetailYear(5,this)">5 Tahun</button><button onclick="setDetailYear(7,this)">7 Tahun</button><button class="active" onclick="setDetailYear(9,this)">9 Tahun</button></div><div id="variants"></div></section></main>
-<button class="fab" onclick="openAdmin()">✏️ EDIT SISTEM</button>
-<div class="modal" id="adminModal"><div class="box"><h2>⚙ Edit Sistem</h2><p style="color:#667085">Harga, gambar dan setting kelayakan disimpan dalam browser telefon ini.</p><div class="settings"><h3>👤 Setting Semak Gaji</h3><label>Peratus maksimum komitmen kereta (%)</label><input id="salaryPercent" type="number" min="1" max="100"><small style="color:#667085">Contoh 30%: Gaji RM3,000 = bajet kereta RM900/bulan.</small><br><br><button class="save" onclick="saveSettings()">Simpan Setting Gaji</button></div><button class="save" onclick="newCar()">+ Tambah Model</button><div id="adminList"></div><br><button class="close" onclick="closeAdmin()">Tutup</button></div></div>
-<div class="modal" id="editModal"><div class="box form"><h2 id="editTitle">Edit Model</h2><input id="name" placeholder="Nama model"><input id="min" type="number" placeholder="Harga minimum"><input id="max" type="number" placeholder="Harga maksimum"><label><b>Gambar Kereta</b></label><input id="image" type="file" accept="image/*"><h3>Varian & Harga</h3><div id="varEdit"></div><button class="edit" onclick="addVar()">+ Tambah Varian</button><br><br><button class="save" onclick="saveCar()">Simpan</button><button class="close" onclick="closeEdit()">Batal</button></div></div>
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f3f5f8;
+  color:#172033;
+}
+
+header{
+  background:white;
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #ddd;
+}
+
+.brand b{
+  font-size:24px;
+  letter-spacing:1px;
+}
+
+.brand small{
+  display:block;
+  color:#647084;
+  margin-top:4px;
+}
+
+button{
+  font:inherit;
+  cursor:pointer;
+}
+
+.edit-btn{
+  background:#eaf0f8;
+  color:#244a7c;
+  padding:12px 18px;
+  border-radius:14px;
+  font-weight:bold;
+  border:none;
+}
+
+.wrap{
+  max-width:900px;
+  margin:auto;
+  padding:22px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#244a90,#486db0);
+  color:white;
+  padding:32px;
+  border-radius:34px;
+}
+
+.hero h1{
+  margin:0 0 12px;
+  font-size:34px;
+}
+
+.hero p{
+  font-size:18px;
+  opacity:.9;
+}
+
+.tabs,
+.years{
+  display:flex;
+  gap:10px;
+  margin:22px 0;
+}
+
+.tabs button,
+.years button{
+  flex:1;
+  padding:16px;
+  border-radius:14px;
+  background:white;
+  color:#274c83;
+  font-weight:bold;
+  border:1px solid #ddd;
+}
+
+.tabs button.active,
+.years button.active{
+  background:#244a90;
+  color:white;
+}
+
+.result{
+  background:white;
+  color:#111;
+  border-radius:24px;
+  padding:24px;
+  margin-top:16px;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.result input{
+  border:0;
+  font-size:28px;
+  font-weight:bold;
+  width:75%;
+  outline:none;
+}
+
+.status{
+  text-align:center;
+  margin:22px 0;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.ok{
+  color:#39705b;
+}
+
+.bad{
+  color:#9b4d4d;
+}
+
+.cars{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+}
+
+.car{
+  background:white;
+  border:3px solid #8aa99c;
+  border-radius:24px;
+  padding:18px;
+  box-shadow:0 5px 15px #00000012;
+}
+
+.emoji{
+  height:120px;
+  background:#eef1f5;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:70px;
+}
+
+.car h2{
+  margin:15px 0 6px;
+}
+
+.price{
+  color:#657083;
+}
+
+.monthly{
+  font-size:22px;
+  color:#244a90;
+  font-weight:bold;
+  margin:12px 0;
+}
+
+.car button{
+  width:100%;
+  padding:13px;
+  background:#244a90;
+  color:white;
+  border-radius:12px;
+  font-weight:bold;
+  border:none;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0009;
+  z-index:10;
+  padding:18px;
+  overflow:auto;
+}
+
+.box{
+  max-width:700px;
+  background:white;
+  margin:30px auto;
+  padding:24px;
+  border-radius:22px;
+}
+
+.box h2{
+  margin-top:0;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.row input{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccd3dd;
+  border-radius:10px;
+  font-size:16px;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+}
+
+.actions button{
+  padding:13px 18px;
+  border-radius:10px;
+  font-weight:bold;
+  border:none;
+}
+
+.primary{
+  background:#244a90;
+  color:white;
+}
+
+.secondary{
+  background:#e8edf3;
+}
+
+.danger{
+  background:#b43d3d;
+  color:white;
+}
+
+.admin-car{
+  border:1px solid #ddd;
+  padding:12px;
+  border-radius:12px;
+  margin-top:12px;
+}
+
+@media(max-width:600px){
+
+  .hero h1{
+    font-size:28px;
+  }
+
+  .row{
+    grid-template-columns:1fr;
+  }
+
+  .wrap{
+    padding:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="brand">
+<b>AMIR PERODUA</b>
+<small>AUTO CALCULATE SYSTEM</small>
+</div>
+
+<button class="edit-btn" onclick="openAdmin()">
+⚙️ EDIT
+</button>
+
+</header>
+
+
+<main class="wrap">
+
+<section class="hero">
+
+<h1>Perodua Auto Calculator</h1>
+
+<p>Semak bajet bulanan atau kelayakan gaji customer.</p>
+
+
+<div class="tabs">
+
+<button id="budgetTab"
+class="active"
+onclick="setMode('budget')">
+
+💰 Bajet Bulanan
+
+</button>
+
+
+<button id="salaryTab"
+onclick="setMode('salary')">
+
+👤 Semak Gaji
+
+</button>
+
+</div>
+
+
+<div class="result">
+
+RM
+
+<input
+id="amount"
+type="number"
+value="1800"
+oninput="render()">
+
+</div>
+
+</section>
+
+
+<div class="years">
+
+<button onclick="setYear(5)">
+5 Tahun
+</button>
+
+<button onclick="setYear(7)">
+7 Tahun
+</button>
+
+<button class="active"
+onclick="setYear(9)">
+
+9 Tahun
+
+</button>
+
+</div>
+
+
+<div id="status"
+class="status">
+
+</div>
+
+
+<div id="cars"
+class="cars">
+
+</div>
+
+</main>
+
+
+
+<!-- ADMIN MODAL -->
+
+<div id="adminModal"
+class="modal">
+
+<div class="box">
+
+<h2>✏️ EDIT SISTEM AMIR PERODUA</h2>
+
+<p>
+Edit harga kereta.
+Perubahan akan disimpan dalam telefon ini.
+</p>
+
+<div id="adminCars"></div>
+
+<div class="actions">
+
+<button
+class="primary"
+onclick="addCar()">
+
++ Tambah Model
+
+</button>
+
+
+<button
+class="secondary"
+onclick="closeAdmin()">
+
+Tutup
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- DETAIL MODAL -->
+
+<div id="detailModal"
+class="modal">
+
+<div class="box">
+
+<h2 id="detailTitle"></h2>
+
+<p id="detailText"></p>
+
+<div class="actions">
+
+<button
+class="primary"
+onclick="closeDetail()">
+
+Tutup
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
 <script>
-const defaults=[["BEZZA",36197,52047,[["1.0 G (MT)",36197],["1.0 G (AT)",38697],["1.0 X (AT)",41597],["1.0 AV (AT)",52047]]],["AXIA",23276,51054,[["1.0 E (MT)",23276],["1.0 G (CVT)",38500],["1.0 X (CVT)",44700],["1.0 AV (CVT)",51054]]],["MYVI",48474,62302,[["1.3 G",48474],["1.3 X",51000],["1.5 X",56000],["1.5 H",59000],["1.5 AV",62302]]],["ALZA",64993,78358,[["1.5 X",64993],["1.5 H",70387],["1.5 AV",78358]]],["ATIVA",64919,76127,[["1.0 X",64919],["1.0 H",70000],["1.0 AV",76127]]],["ARUZ",75762,80902,[["1.5 X",75762],["1.5 AV",80902]]]];
-let cars;try{cars=JSON.parse(localStorage.getItem("amirCars")||"null")}catch(e){}if(!Array.isArray(cars)||!cars.length)cars=defaults.map(x=>({name:x[0],min:x[1],max:x[2],variants:x[3],img:""}));let years=9,selected=0,editing=null,mode="budget",salaryPercent=Number(localStorage.getItem("amirSalaryPercent")||30);const money=n=>Number(n||0).toLocaleString("en-MY");
-function pay(p,y=years){let r=.0325/12,n=y*12,L=Number(p)*.9;return L?Math.round(L*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1)):0}
-function currentBudget(){let v=Number(document.getElementById("budget").value||0);return mode==="salary"?Math.round(v*salaryPercent/100):v}
-function pic(c){return c.img?`<div class="car"><img src="${c.img}" alt="${c.name}"></div>`:'<div class="car">🚗</div>'}
-function setMode(m){mode=m;budgetMode.classList.toggle("active",m==="budget");salaryMode.classList.toggle("active",m==="salary");heroText.textContent=m==="budget"?"Masukkan bajet bulanan customer dan semak model yang sesuai.":"Masukkan gaji customer untuk semak kelayakan anggaran.";budget.value=m==="budget"?1800:3000;render()}
-function render(){let b=currentBudget(),pass=0;grid.innerHTML=cars.map((c,i)=>{let vs=Array.isArray(c.variants)?c.variants:[],n=vs.filter(v=>pay(v[1])<=b).length,ok=n>0;if(ok)pass++;return `<div class="card ${ok?'ok':'no'}" onclick="showCar(${i})">${pic(c)}<h2>${c.name||"MODEL"}</h2><div class="price">RM ${money(c.min)} – RM ${money(c.max)}</div><span class="badge">${ok?`✓ LAYAK ${n}/${vs.length} varian`:'✕ TIDAK LAYAK'}</span></div>`}).join("");let info=mode==="salary"?`Gaji RM ${money(budget.value)} → Bajet RM ${money(b)}`:`Bajet RM ${money(b)}`;summary.innerHTML=`<span class="oktxt">${pass} model LAYAK</span> • <span class="notxt">${cars.length-pass} model TIDAK LAYAK</span><br><small style="font-size:13px;color:#667085;font-weight:normal">${info}</small>`}
-function setYear(y,b){years=y;document.querySelectorAll("#homeTabs button").forEach(x=>x.classList.remove("active"));b.classList.add("active");render()}
-function showCar(i){selected=i;home.style.display="none";detail.style.display="block";let c=cars[i];detailHead.innerHTML=`${pic(c)}<h2>${c.name}</h2><p>Senarai varian dan anggaran bayaran bulanan</p>`;showVars();scrollTo({top:0,behavior:"smooth"})}
-function goHome(){detail.style.display="none";home.style.display="block"}
-function setDetailYear(y,b){years=y;document.querySelectorAll("#detailTabs button").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll("#homeTabs button").forEach(x=>x.classList.toggle("active",x.textContent.startsWith(y)));showVars()}
-function showVars(){let b=currentBudget(),c=cars[selected],vs=Array.isArray(c.variants)?c.variants:[];variants.innerHTML=vs.map(v=>{let m=pay(v[1]),ok=m<=b;return `<div class="variant"><div><b>${v[0]}</b><br><small>RM ${money(v[1])} ${ok?'✓ Layak':'✕ Melebihi bajet'}</small></div><div class="monthly">RM ${money(m)}<small>/bulan</small></div></div>`}).join("")}
-function openAdmin(){salaryPercent=document.getElementById("salaryPercent").value=Number(localStorage.getItem("amirSalaryPercent")||salaryPercent);adminModal.style.display="block";adminList.innerHTML=cars.map((c,i)=>`<div class="admin"><div><b>${c.name}</b><br><small>RM ${money(c.min)} – RM ${money(c.max)}</small></div><div><button class="edit" onclick="editCar(${i})">Edit</button> <button class="del" onclick="delCar(${i})">Padam</button></div></div>`).join("")}
-function closeAdmin(){adminModal.style.display="none"}function saveSettings(){salaryPercent=Math.max(1,Math.min(100,Number(document.getElementById("salaryPercent").value||30)));localStorage.setItem("amirSalaryPercent",salaryPercent);alert("Setting gaji berjaya disimpan: "+salaryPercent+"%");render()}
-function delCar(i){if(confirm("Padam model "+cars[i].name+"?")){cars.splice(i,1);persist();openAdmin()}}
-function newCar(){editing=null;editTitle.innerText="Tambah Model";["name","min","max","image"].forEach(id=>document.getElementById(id).value="");varEdit.innerHTML="";addVar();editModal.style.display="block"}
-function editCar(i){editing=i;let c=cars[i];editTitle.innerText="Edit "+c.name;name.value=c.name||"";min.value=c.min||"";max.value=c.max||"";image.value="";varEdit.innerHTML=(c.variants||[]).map(v=>varRow(v[0],v[1])).join("");editModal.style.display="block"}
-function varRow(n="",p=""){return `<div class="row"><input value="${String(n).replace(/"/g,'&quot;')}" placeholder="Nama varian"><input type="number" value="${p}" placeholder="Harga"><button class="del" onclick="this.parentElement.remove()">×</button></div>`}function addVar(){varEdit.insertAdjacentHTML("beforeend",varRow())}function closeEdit(){editModal.style.display="none"}
-function saveCar(){let vars=[...varEdit.children].map(r=>{let a=r.querySelectorAll("input");return[a[0].value.trim()||"Varian",Number(a[1].value||0)]}).filter(v=>v[1]>0),c=editing===null?{name:"",min:0,max:0,variants:vars,img:""}:{...cars[editing],variants:vars};c.name=name.value.trim()||"MODEL BARU";c.min=Number(min.value||0);c.max=Number(max.value||0);let f=image.files[0];if(f){let rd=new FileReader();rd.onload=e=>{c.img=e.target.result;finish(c)};rd.readAsDataURL(f)}else finish(c)}
-function finish(c){if(editing===null)cars.push(c);else cars[editing]=c;persist();closeEdit();openAdmin()}function persist(){localStorage.setItem("amirCars",JSON.stringify(cars));render()}render();
-</script></body></html>
+
+
+const defaults = [
+
+{
+name:"BEZZA",
+price:36179,
+emoji:"🚗"
+},
+
+{
+name:"AXIA",
+price:22000,
+emoji:"🚙"
+},
+
+{
+name:"MYVI",
+price:46000,
+emoji:"🚘"
+},
+
+{
+name:"ALZA",
+price:62000,
+emoji:"🚐"
+},
+
+{
+name:"ATIVA",
+price:62500,
+emoji:"🚙"
+},
+
+{
+name:"ARUZ",
+price:72900,
+emoji:"🚗"
+}
+
+];
+
+
+
+let cars =
+JSON.parse(
+localStorage.getItem("amirCars")
+|| "null"
+)
+|| defaults;
+
+
+let years = 9;
+
+let mode = "budget";
+
+
+
+function pay(price,year){
+
+let rate = 0.0325 / 12;
+
+let months = year * 12;
+
+return price
+*
+rate
+*
+Math.pow(
+1 + rate,
+months
+)
+/
+(
+Math.pow(
+1 + rate,
+months
+)
+- 1
+);
+
+}
+
+
+
+function setMode(m){
+
+mode = m;
+
+document
+.getElementById("budgetTab")
+.classList
+.toggle(
+"active",
+m === "budget"
+);
+
+
+document
+.getElementById("salaryTab")
+.classList
+.toggle(
+"active",
+m === "salary"
+);
+
+
+render();
+
+}
+
+
+
+function setYear(y){
+
+years = y;
+
+
+document
+.querySelectorAll(".years button")
+.forEach(function(button){
+
+button
+.classList
+.toggle(
+"active",
+button.textContent.trim()
+=== y + " Tahun"
+);
+
+});
+
+
+render();
+
+}
+
+
+
+function render(){
+
+let amount =
+Number(
+document
+.getElementById("amount")
+.value
+)
+|| 0;
+
+
+let grid =
+document
+.getElementById("cars");
+
+
+let status =
+document
+.getElementById("status");
+
+
+grid.innerHTML = "";
+
+
+let pass = 0;
+
+
+
+cars.forEach(function(car,index){
+
+let monthly =
+Math.round(
+pay(
+car.price,
+years
+)
+);
+
+
+let eligible;
+
+
+if(mode === "budget"){
+
+eligible =
+monthly <= amount;
+
+}else{
+
+eligible =
+amount >= monthly / 0.15;
+
+}
+
+
+if(eligible){
+
+pass++;
+
+}
+
+
+let value;
+
+
+if(mode === "budget"){
+
+value =
+"Anggaran RM "
++
+monthly.toLocaleString()
++
+"/bulan";
+
+}else{
+
+value =
+"Gaji anggaran RM "
++
+Math.ceil(
+monthly / 0.15
+).toLocaleString();
+
+}
+
+
+grid.innerHTML +=
+
+'<div class="car">' +
+
+'<div class="emoji">' +
+(car.emoji || "🚗") +
+'</div>' +
+
+'<h2>' +
+car.name +
+'</h2>' +
+
+'<div class="price">' +
+'Harga anggaran: RM ' +
+Number(car.price)
+.toLocaleString() +
+'</div>' +
+
+'<div class="monthly">' +
+value +
+'</div>' +
+
+'<button onclick="showCar(' +
+index +
+')">' +
+
+'Lihat Anggaran' +
+
+'</button>' +
+
+'</div>';
+
+});
+
+
+
+status.innerHTML =
+
+'<span class="ok">' +
+
+pass +
+
+' model LAYAK</span>' +
+
+' • ' +
+
+'<span class="bad">' +
+
+(cars.length - pass) +
+
+' model TIDAK LAYAK</span>' +
+
+'<br>' +
+
+'<small>' +
+
+years +
+
+' Tahun</small>';
+
+}
+
+
+
+function showCar(index){
+
+let car = cars[index];
+
+
+let monthly =
+Math.round(
+pay(
+car.price,
+years
+)
+);
+
+
+document
+.getElementById("detailTitle")
+.textContent =
+car.name;
+
+
+document
+.getElementById("detailText")
+.innerHTML =
+
+'Harga anggaran: <b>RM ' +
+
+Number(car.price)
+.toLocaleString() +
+
+'</b>' +
+
+'<br><br>' +
+
+'Tempoh loan: <b>' +
+
+years +
+
+' Tahun</b>' +
+
+'<br>' +
+
+'Anggaran bulanan: <b>RM ' +
+
+monthly
+.toLocaleString() +
+
+'</b>' +
+
+'<br><br>' +
+
+'<small>*Anggaran sahaja. Kelulusan sebenar bergantung kepada bank dan profil customer.</small>';
+
+
+
+document
+.getElementById("detailModal")
+.style.display =
+"block";
+
+}
+
+
+
+function closeDetail(){
+
+document
+.getElementById("detailModal")
+.style.display =
+"none";
+
+}
+
+
+
+function openAdmin(){
+
+buildAdmin();
+
+
+document
+.getElementById("adminModal")
+.style.display =
+"block";
+
+}
+
+
+
+function closeAdmin(){
+
+document
+.getElementById("adminModal")
+.style.display =
+"none";
+
+
+render();
+
+}
+
+
+
+function buildAdmin(){
+
+let box =
+document
+.getElementById("adminCars");
+
+
+box.innerHTML = "";
+
+
+cars.forEach(function(car,index){
+
+box.innerHTML +=
+
+'<div class="admin-car">' +
+
+'<div class="row">' +
+
+'<input value="' +
+
+car.name +
+
+'" oninput="cars[' +
+
+index +
+
+'].name=this.value;save()">' +
+
+
+'<input type="number" value="' +
+
+car.price +
+
+'" oninput="cars[' +
+
+index +
+
+'].price=Number(this.value);save()">' +
+
+'</div>' +
+
+
+'<div class="actions">' +
+
+'<button class="danger" onclick="deleteCar(' +
+
+index +
+
+')">' +
+
+'Padam' +
+
+'</button>' +
+
+'</div>' +
+
+'</div>';
+
+});
+
+}
+
+
+
+function save(){
+
+localStorage.setItem(
+
+"amirCars",
+
+JSON.stringify(cars)
+
+);
+
+}
+
+
+
+function deleteCar(index){
+
+if(
+confirm("Padam model ini?")
+){
+
+cars.splice(
+index,
+1
+);
+
+
+save();
+
+
+buildAdmin();
+
+}
+
+}
+
+
+
+function addCar(){
+
+cars.push({
+
+name:"MODEL BARU",
+
+price:50000,
+
+emoji:"🚗"
+
+});
+
+
+save();
+
+
+buildAdmin();
+
+}
+
+
+
+render();
+
+
+</script>
+
+</body>
+</html>
