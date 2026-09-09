@@ -1152,13 +1152,18 @@ document.getElementById("modelGrid");
 grid.innerHTML="";
 
 let pass = 0;
+let fail = 0;
 
 cars.forEach((car,index)=>{
 
 const eligible =
 isEligible(car);
 
-if(eligible) pass++;
+if(eligible){
+    pass += car.variants.length;
+} else {
+    fail += car.variants.length;
+}
 
 let imageHTML;
 
