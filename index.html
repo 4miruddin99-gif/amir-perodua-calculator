@@ -5,82 +5,79 @@
 
 <meta charset="UTF-8">
 
-<meta
-name="viewport"
-content="width=device-width, initial-scale=1, viewport-fit=cover"
->
+<meta name="viewport"
+content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>AMIR PERODUA Auto Calculate System</title>
 
-
 <style>
 
-/* =====================================
+/* =========================================
 ROOT
-===================================== */
+========================================= */
 
 :root{
-
   --green:#006b52;
-  --green2:#008060;
-  --blue:#1458c8;
-  --dark:#172238;
-  --bg:#eef1f6;
-  --red:#c92736;
-  --card:#ffffff;
+  --green-dark:#003c31;
+  --green-light:#e3f5ed;
 
+  --blue:#1458c8;
+  --blue-light:#e8f0ff;
+
+  --red:#c92736;
+  --red-light:#faecee;
+
+  --dark:#172238;
+  --gray:#687386;
+  --border:#dce2eb;
+
+  --bg:#eef1f6;
+  --card:#ffffff;
 }
 
 
-/* =====================================
+/* =========================================
 GLOBAL
-===================================== */
+========================================= */
 
 *{
-
   box-sizing:border-box;
   -webkit-tap-highlight-color:transparent;
+}
 
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-
   margin:0;
-
-  font-family:
-  Arial,
-  Helvetica,
-  sans-serif;
-
-  background:
-  linear-gradient(
-  135deg,
-  #edf1f5,
-  #f8f9fb
-  );
-
-  color:#172238;
-
-  padding-bottom:100px;
-
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#edf1f5,#f8f9fb);
+  color:var(--dark);
+  padding-bottom:110px;
 }
 
 button,
 input,
 textarea,
 select{
-
   font-family:inherit;
+}
 
+button{
+  -webkit-appearance:none;
+}
+
+button:active{
+  transform:scale(.98);
 }
 
 
-/* =====================================
+/* =========================================
 HEADER
-===================================== */
+========================================= */
 
 .header{
-
   background:
   linear-gradient(
   135deg,
@@ -90,101 +87,70 @@ HEADER
 
   color:white;
 
-  padding:24px 5% 22px;
+  padding:
+  max(20px,env(safe-area-inset-top))
+  5%
+  24px;
 
   display:flex;
-
   justify-content:space-between;
-
   align-items:center;
 
+  box-shadow:
+  0 5px 20px
+  rgba(0,0,0,.15);
 }
-
 
 .brand-title{
-
   font-size:42px;
-
   font-weight:900;
-
   letter-spacing:6px;
-
 }
-
 
 .brand-sub{
-
-  margin-top:6px;
-
+  margin-top:7px;
   font-size:18px;
-
   letter-spacing:5px;
-
+  opacity:.95;
 }
-
 
 .tagline{
-
-  text-align:center;
-
-  font-size:17px;
-
-  letter-spacing:6px;
-
   margin-top:18px;
-
-  opacity:.9;
-
+  font-size:15px;
+  letter-spacing:5px;
+  opacity:.85;
 }
-
 
 .logo-box{
-
-  text-align:center;
-
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
-
 
 .perodua-logo{
-
-  width:135px;
-
-  height:85px;
-
-  display:block;
-
-  margin:auto;
-
+  width:120px;
+  height:80px;
   object-fit:contain;
-
 }
 
 
-/* =====================================
+/* =========================================
 APP
-===================================== */
+========================================= */
 
 .app{
-
   max-width:1100px;
-
   margin:auto;
-
-  padding:
-  0 18px 30px;
-
+  padding:0 18px 30px;
 }
 
 
-/* =====================================
+/* =========================================
 MODE BUTTON
-===================================== */
+========================================= */
 
 .mode-box{
-
-  margin-top:0;
-
-  background:#fff;
+  background:white;
 
   border-radius:
   0 0 32px 32px;
@@ -193,41 +159,34 @@ MODE BUTTON
 
   box-shadow:
   0 8px 30px
-  #24324a18;
+  rgba(36,50,74,.10);
 
   display:grid;
-
-  grid-template-columns:
-  1fr 1fr;
-
+  grid-template-columns:1fr 1fr;
   gap:16px;
-
 }
 
-
 .mode-btn{
-
   border:0;
 
-  padding:26px;
+  padding:24px;
 
   border-radius:24px;
 
-  background:#f3f5f8;
+  background:#f1f3f6;
 
   color:#25344b;
 
-  font-size:25px;
+  font-size:23px;
 
   font-weight:800;
 
   cursor:pointer;
 
+  transition:.2s;
 }
 
-
 .mode-btn.active{
-
   color:white;
 
   background:
@@ -239,80 +198,69 @@ MODE BUTTON
 
   box-shadow:
   0 8px 20px
-  #006b5233;
-
+  rgba(0,107,82,.25);
 }
 
 
-/* =====================================
-INPUT
-===================================== */
+/* =========================================
+INPUT SECTION
+========================================= */
 
 .input-section{
-
-  padding:
-  24px 10px 10px;
-
+  padding:28px 10px 8px;
 }
 
+.input-title{
+  text-align:center;
+  font-size:16px;
+  font-weight:800;
+  color:#667085;
+  margin-bottom:12px;
+}
 
 .money-box{
-
   background:white;
 
-  border:
-  2px solid #d9e0ea;
+  border:2px solid #d9e0ea;
 
   border-radius:26px;
 
   height:100px;
 
   display:flex;
-
   align-items:center;
 
   overflow:hidden;
 
   box-shadow:
   0 6px 20px
-  #1d2b4210;
-
+  rgba(29,43,66,.08);
 }
 
-
 .rm-label{
-
   width:150px;
 
   height:100%;
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   background:#f1f4f8;
 
   font-size:32px;
-
   font-weight:900;
 
   color:#263d62;
-
 }
 
-
 .money-box input{
-
   flex:1;
 
   border:0;
-
   outline:none;
 
-  font-size:52px;
-
+  font-size:48px;
   font-weight:900;
 
   padding:15px 20px;
@@ -321,54 +269,43 @@ INPUT
 
   color:#101827;
 
+  background:white;
 }
 
-
 .clear-btn{
-
-  width:65px;
-
-  height:65px;
+  width:62px;
+  height:62px;
 
   border:0;
-
   border-radius:50%;
 
   background:#7b8da6;
 
   color:white;
 
-  font-size:32px;
+  font-size:30px;
 
   cursor:pointer;
 
-  margin-right:18px;
-
+  margin-right:16px;
 }
 
 
-/* =====================================
-YEAR
-===================================== */
+/* =========================================
+YEAR BUTTON
+========================================= */
 
 .year-row{
-
   display:grid;
+  grid-template-columns:repeat(3,1fr);
 
-  grid-template-columns:
-  repeat(3,1fr);
+  gap:14px;
 
-  gap:18px;
-
-  margin:18px 20px;
-
+  margin:20px 10px;
 }
 
-
 .year-btn{
-
-  border:
-  2px solid #dce2eb;
+  border:2px solid var(--border);
 
   background:white;
 
@@ -376,19 +313,17 @@ YEAR
 
   border-radius:22px;
 
-  padding:22px 10px;
+  padding:20px 10px;
 
-  font-size:20px;
-
+  font-size:19px;
   font-weight:800;
 
   cursor:pointer;
 
+  transition:.2s;
 }
 
-
 .year-btn.active{
-
   background:
   linear-gradient(
   135deg,
@@ -402,69 +337,54 @@ YEAR
 
   box-shadow:
   0 7px 18px
-  #1554bd33;
-
+  rgba(21,84,189,.22);
 }
 
 
-/* =====================================
+/* =========================================
 STATUS
-===================================== */
+========================================= */
 
 .status{
-
   text-align:center;
 
-  font-size:26px;
-
+  font-size:24px;
   font-weight:900;
 
-  margin:
-  28px 0 30px;
-
+  margin:28px 0 30px;
 }
-
 
 .pass-text{
-
   color:#167152;
-
 }
-
 
 .fail-text{
-
   color:#c92736;
-
 }
 
 
-/* =====================================
+/* =========================================
 MODEL GRID
-===================================== */
+========================================= */
 
 .model-grid{
-
   display:grid;
 
   grid-template-columns:
   repeat(3,1fr);
 
   gap:24px;
-
 }
 
 
-/* =====================================
+/* =========================================
 CAR CARD
-===================================== */
+========================================= */
 
 .car-card{
-
   background:white;
 
-  border:
-  2px solid #efc3c8;
+  border:2px solid #efc3c8;
 
   border-radius:28px;
 
@@ -476,29 +396,19 @@ CAR CARD
 
   box-shadow:
   0 8px 25px
-  #26344b10;
-
+  rgba(38,52,75,.08);
 }
-
-
-.car-card:hover{
-
-  transform:
-  translateY(-4px);
-
-}
-
 
 .car-card.pass{
-
   border-color:#9bcbbd;
-
 }
 
+.car-card:hover{
+  transform:translateY(-4px);
+}
 
 .car-image{
-
-  height:180px;
+  height:190px;
 
   background:
   linear-gradient(
@@ -508,115 +418,82 @@ CAR CARD
   );
 
   display:flex;
-
   align-items:center;
-
   justify-content:center;
 
   overflow:hidden;
-
 }
 
-
 .car-image img{
-
   width:100%;
-
   height:100%;
 
   object-fit:contain;
 
+  padding:8px;
 }
-
 
 .car-emoji{
-
   font-size:100px;
-
 }
-
 
 .car-info{
-
-  padding:
-  18px 22px 20px;
-
+  padding:18px 22px 22px;
 }
 
-
 .car-name{
-
-  font-size:28px;
-
+  font-size:27px;
   font-weight:900;
 
   margin-bottom:8px;
-
 }
 
-
 .car-price{
-
-  font-size:20px;
-
-  line-height:1.4;
+  font-size:18px;
+  line-height:1.5;
 
   font-weight:600;
 
+  color:#435067;
 }
 
-
 .result-badge{
-
   display:inline-block;
 
   margin-top:18px;
 
-  padding:
-  13px 18px;
+  padding:12px 16px;
 
   border-radius:18px;
 
-  font-size:18px;
-
+  font-size:15px;
   font-weight:900;
-
 }
-
 
 .badge-pass{
-
   background:#e3f5ed;
-
   color:#176b50;
-
 }
-
 
 .badge-fail{
-
   background:#faecee;
-
   color:#bd2635;
-
 }
 
 
-/* =====================================
+/* =========================================
 BOTTOM NAV
-===================================== */
+========================================= */
 
 .bottom-nav{
-
   position:fixed;
 
   bottom:0;
-
   left:0;
-
   right:0;
 
-  background:#ffffffee;
+  background:
+  rgba(255,255,255,.95);
 
   backdrop-filter:
   blur(15px);
@@ -633,61 +510,50 @@ BOTTOM NAV
 
   padding-bottom:
   env(safe-area-inset-bottom);
-
 }
 
-
 .nav-btn{
-
   border:0;
 
   background:transparent;
 
   padding:
-  15px 5px 13px;
+  13px 5px 12px;
 
   color:#27364c;
 
   cursor:pointer;
 
-  font-size:14px;
-
+  font-size:13px;
 }
-
 
 .nav-icon{
-
   display:block;
 
-  font-size:28px;
+  font-size:27px;
 
   margin-bottom:5px;
-
 }
-
 
 .nav-btn.active{
-
   color:#007054;
-
   font-weight:900;
-
 }
 
 
-/* =====================================
+/* =========================================
 MODAL
-===================================== */
+========================================= */
 
 .modal{
-
   display:none;
 
   position:fixed;
 
   inset:0;
 
-  background:#0008;
+  background:
+  rgba(0,0,0,.55);
 
   z-index:100;
 
@@ -695,11 +561,11 @@ MODAL
 
   padding:20px;
 
+  backdrop-filter:
+  blur(3px);
 }
 
-
 .modal-box{
-
   max-width:750px;
 
   margin:30px auto;
@@ -710,32 +576,27 @@ MODAL
 
   padding:25px;
 
-  animation:
-  pop .2s ease;
-
+  animation:pop .2s ease;
 }
-
 
 @keyframes pop{
 
   from{
-
-    transform:
-    scale(.95);
-
+    transform:scale(.95);
     opacity:0;
+  }
 
+  to{
+    transform:scale(1);
+    opacity:1;
   }
 
 }
 
-
 .close-modal{
-
   float:right;
 
   width:42px;
-
   height:42px;
 
   border:0;
@@ -748,35 +609,28 @@ MODAL
 
   background:#edf1f5;
 
+  color:#27364c;
 }
 
-
 .modal-title{
-
   font-size:28px;
-
   font-weight:900;
 
   margin-bottom:8px;
-
 }
 
-
 .modal-subtitle{
-
   color:#687386;
 
   margin-bottom:20px;
-
 }
 
 
-/* =====================================
+/* =========================================
 VARIANT
-===================================== */
+========================================= */
 
 .variant-row{
-
   background:
   linear-gradient(
   135deg,
@@ -795,119 +649,82 @@ VARIANT
   justify-content:space-between;
 
   align-items:center;
-
 }
 
-
 .variant-row.fail-variant{
-
   background:
   linear-gradient(
   135deg,
   #fff7f7,
   #faeeee
   );
-
 }
-
 
 .variant-name{
-
   font-size:19px;
-
   font-weight:800;
-
 }
-
 
 .variant-price{
-
   color:#667085;
-
   margin-top:6px;
-
 }
-
 
 .variant-status-pass{
-
   color:#167152;
-
   font-weight:900;
-
 }
-
 
 .variant-status-fail{
-
   color:#c92736;
-
   font-weight:900;
-
 }
 
-
 .variant-month{
-
   color:#167152;
 
-  font-size:24px;
-
+  font-size:23px;
   font-weight:900;
 
   text-align:right;
-
 }
-
 
 .variant-row.fail-variant
 .variant-month{
-
   color:#c92736;
-
 }
 
-
 .variant-month small{
-
   display:block;
 
   font-size:12px;
 
   color:#687386;
-
 }
 
 
-/* =====================================
+/* =========================================
 CALCULATOR
-===================================== */
+========================================= */
 
 .calc-card{
-
   background:#f4f6f9;
 
   border-radius:22px;
 
   padding:20px;
-
 }
-
 
 .calc-card label{
-
   display:block;
 
-  font-weight:bold;
+  font-weight:800;
 
-  margin-top:12px;
-
+  margin-top:15px;
 }
-
 
 .calc-card input,
 .calc-card select{
-
   width:100%;
 
   padding:15px;
@@ -921,11 +738,43 @@ CALCULATOR
 
   font-size:18px;
 
+  background:white;
 }
 
+.loan-mode-row{
+  display:grid;
+
+  grid-template-columns:
+  1fr 1fr;
+
+  gap:10px;
+
+  margin-top:10px;
+}
+
+.loan-mode-btn{
+  border:2px solid #dce2eb;
+
+  background:white;
+
+  padding:14px;
+
+  border-radius:14px;
+
+  font-weight:800;
+
+  cursor:pointer;
+}
+
+.loan-mode-btn.active{
+  background:#006b52;
+
+  color:white;
+
+  border-color:#006b52;
+}
 
 .calculate-btn{
-
   width:100%;
 
   padding:17px;
@@ -941,40 +790,70 @@ CALCULATOR
   border-radius:16px;
 
   font-size:18px;
+  font-weight:900;
+
+  cursor:pointer;
+}
+
+.calc-result-box{
+  text-align:center;
+
+  margin-top:20px;
+
+  padding:18px;
+
+  background:white;
+
+  border-radius:18px;
+}
+
+.calc-result-title{
+  font-size:13px;
+
+  color:#687386;
+
+  font-weight:700;
+}
+
+.calc-result{
+  font-size:30px;
+
+  color:#006b52;
 
   font-weight:900;
 
+  margin-top:5px;
+}
+
+.calc-detail{
+  margin-top:8px;
+
+  font-size:13px;
+
+  color:#687386;
 }
 
 
-/* =====================================
+/* =========================================
 SETTINGS
-===================================== */
+========================================= */
 
 .setting-card{
-
-  border:
-  1px solid #dce2ea;
+  border:1px solid #dce2ea;
 
   border-radius:20px;
 
   padding:18px;
 
   margin-bottom:15px;
-
 }
-
 
 .setting-card h3{
-
   margin-top:0;
-
 }
-
 
 .setting-card input,
 .setting-card textarea{
-
   width:100%;
 
   padding:12px;
@@ -987,229 +866,208 @@ SETTINGS
   margin:7px 0;
 
   font-size:15px;
-
 }
 
-
 .setting-row{
-
   display:grid;
 
   grid-template-columns:
   1fr 1fr;
 
   gap:10px;
-
 }
 
-
 .save-btn{
-
   background:#006b52;
 
   color:white;
 
   border:0;
 
-  padding:
-  16px 22px;
+  padding:16px 22px;
 
   border-radius:14px;
 
   font-weight:900;
 
-  font-size:17px;
+  font-size:16px;
 
   cursor:pointer;
 
   margin-top:10px;
 
+  width:100%;
 }
 
+.reset-btn{
+  background:#6b7280;
+
+  color:white;
+
+  border:0;
+
+  padding:14px 22px;
+
+  border-radius:14px;
+
+  font-weight:900;
+
+  font-size:15px;
+
+  cursor:pointer;
+
+  margin-top:10px;
+
+  width:100%;
+}
 
 .delete-btn{
-
   background:#c92736;
 
   color:white;
 
   border:0;
 
-  padding:
-  10px 14px;
+  padding:10px 14px;
 
   border-radius:10px;
 
   cursor:pointer;
 
+  margin-top:8px;
 }
 
 
-/* =====================================
+/* =========================================
 MOBILE
-===================================== */
+========================================= */
 
 @media(max-width:750px){
 
   .header{
-
     padding:18px;
-
   }
 
   .brand-title{
-
     font-size:26px;
-
     letter-spacing:3px;
-
   }
 
   .brand-sub{
-
     font-size:12px;
-
     letter-spacing:2px;
-
   }
 
   .tagline{
-
     font-size:10px;
-
     letter-spacing:3px;
-
     margin-top:10px;
-
   }
 
   .perodua-logo{
-
-    width:70px;
-
+    width:65px;
     height:50px;
+  }
 
+  .mode-box{
+    padding:20px;
+    gap:14px;
   }
 
   .mode-btn{
-
     padding:20px 8px;
-
     font-size:18px;
+  }
 
+  .input-section{
+    padding:24px 0 8px;
   }
 
   .money-box{
-
     height:85px;
-
   }
 
   .rm-label{
-
     width:90px;
-
     font-size:26px;
-
   }
 
   .money-box input{
-
     font-size:36px;
-
   }
 
   .clear-btn{
-
     width:45px;
-
     height:45px;
-
     font-size:24px;
-
     margin-right:10px;
-
   }
 
   .year-row{
-
     gap:8px;
-
     margin:15px 0;
-
   }
 
   .year-btn{
-
     font-size:16px;
-
     padding:17px 5px;
-
   }
 
   .status{
-
-    font-size:21px;
-
+    font-size:20px;
   }
 
   .model-grid{
-
     grid-template-columns:
     repeat(2,1fr);
 
     gap:14px;
-
   }
 
   .car-image{
-
-    height:120px;
-
+    height:135px;
   }
 
   .car-info{
-
     padding:14px;
-
   }
 
   .car-name{
-
-    font-size:20px;
-
+    font-size:21px;
   }
 
   .car-price{
-
-    font-size:15px;
-
+    font-size:14px;
   }
 
   .result-badge{
-
-    font-size:13px;
-
+    font-size:12px;
     padding:10px;
-
   }
 
   .variant-row{
-
     padding:14px;
-
   }
 
   .variant-name{
-
     font-size:16px;
-
   }
 
   .variant-month{
-
     font-size:18px;
+  }
 
+  .modal{
+    padding:12px;
+  }
+
+  .modal-box{
+    margin:15px auto;
+    padding:20px;
+  }
+
+  .setting-row{
+    grid-template-columns:1fr;
   }
 
 }
@@ -1222,9 +1080,9 @@ MOBILE
 <body>
 
 
-<!-- =====================================
+<!-- =========================================
 HEADER
-===================================== -->
+========================================= -->
 
 <header class="header">
 
@@ -1244,12 +1102,13 @@ Lebih Mudah · Lebih Pantas · Lebih Jelas
 
 </div>
 
-
 <div class="logo-box">
 
 <img
 src="logo-perodua.png.PNG"
 class="perodua-logo"
+alt="Perodua Logo"
+onerror="this.style.display='none'"
 >
 
 </div>
@@ -1257,26 +1116,21 @@ class="perodua-logo"
 </header>
 
 
-<!-- =====================================
-APP
-===================================== -->
+<!-- =========================================
+MAIN APP
+========================================= -->
 
 <div class="app">
 
 
-<!-- MODE -->
-
 <div class="mode-box">
-
 
 <button
 id="budgetMode"
 class="mode-btn active"
 onclick="setMode('budget')"
 >
-
 💼 Bajet Bulanan
-
 </button>
 
 
@@ -1285,11 +1139,8 @@ id="salaryMode"
 class="mode-btn"
 onclick="setMode('salary')"
 >
-
 👤 Semak Gaji
-
 </button>
-
 
 </div>
 
@@ -1298,8 +1149,15 @@ onclick="setMode('salary')"
 
 <div class="input-section">
 
-<div class="money-box">
+<div
+id="inputTitle"
+class="input-title"
+>
+MASUKKAN BAJET BULANAN ANDA
+</div>
 
+
+<div class="money-box">
 
 <div class="rm-label">
 RM
@@ -1307,19 +1165,12 @@ RM
 
 
 <input
-
 id="budgetInput"
-
 type="number"
-
 placeholder="1800"
-
 inputmode="numeric"
-
 value="1800"
-
 oninput="renderModels()"
-
 >
 
 
@@ -1327,11 +1178,8 @@ oninput="renderModels()"
 class="clear-btn"
 onclick="clearBudget()"
 >
-
 ×
-
 </button>
-
 
 </div>
 
@@ -1342,14 +1190,11 @@ onclick="clearBudget()"
 
 <div class="year-row">
 
-
 <button
 class="year-btn"
 onclick="setYear(5,this)"
 >
-
 5 Tahun
-
 </button>
 
 
@@ -1357,9 +1202,7 @@ onclick="setYear(5,this)"
 class="year-btn"
 onclick="setYear(7,this)"
 >
-
 7 Tahun
-
 </button>
 
 
@@ -1367,11 +1210,8 @@ onclick="setYear(7,this)"
 class="year-btn active"
 onclick="setYear(9,this)"
 >
-
 9 Tahun
-
 </button>
-
 
 </div>
 
@@ -1380,16 +1220,12 @@ onclick="setYear(9,this)"
 
 <div class="status">
 
-
 <span
 id="passCount"
 class="pass-text"
 >
-
 0 model LULUS
-
 </span>
-
 
 •
 
@@ -1397,11 +1233,8 @@ class="pass-text"
 id="failCount"
 class="fail-text"
 >
-
 0 model GAGAL
-
 </span>
-
 
 </div>
 
@@ -1417,21 +1250,19 @@ class="model-grid"
 </div>
 
 
-<!-- =====================================
+<!-- =========================================
 BOTTOM NAV
-===================================== -->
+========================================= -->
 
 <nav class="bottom-nav">
 
 
 <button
 class="nav-btn active"
-onclick="showPage('models',this)"
+onclick="showModels(this)"
 >
 
-<span class="nav-icon">
-🚗
-</span>
+<span class="nav-icon">🚗</span>
 
 Senarai Model
 
@@ -1443,9 +1274,7 @@ class="nav-btn"
 onclick="showCalculator(this)"
 >
 
-<span class="nav-icon">
-▣
-</span>
+<span class="nav-icon">▣</span>
 
 Kalkulator
 
@@ -1457,9 +1286,7 @@ class="nav-btn"
 onclick="showInfo(this)"
 >
 
-<span class="nav-icon">
-📄
-</span>
+<span class="nav-icon">📄</span>
 
 Info
 
@@ -1471,9 +1298,7 @@ class="nav-btn"
 onclick="openSettings();setNav(this)"
 >
 
-<span class="nav-icon">
-⚙️
-</span>
+<span class="nav-icon">⚙️</span>
 
 Tetapan
 
@@ -1483,9 +1308,9 @@ Tetapan
 </nav>
 
 
-<!-- =====================================
+<!-- =========================================
 MODEL DETAIL MODAL
-===================================== -->
+========================================= -->
 
 <div
 id="detailModal"
@@ -1494,30 +1319,23 @@ class="modal"
 
 <div class="modal-box">
 
-
 <button
 class="close-modal"
 onclick="closeModal('detailModal')"
 >
-
 ×
-
 </button>
 
-
-<div
-id="detailContent"
-></div>
-
+<div id="detailContent"></div>
 
 </div>
 
 </div>
 
 
-<!-- =====================================
+<!-- =========================================
 CALCULATOR MODAL
-===================================== -->
+========================================= -->
 
 <div
 id="calculatorModal"
@@ -1526,28 +1344,21 @@ class="modal"
 
 <div class="modal-box">
 
-
 <button
 class="close-modal"
 onclick="closeModal('calculatorModal')"
 >
-
 ×
-
 </button>
 
 
 <div class="modal-title">
-
 Kalkulator Loan
-
 </div>
 
 
 <div class="modal-subtitle">
-
 Kira anggaran bayaran bulanan customer.
-
 </div>
 
 
@@ -1558,30 +1369,56 @@ Kira anggaran bayaran bulanan customer.
 Harga Kereta
 </label>
 
-
 <input
 id="calcPrice"
 type="number"
 placeholder="50000"
+inputmode="numeric"
 >
+
+
+<label>
+Jenis Loan
+</label>
+
+
+<div class="loan-mode-row">
+
+<button
+id="fullLoanBtn"
+class="loan-mode-btn"
+onclick="setLoanMode(0)"
+>
+Full Loan
+</button>
+
+
+<button
+id="dpLoanBtn"
+class="loan-mode-btn active"
+onclick="setLoanMode(10)"
+>
+10% Downpayment
+</button>
+
+</div>
 
 
 <label>
 Downpayment (%)
 </label>
 
-
 <input
 id="calcDP"
 type="number"
 value="10"
+inputmode="decimal"
 >
 
 
 <label>
 Tempoh Pinjaman
 </label>
-
 
 <select id="calcYear">
 
@@ -1597,24 +1434,22 @@ Tempoh Pinjaman
 value="9"
 selected
 >
-
 9 Tahun
-
 </option>
 
 </select>
 
 
 <label>
-Kadar Faedah (%)
+Kadar Faedah (% Setahun)
 </label>
-
 
 <input
 id="calcRate"
 type="number"
 value="3.25"
 step="0.01"
+inputmode="decimal"
 >
 
 
@@ -1622,20 +1457,31 @@ step="0.01"
 class="calculate-btn"
 onclick="manualCalculate()"
 >
-
 KIRA BULANAN
-
 </button>
 
 
-<h2
+<div class="calc-result-box">
+
+<div class="calc-result-title">
+ANGGARAN BULANAN
+</div>
+
+<div
 id="calcResult"
-style="text-align:center;color:#006b52"
+class="calc-result"
 >
+RM 0
+</div>
 
-RM 0 /bulan
+<div
+id="calcDetail"
+class="calc-detail"
+>
+Masukkan harga kereta untuk kira.
+</div>
 
-</h2>
+</div>
 
 
 </div>
@@ -1645,9 +1491,9 @@ RM 0 /bulan
 </div>
 
 
-<!-- =====================================
+<!-- =========================================
 INFO MODAL
-===================================== -->
+========================================= -->
 
 <div
 id="infoModal"
@@ -1656,47 +1502,47 @@ class="modal"
 
 <div class="modal-box">
 
-
 <button
 class="close-modal"
 onclick="closeModal('infoModal')"
 >
-
 ×
-
 </button>
 
 
 <div class="modal-title">
-
 AMIR PERODUA
-
 </div>
 
 
 <div class="modal-subtitle">
-
 AUTO CALCULATE SYSTEM
-
 </div>
-
 
 <hr>
 
 
 <p>
-
-Sistem ini membantu membuat anggaran kelayakan
-customer berdasarkan bajet bulanan atau gaji.
-
+Sistem ini membantu membuat anggaran kelayakan customer
+berdasarkan bajet bulanan atau gaji.
 </p>
 
 
 <p>
+<b>💼 Bajet Bulanan</b><br>
+Masukkan jumlah maksimum bayaran bulanan yang customer mampu bayar.
+</p>
 
+
+<p>
+<b>👤 Semak Gaji</b><br>
+Sistem menggunakan anggaran 1/3 daripada gaji untuk komitmen kereta.
+</p>
+
+
+<p>
 ⚠️ Semua kiraan adalah anggaran sahaja.
-Kelulusan sebenar tertakluk kepada pihak bank.
-
+Kelulusan sebenar tertakluk kepada pihak bank dan profil pelanggan.
 </p>
 
 
@@ -1705,9 +1551,9 @@ Kelulusan sebenar tertakluk kepada pihak bank.
 </div>
 
 
-<!-- =====================================
+<!-- =========================================
 SETTINGS MODAL
-===================================== -->
+========================================= -->
 
 <div
 id="settingsModal"
@@ -1716,56 +1562,48 @@ class="modal"
 
 <div class="modal-box">
 
-
 <button
 class="close-modal"
 onclick="closeModal('settingsModal')"
 >
-
 ×
-
 </button>
 
 
 <div class="modal-title">
-
 ⚙️ Tetapan Sistem
-
 </div>
 
 
 <div class="modal-subtitle">
-
 Edit nama model, harga, varian dan gambar kereta.
-
 </div>
 
 
-<div
-id="settingsList"
-></div>
+<div id="settingsList"></div>
 
 
 <button
 class="save-btn"
 onclick="addNewCar()"
 >
-
-＋ Tambah Model Baru
-
+＋ TAMBAH MODEL BARU
 </button>
-
-
-<br>
 
 
 <button
 class="save-btn"
 onclick="saveSettings()"
 >
-
 💾 SIMPAN SEMUA PERUBAHAN
+</button>
 
+
+<button
+class="reset-btn"
+onclick="resetDefaultCars()"
+>
+↻ RESET KE DATA ASAL
 </button>
 
 
@@ -1774,169 +1612,117 @@ onclick="saveSettings()"
 </div>
 
 
-<!-- =====================================
-JAVASCRIPT
-===================================== -->
-
 <script>
 
 
-/* =====================================
-DATA MODEL
-===================================== */
+/* =========================================
+DEFAULT DATA
+========================================= */
 
 const defaultCars = [
-
 
 {
 name:"BEZZA",
 
 price:"36,197 – 52,047",
 
-image:"https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/2016_Perodua_Bezza_1.3_Premium_X_front.jpg/640px-2016_Perodua_Bezza_1.3_Premium_X_front.jpg",
+image:"bezza.png",
 
 variants:[
-
 ["1.0 G (MT)","36197"],
-
 ["1.0 G (AT)","38000"],
-
 ["1.3 X (AT)","44000"],
-
 ["1.3 AV (AT)","52047"]
-
 ]
-
 },
-
 
 {
 name:"AXIA",
 
 price:"23,276 – 51,054",
 
-image:"🚙",
+image:"axia.png",
 
 variants:[
-
 ["1.0 E (MT)","23276"],
-
 ["1.0 G (AT)","38000"],
-
 ["1.0 X (AT)","44000"],
-
 ["1.0 SE (AT)","51054"]
-
 ]
-
 },
-
 
 {
 name:"MYVI",
 
 price:"48,474 – 62,302",
 
-image:"🚗",
+image:"myvi.png",
 
 variants:[
-
 ["1.3 G (CVT)","48474"],
-
 ["1.3 X (CVT)","51900"],
-
 ["1.5 X (CVT)","55900"],
-
 ["1.5 H (CVT)","59900"],
-
 ["1.5 AV (CVT)","62302"]
-
 ]
-
 },
-
 
 {
 name:"ALZA",
 
 price:"64,993 – 78,358",
 
-image:"🚐",
+image:"alza.png",
 
 variants:[
-
 ["1.5 X","64993"],
-
 ["1.5 H","70993"],
-
 ["1.5 AV","78358"]
-
 ]
-
 },
-
 
 {
 name:"ATIVA",
 
 price:"61,919 – 76,127",
 
-image:"🚘",
+image:"ativa.png",
 
 variants:[
-
 ["1.0 X Metallic (AT)","61919"],
-
 ["1.0 H Metallic (AT)","69859"],
-
 ["1.0 H S/Metallic (AT)","70387"],
-
 ["1.0 AV Metallic (AT)","75299"],
-
 ["1.0 AV S/Metallic (AT)","75827"],
-
 ["1.0 AV 2T S/Metallic (AT)","76127"]
-
 ]
-
 },
-
 
 {
 name:"ARUZ",
 
 price:"75,762 – 80,902",
 
-image:"🚙",
+image:"aruz.png",
 
 variants:[
-
 ["1.5 X","75762"],
-
 ["1.5 AV","80902"]
-
 ]
-
 }
-
 
 ];
 
 
-/* =====================================
+/* =========================================
 LOAD DATA
-===================================== */
+========================================= */
 
 let cars =
-
 JSON.parse(
-localStorage.getItem(
-"amirPeroduaCars"
+localStorage.getItem("amirPeroduaCars")
 )
-)
-
 ||
-
 JSON.parse(
 JSON.stringify(defaultCars)
 );
@@ -1944,16 +1730,65 @@ JSON.stringify(defaultCars)
 
 let selectedYear = 9;
 
-
 let currentMode = "budget";
 
 
-/* =====================================
+/* =========================================
+FORMAT MONEY
+========================================= */
+
+function formatMoney(number){
+
+return
+Math.round(number)
+.toLocaleString("en-MY");
+
+}
+
+
+/* =========================================
+CALCULATE MONTHLY
+FLAT RATE HIRE PURCHASE
+========================================= */
+
+function calculateMonthly(price){
+
+const carPrice =
+Number(
+String(price)
+.replace(/,/g,"")
+);
+
+const annualRate = 0.0325;
+
+const years = selectedYear;
+
+const totalInterest =
+carPrice *
+annualRate *
+years;
+
+const totalPayment =
+carPrice +
+totalInterest;
+
+const months =
+years * 12;
+
+const monthly =
+totalPayment /
+months;
+
+return Math.round(monthly);
+
+}
+
+
+/* =========================================
 SET MODE
-===================================== */
+========================================= */
 
 function setMode(mode){
-
 
 currentMode = mode;
 
@@ -1977,56 +1812,55 @@ mode === "salary"
 
 
 const input =
+document.getElementById("budgetInput");
 
-document
-.getElementById("budgetInput");
+
+const title =
+document.getElementById("inputTitle");
 
 
 if(mode === "budget"){
 
-
 input.placeholder = "1800";
 
+title.textContent =
+"MASUKKAN BAJET BULANAN ANDA";
 
 }else{
 
-
 input.placeholder = "3000";
 
+title.textContent =
+"MASUKKAN GAJI BULANAN ANDA";
 
 }
 
 
 renderModels();
 
-
 }
 
 
-/* =====================================
+/* =========================================
 CLEAR INPUT
-===================================== */
+========================================= */
 
 function clearBudget(){
-
 
 document
 .getElementById("budgetInput")
 .value = "";
 
-
 renderModels();
-
 
 }
 
 
-/* =====================================
+/* =========================================
 SET YEAR
-===================================== */
+========================================= */
 
 function setYear(year,button){
-
 
 selectedYear = year;
 
@@ -2035,9 +1869,7 @@ document
 .querySelectorAll(".year-btn")
 .forEach(btn=>{
 
-
 btn.classList.remove("active");
-
 
 });
 
@@ -2047,88 +1879,21 @@ button.classList.add("active");
 
 renderModels();
 
-
 }
 
 
-/* =====================================
-MONTHLY CALCULATION
-===================================== */
-
-function calculateMonthly(price){
-
-
-price =
-
-Number(
-
-String(price)
-.replace(/,/g,"")
-
-);
-
-
-const annualRate = 0.0325;
-
-
-const monthlyRate =
-
-annualRate / 12;
-
-
-const months =
-
-selectedYear * 12;
-
-
-const monthly =
-
-price *
-
-monthlyRate *
-
-Math.pow(
-1 + monthlyRate,
-months
-)
-
-/
-
-(
-
-Math.pow(
-1 + monthlyRate,
-months
-)
-
-- 1
-
-);
-
-
-return Math.round(monthly);
-
-
-}
-
-
-/* =====================================
-CHECK INDIVIDUAL VARIANT ELIGIBILITY
-===================================== */
+/* =========================================
+CHECK VARIANT ELIGIBILITY
+========================================= */
 
 function isVariantEligible(price){
 
-
 const input =
-
 Number(
-
 document
 .getElementById("budgetInput")
 .value
-
 || 0
-
 );
 
 
@@ -2140,7 +1905,6 @@ return false;
 
 
 const monthly =
-
 calculateMonthly(price);
 
 
@@ -2148,9 +1912,7 @@ calculateMonthly(price);
 
 if(currentMode === "budget"){
 
-
 return input >= monthly;
-
 
 }
 
@@ -2159,43 +1921,33 @@ return input >= monthly;
 
 if(currentMode === "salary"){
 
-
 return input >= monthly * 3;
-
 
 }
 
 
 return false;
 
-
 }
 
 
-/* =====================================
+/* =========================================
 RENDER MODELS
-===================================== */
+========================================= */
 
 function renderModels(){
 
-
 const grid =
-
-document
-.getElementById("modelGrid");
+document.getElementById("modelGrid");
 
 
 grid.innerHTML = "";
 
 
-/* JUMLAH MODEL */
-
 let passModels = 0;
 
 let failModels = 0;
 
-
-/* LOOP SETIAP MODEL */
 
 cars.forEach((car,index)=>{
 
@@ -2205,105 +1957,82 @@ let passVariants = 0;
 let failVariants = 0;
 
 
-/* =====================================
-KIRA SETIAP VARIANT
-===================================== */
+/* CHECK EVERY VARIANT */
 
 car.variants.forEach(variant=>{
 
-
 const eligible =
-
 isVariantEligible(
 variant[1]
 );
 
-
 if(eligible){
-
 
 passVariants++;
 
-
 }else{
-
 
 failVariants++;
 
-
 }
-
 
 });
 
 
-/* =====================================
-MODEL STATUS
-MODEL LULUS JIKA ADA SEKURANG-KURANGNYA
-1 VARIANT LULUS
-===================================== */
+/* MODEL LULUS IF AT LEAST 1 VARIANT */
 
 const modelEligible =
-
 passVariants > 0;
 
 
-/* =====================================
-COUNT MODEL
-===================================== */
+/* COUNT MODEL */
 
 if(modelEligible){
 
-
 passModels++;
-
 
 }else{
 
-
 failModels++;
-
 
 }
 
 
-/* =====================================
-IMAGE
-===================================== */
+/* IMAGE */
 
-let imageHTML;
+let imageHTML = "";
 
 
 if(
-
-car.image
-
-&&
-
+car.image &&
 (
-
 car.image.startsWith("data:")
-
 ||
-
 car.image.startsWith("http")
-
+||
+car.image.includes(".png")
+||
+car.image.includes(".jpg")
+||
+car.image.includes(".jpeg")
+||
+car.image.includes(".webp")
 )
-
 ){
 
+imageHTML = `
 
-imageHTML =
+<img
+src="${car.image}"
+alt="${car.name}"
+onerror="this.style.display='none';this.parentElement.innerHTML='<div class=car-emoji>🚗</div>'"
+>
 
-`<img src="${car.image}">`;
-
+`;
 
 }else{
 
-
-imageHTML =
-
-`
+imageHTML = `
 
 <div class="car-emoji">
 
@@ -2313,88 +2042,43 @@ ${car.image || "🚗"}
 
 `;
 
-
 }
 
 
-/* =====================================
-BADGE TEXT
-===================================== */
+/* BADGE */
 
 let badgeText = "";
 
-
-/* SEMUA VARIANT LULUS */
-
-if(
-
-passVariants ===
-car.variants.length
-
-){
-
+if(passVariants > 0){
 
 badgeText =
-
 `✓ LULUS ${passVariants}/${car.variants.length} VARIAN`;
 
-
-}
-
-
-/* SEBAHAGIAN LULUS */
-
-else if(passVariants > 0){
-
+}else{
 
 badgeText =
-
-`✓ LULUS ${passVariants}/${car.variants.length} VARIAN`;
-
+`× GAGAL SEMUA VARIAN`;
 
 }
 
 
-/* SEMUA GAGAL */
-
-else{
-
-
-badgeText =
-
-`× GAGAL ${failVariants}/${car.variants.length} VARIAN`;
-
-
-}
-
-
-/* =====================================
-DISPLAY CARD
-===================================== */
+/* DISPLAY */
 
 grid.innerHTML += `
 
-
 <div
-
 class="car-card ${modelEligible ? "pass" : ""}"
-
 onclick="openCar(${index})"
-
 >
-
 
 <div class="car-image">
 
-
 ${imageHTML}
-
 
 </div>
 
 
 <div class="car-info">
-
 
 <div class="car-name">
 
@@ -2411,105 +2095,79 @@ RM ${car.price}
 
 
 <div
-
 class="
 result-badge
 ${modelEligible ? "badge-pass" : "badge-fail"}
 "
-
 >
-
 
 ${badgeText}
 
+</div>
 
 </div>
 
-
 </div>
-
-
-</div>
-
 
 `;
-
 
 });
 
 
-/* =====================================
-UPDATE STATUS ATAS
-===================================== */
+/* STATUS */
 
 document
 .getElementById("passCount")
 .textContent =
-
 passModels + " model LULUS";
 
 
 document
 .getElementById("failCount")
 .textContent =
-
 failModels + " model GAGAL";
-
 
 }
 
 
-/* =====================================
+/* =========================================
 OPEN CAR DETAIL
-===================================== */
+========================================= */
 
 function openCar(index){
 
-
 const car =
-
 cars[index];
 
 
 let variantsHTML = "";
 
 
-/* LOOP SETIAP VARIANT */
-
 car.variants.forEach(variant=>{
 
 
 const monthly =
-
 calculateMonthly(
 variant[1]
 );
 
 
 const layak =
-
 isVariantEligible(
 variant[1]
 );
 
 
-/* DISPLAY VARIANT */
-
 variantsHTML += `
 
-
 <div
-
 class="
 variant-row
 ${layak ? "" : "fail-variant"}
 "
-
 >
 
-
 <div>
-
 
 <div class="variant-name">
 
@@ -2520,21 +2178,17 @@ ${variant[0]}
 
 <div class="variant-price">
 
-RM ${Number(variant[1]).toLocaleString()}
+RM ${formatMoney(variant[1])}
 
 <br>
 
-
 <span
-
 class="
 ${layak
 ? "variant-status-pass"
 : "variant-status-fail"
 }
-
 "
-
 >
 
 ${layak
@@ -2544,46 +2198,29 @@ ${layak
 
 </span>
 
-
 </div>
-
 
 </div>
 
 
 <div class="variant-month">
 
+RM ${formatMoney(monthly)}
 
-RM ${monthly.toLocaleString()}
-
-
-<small>
-
-/bulan
-
-</small>
-
+<small>/bulan</small>
 
 </div>
 
-
 </div>
-
 
 `;
-
 
 });
 
 
-/* =====================================
-MODAL CONTENT
-===================================== */
-
 document
 .getElementById("detailContent")
 .innerHTML = `
-
 
 <div class="modal-title">
 
@@ -2594,234 +2231,208 @@ ${car.name}
 
 <div class="modal-subtitle">
 
-VARIAN (${selectedYear} TAHUN)
+ANGGARAN ${selectedYear} TAHUN
 
 </div>
 
 
 ${variantsHTML}
 
-
 `;
 
-
-/* OPEN MODAL */
 
 document
 .getElementById("detailModal")
 .style.display = "block";
 
-
 }
 
 
-/* =====================================
+/* =========================================
 CLOSE MODAL
-===================================== */
+========================================= */
 
 function closeModal(id){
-
 
 document
 .getElementById(id)
 .style.display = "none";
 
-
 }
 
 
-/* =====================================
-BOTTOM NAV
-===================================== */
+/* =========================================
+NAVIGATION
+========================================= */
 
 function setNav(button){
-
 
 document
 .querySelectorAll(".nav-btn")
 .forEach(btn=>{
 
-
 btn.classList.remove("active");
-
 
 });
 
 
 button.classList.add("active");
 
-
 }
 
 
-function showPage(page,button){
-
+function showModels(button){
 
 setNav(button);
 
-
 window.scrollTo({
-
-
 top:0,
-
 behavior:"smooth"
-
-
 });
-
 
 }
 
 
 function showCalculator(button){
 
-
 setNav(button);
-
 
 document
 .getElementById("calculatorModal")
 .style.display = "block";
-
 
 }
 
 
 function showInfo(button){
 
-
 setNav(button);
-
 
 document
 .getElementById("infoModal")
 .style.display = "block";
 
+}
+
+
+/* =========================================
+LOAN MODE
+========================================= */
+
+function setLoanMode(dp){
+
+document
+.getElementById("calcDP")
+.value = dp;
+
+
+document
+.getElementById("fullLoanBtn")
+.classList
+.toggle(
+"active",
+dp === 0
+);
+
+
+document
+.getElementById("dpLoanBtn")
+.classList
+.toggle(
+"active",
+dp === 10
+);
 
 }
 
 
-/* =====================================
+/* =========================================
 MANUAL CALCULATOR
-===================================== */
+FLAT RATE
+========================================= */
 
 function manualCalculate(){
 
-
 const price =
-
 Number(
-
 document
 .getElementById("calcPrice")
 .value
-
 || 0
-
 );
 
 
 const dp =
-
 Number(
-
 document
 .getElementById("calcDP")
 .value
-
 || 0
-
 );
 
 
 const years =
-
 Number(
-
 document
 .getElementById("calcYear")
 .value
-
 );
 
 
 const rate =
-
 Number(
-
 document
 .getElementById("calcRate")
 .value
-
 || 3.25
-
 ) / 100;
+
+
+/* VALIDATION */
+
+if(price <= 0){
+
+alert("Sila masukkan harga kereta.");
+
+return;
+
+}
 
 
 /* LOAN AMOUNT */
 
+const downpayment =
+price * dp / 100;
+
+
 const loan =
-
-price -
-
-(price * dp / 100);
+price - downpayment;
 
 
-/* MONTHLY INTEREST */
+/* FLAT RATE INTEREST */
 
-const r =
+const totalInterest =
+loan *
+rate *
+years;
 
-rate / 12;
+
+/* TOTAL PAYMENT */
+
+const totalPayment =
+loan +
+totalInterest;
 
 
-/* TOTAL MONTH */
+/* MONTHLY */
 
-const n =
-
+const months =
 years * 12;
 
 
-/* MONTHLY PAYMENT */
-
-let monthly;
-
-
-if(r === 0){
-
-
-monthly = loan / n;
-
-
-}else{
-
-
-monthly =
-
-loan *
-
-r *
-
-Math.pow(
-1 + r,
-n
-)
-
-/
-
-(
-
-Math.pow(
-1 + r,
-n
-)
-
-- 1
-
-);
-
-
-}
+const monthly =
+totalPayment /
+months;
 
 
 /* DISPLAY */
@@ -2829,71 +2440,65 @@ n
 document
 .getElementById("calcResult")
 .textContent =
-
-"RM "
-
-+
-
-Math.round(monthly)
-.toLocaleString()
-
-+
-
+"RM " +
+formatMoney(monthly) +
 " /bulan";
 
+
+document
+.getElementById("calcDetail")
+.textContent =
+
+"Loan RM " +
+formatMoney(loan) +
+" • DP RM " +
+formatMoney(downpayment) +
+" • " +
+years +
+" Tahun • " +
+(rate * 100).toFixed(2) +
+"%";
 
 }
 
 
-/* =====================================
+/* =========================================
 SETTINGS
-===================================== */
+========================================= */
 
 function openSettings(){
 
-
 renderSettings();
-
 
 document
 .getElementById("settingsModal")
 .style.display = "block";
 
-
 }
 
 
-/* =====================================
+/* =========================================
 RENDER SETTINGS
-===================================== */
+========================================= */
 
 function renderSettings(){
 
-
 const list =
-
-document
-.getElementById("settingsList");
+document.getElementById("settingsList");
 
 
 list.innerHTML = "";
 
-
-/* LOOP CARS */
 
 cars.forEach((car,index)=>{
 
 
 list.innerHTML += `
 
-
 <div class="setting-card">
 
-
 <h3>
-
 ${car.name}
-
 </h3>
 
 
@@ -2901,28 +2506,18 @@ ${car.name}
 
 
 <input
-
 data-index="${index}"
-
 data-field="name"
-
 value="${car.name}"
-
 placeholder="Nama Model"
-
 >
 
 
 <input
-
 data-index="${index}"
-
 data-field="price"
-
 value="${car.price}"
-
 placeholder="Harga"
-
 >
 
 
@@ -2930,33 +2525,22 @@ placeholder="Harga"
 
 
 <label>
-
 Gambar Kereta
-
 </label>
 
 
 <input
-
 data-index="${index}"
-
 data-field="image"
-
 value="${car.image || ""}"
-
-placeholder="Emoji atau URL gambar"
-
+placeholder="Contoh: bezza.png atau URL gambar"
 >
 
 
 <input
-
 type="file"
-
 accept="image/*"
-
 onchange="uploadImage(event,${index})"
-
 >
 
 
@@ -2977,22 +2561,15 @@ Nama Varian | Harga
 
 
 <textarea
-
 rows="6"
-
 data-index="${index}"
-
 data-field="variants"
-
 >${car.variants.map(v=>v[0]+"|"+v[1]).join("\n")}</textarea>
 
 
 <button
-
 class="delete-btn"
-
 onclick="deleteCar(${index})"
-
 >
 
 Padam Model
@@ -3002,25 +2579,20 @@ Padam Model
 
 </div>
 
-
 `;
 
-
 });
-
 
 }
 
 
-/* =====================================
+/* =========================================
 UPLOAD IMAGE
-===================================== */
+========================================= */
 
 function uploadImage(event,index){
 
-
 const file =
-
 event.target.files[0];
 
 
@@ -3032,40 +2604,41 @@ return;
 
 
 const reader =
-
 new FileReader();
 
 
 reader.onload = function(e){
 
-
 cars[index].image =
-
 e.target.result;
 
 
-/* REFRESH SETTINGS */
+/* SAVE IMAGE TEMPORARY */
 
-renderSettings();
+localStorage.setItem(
+"amirPeroduaCars",
+JSON.stringify(cars)
+);
+
+
+alert(
+"Gambar berjaya dimasukkan. Tekan SIMPAN SEMUA PERUBAHAN untuk simpan data lain."
+);
 
 
 };
 
 
-/* READ IMAGE */
-
 reader.readAsDataURL(file);
-
 
 }
 
 
-/* =====================================
+/* =========================================
 SAVE SETTINGS
-===================================== */
+========================================= */
 
 function saveSettings(){
-
 
 document
 .querySelectorAll("[data-index]")
@@ -3073,12 +2646,10 @@ document
 
 
 const index =
-
 input.dataset.index;
 
 
 const field =
-
 input.dataset.field;
 
 
@@ -3086,14 +2657,13 @@ input.dataset.field;
 
 if(field === "variants"){
 
-
 cars[index].variants =
 
 input.value
 
 .split("\n")
 
-.filter(x=>
+.filter(x =>
 x.trim() !== ""
 )
 
@@ -3101,28 +2671,20 @@ x.trim() !== ""
 
 
 const parts =
-
 line.split("|");
 
 
 return[
 
-
 parts[0].trim(),
 
-
 (parts[1] || "0")
-
 .replace(/,/g,"")
-
 .trim()
-
 
 ];
 
-
 });
-
 
 }
 
@@ -3131,11 +2693,8 @@ parts[0].trim(),
 
 else{
 
-
 cars[index][field] =
-
 input.value;
-
 
 }
 
@@ -3143,28 +2702,22 @@ input.value;
 });
 
 
-/* SAVE LOCAL STORAGE */
+/* SAVE */
 
 localStorage.setItem(
-
-
 "amirPeroduaCars",
-
-
 JSON.stringify(cars)
-
-
 );
 
 
-/* CLOSE SETTINGS */
+/* CLOSE */
 
 closeModal(
 "settingsModal"
 );
 
 
-/* REFRESH MODEL */
+/* REFRESH */
 
 renderModels();
 
@@ -3173,66 +2726,45 @@ alert(
 "Berjaya disimpan!"
 );
 
-
 }
 
 
-/* =====================================
+/* =========================================
 ADD NEW CAR
-===================================== */
+========================================= */
 
 function addNewCar(){
 
-
 cars.push({
-
 
 name:"MODEL BARU",
 
-
 price:"0 – 0",
-
 
 image:"🚗",
 
-
 variants:[
-
-
-[
-
-"Varian Baru",
-
-"0"
-
+["Varian Baru","0"]
 ]
-
-
-]
-
 
 });
 
 
 renderSettings();
 
-
 }
 
 
-/* =====================================
+/* =========================================
 DELETE CAR
-===================================== */
+========================================= */
 
 function deleteCar(index){
 
-
 if(
-
 !confirm(
 "Padam model ini?"
 )
-
 ){
 
 return;
@@ -3240,58 +2772,86 @@ return;
 }
 
 
-/* DELETE */
+cars.splice(index,1);
 
-cars.splice(
-index,
-1
-);
-
-
-/* REFRESH */
 
 renderSettings();
-
 
 }
 
 
-/* =====================================
-CLOSE MODAL WHEN CLICK OUTSIDE
-===================================== */
+/* =========================================
+RESET DEFAULT
+========================================= */
 
-window.onclick = function(event){
+function resetDefaultCars(){
 
+if(
+!confirm(
+"Reset semua model kepada data asal?"
+)
+){
+
+return;
+
+}
+
+
+cars =
+JSON.parse(
+JSON.stringify(defaultCars)
+);
+
+
+localStorage.removeItem(
+"amirPeroduaCars"
+);
+
+
+renderSettings();
+
+
+renderModels();
+
+
+alert(
+"Data telah reset kepada asal."
+);
+
+}
+
+
+/* =========================================
+CLOSE OUTSIDE
+========================================= */
+
+window.onclick =
+function(event){
 
 document
 .querySelectorAll(".modal")
 .forEach(modal=>{
 
-
-if(event.target === modal){
-
+if(
+event.target === modal
+){
 
 modal.style.display = "none";
 
-
 }
 
-
 });
-
 
 };
 
 
-/* =====================================
-START SYSTEM
-===================================== */
+/* =========================================
+START APP
+========================================= */
 
 renderModels();
 
-
 </script>
-
 
 </body>
 
