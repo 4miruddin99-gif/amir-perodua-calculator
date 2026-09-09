@@ -4,209 +4,1675 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AMIR PERODUA Auto Calculator</title>
+
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#182033}
-header{position:sticky;top:0;background:#fff;padding:14px 18px;border-bottom:1px solid #e6eaf0;z-index:5;display:flex;justify-content:space-between;align-items:center}
-.brand b{font-size:18px}.brand small{display:block;color:#667085;font-size:11px}
-.wrap{max-width:950px;margin:auto;padding:18px}
-.hero{background:linear-gradient(135deg,#0f4db9,#2876ef);color:#fff;padding:20px;border-radius:20px}
-.hero h1{margin:0;font-size:25px}.hero p{margin:6px 0 0}
-.amount{display:flex;align-items:center;gap:10px;background:#fff;color:#182033;border-radius:15px;padding:12px 16px;margin-top:15px}
-.amount b{font-size:20px;color:#1557d0}.amount input{width:100%;border:0;outline:0;font-size:28px;font-weight:bold}
-.tabs{display:flex;gap:8px;margin:16px 0}.tabs button{flex:1;padding:13px;border:1px solid #dfe5ee;border-radius:12px;background:#fff;font-weight:bold}
-.tabs .active{background:#1557d0;color:#fff}
-.summary{text-align:center;font-size:19px;font-weight:bold;margin:18px}.oktxt{color:#16804c}.notxt{color:#bd3946}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:#fff;border:2px solid #e0e5ed;border-radius:20px;padding:13px;cursor:pointer}
-.card.ok{border-color:#82bd9d}.card.no{border-color:#e3a9b0}
-.car{height:105px;border-radius:13px;background:#f1f4f8;display:flex;align-items:center;justify-content:center;font-size:55px;overflow:hidden}
-.car img{width:100%;height:100%;object-fit:contain}.card h2{margin:12px 0 5px;font-size:18px}
-.price{font-size:16px;font-weight:bold;line-height:1.4}.badge{display:inline-block;margin-top:9px;padding:7px 10px;border-radius:20px;font-size:12px;font-weight:bold}
-.ok .badge{background:#e7f6ed;color:#157344}.no .badge{background:#fdecef;color:#b33140}
-.detail{display:none}.back{border:0;background:none;color:#1557d0;font-weight:bold;font-size:16px;padding:0;margin-bottom:15px}
-.detailHead,.variant{background:#fff;border-radius:17px;padding:16px;margin-bottom:12px}
-.variant{display:flex;justify-content:space-between;align-items:center;border:1px solid #e5e9ef}
-.monthly{font-size:22px;color:#178a52;font-weight:bold;text-align:right}.monthly small{display:block;font-size:11px;color:#667085}
-.fab{position:fixed;right:18px;bottom:20px;background:#182033;color:#fff;border:0;border-radius:28px;padding:14px 18px;font-weight:bold}
-.modal{display:none;position:fixed;inset:0;background:#0008;z-index:20;padding:15px;overflow:auto}
-.box{background:#fff;max-width:700px;margin:30px auto;border-radius:20px;padding:20px}
-.form input{width:100%;padding:12px;border:1px solid #dbe2eb;border-radius:10px;margin:5px 0}
-.row{display:flex;gap:7px;margin:7px 0}.row input{flex:1}
-.save{background:#1557d0;color:#fff;border:0;border-radius:10px;padding:12px 16px;font-weight:bold}
-.edit,.close{background:#eef2f7;border:0;border-radius:10px;padding:10px}.del{background:#b33140;color:#fff;border:0;border-radius:10px;padding:10px}
-.admin{padding:10px;border:1px solid #e3e7ee;border-radius:14px;margin:9px 0;display:flex;justify-content:space-between;align-items:center}
-.admin small{color:#667085}
-@media(max-width:650px){.grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:12px}.car{height:90px}.card h2{font-size:16px}}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f7fb;
+  color:#182033;
+}
+
+header{
+  position:sticky;
+  top:0;
+  background:#fff;
+  padding:14px 18px;
+  border-bottom:1px solid #e6eaf0;
+  z-index:5;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.brand b{font-size:18px}
+.brand small{
+  display:block;
+  color:#667085;
+  font-size:11px;
+}
+
+.wrap{
+  max-width:950px;
+  margin:auto;
+  padding:18px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#0f4db9,#2876ef);
+  color:#fff;
+  padding:20px;
+  border-radius:20px;
+}
+
+.hero h1{
+  margin:0;
+  font-size:25px;
+}
+
+.hero p{
+  margin:6px 0 0;
+}
+
+.amount{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  background:#fff;
+  color:#182033;
+  border-radius:15px;
+  padding:12px 16px;
+  margin-top:15px;
+}
+
+.amount b{
+  font-size:20px;
+  color:#1557d0;
+}
+
+.amount input{
+  width:100%;
+  border:0;
+  outline:0;
+  font-size:24px;
+  font-weight:bold;
+}
+
+.modeTabs,
+.tabs{
+  display:flex;
+  gap:8px;
+  margin:16px 0;
+}
+
+.modeTabs button,
+.tabs button{
+  flex:1;
+  padding:13px;
+  border:1px solid #dfe5ee;
+  border-radius:12px;
+  background:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.modeTabs .active,
+.tabs .active{
+  background:#1557d0;
+  color:#fff;
+}
+
+.salaryBox{
+  background:#fff;
+  padding:16px;
+  border-radius:18px;
+  margin-top:15px;
+}
+
+.salaryBox label{
+  display:block;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+.salaryBox input{
+  width:100%;
+  padding:13px;
+  margin-top:5px;
+  border:1px solid #dbe2eb;
+  border-radius:10px;
+  font-size:18px;
+}
+
+.resultBox{
+  background:#eaf7ef;
+  border:2px solid #8ccaa4;
+  padding:15px;
+  border-radius:15px;
+  margin-top:15px;
+  text-align:center;
+}
+
+.resultBox b{
+  font-size:24px;
+  color:#157344;
+}
+
+.summary{
+  text-align:center;
+  font-size:19px;
+  font-weight:bold;
+  margin:18px;
+}
+
+.oktxt{color:#16804c}
+.notxt{color:#bd3946}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.card{
+  background:#fff;
+  border:2px solid #e0e5ed;
+  border-radius:20px;
+  padding:13px;
+  cursor:pointer;
+}
+
+.card.ok{border-color:#82bd9d}
+.card.no{border-color:#e3a9b0}
+
+.car{
+  height:105px;
+  border-radius:13px;
+  background:#f1f4f8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:55px;
+  overflow:hidden;
+}
+
+.car img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.card h2{
+  margin:12px 0 5px;
+  font-size:18px;
+}
+
+.price{
+  font-size:16px;
+  font-weight:bold;
+  line-height:1.4;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:9px;
+  padding:7px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.ok .badge{
+  background:#e7f6ed;
+  color:#157344;
+}
+
+.no .badge{
+  background:#fdecef;
+  color:#b33140;
+}
+
+.detail{display:none}
+
+.back{
+  border:0;
+  background:none;
+  color:#1557d0;
+  font-weight:bold;
+  font-size:16px;
+  padding:0;
+  margin-bottom:15px;
+}
+
+.detailHead,
+.variant{
+  background:#fff;
+  border-radius:17px;
+  padding:16px;
+  margin-bottom:12px;
+}
+
+.variant{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid #e5e9ef;
+}
+
+.monthly{
+  font-size:22px;
+  color:#178a52;
+  font-weight:bold;
+  text-align:right;
+}
+
+.monthly small{
+  display:block;
+  font-size:11px;
+  color:#667085;
+}
+
+.fab{
+  position:fixed;
+  right:18px;
+  bottom:20px;
+  background:#182033;
+  color:#fff;
+  border:0;
+  border-radius:28px;
+  padding:14px 18px;
+  font-weight:bold;
+  z-index:10;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:20;
+  padding:15px;
+  overflow:auto;
+}
+
+.box{
+  background:#fff;
+  max-width:700px;
+  margin:30px auto;
+  border-radius:20px;
+  padding:20px;
+}
+
+.form input{
+  width:100%;
+  padding:12px;
+  border:1px solid #dbe2eb;
+  border-radius:10px;
+  margin:5px 0;
+}
+
+.row{
+  display:flex;
+  gap:7px;
+  margin:7px 0;
+}
+
+.row input{flex:1}
+
+.save{
+  background:#1557d0;
+  color:#fff;
+  border:0;
+  border-radius:10px;
+  padding:12px 16px;
+  font-weight:bold;
+}
+
+.edit,
+.close{
+  background:#eef2f7;
+  border:0;
+  border-radius:10px;
+  padding:10px;
+}
+
+.del{
+  background:#b33140;
+  color:#fff;
+  border:0;
+  border-radius:10px;
+  padding:10px;
+}
+
+.admin{
+  padding:10px;
+  border:1px solid #e3e7ee;
+  border-radius:14px;
+  margin:9px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.admin small{
+  color:#667085;
+}
+
+.settingBtn{
+  width:100%;
+  margin:10px 0;
+  padding:14px;
+  background:#1557d0;
+  color:#fff;
+  border:0;
+  border-radius:12px;
+  font-weight:bold;
+}
+
+.info{
+  font-size:12px;
+  color:#667085;
+  margin-top:8px;
+}
+
+@media(max-width:650px){
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .wrap{
+    padding:12px;
+  }
+
+  .car{
+    height:90px;
+  }
+
+  .card h2{
+    font-size:16px;
+  }
+
+  .row{
+    flex-direction:column;
+  }
+}
 </style>
 </head>
+
 <body>
+
 <header>
-  <div class="brand"><b>AMIR PERODUA</b><small>AUTO CALCULATE SYSTEM</small></div>
+  <div class="brand">
+    <b>AMIR PERODUA</b>
+    <small>AUTO CALCULATE SYSTEM</small>
+  </div>
+
   <button class="edit" onclick="openAdmin()">⚙ EDIT</button>
 </header>
 
+
 <main class="wrap">
+
 <section id="home">
+
   <div class="hero">
+
     <h1>Perodua Auto Calculator</h1>
-    <p>Masukkan bajet customer dan semak model yang sesuai.</p>
-    <div class="amount"><b>RM</b><input id="budget" type="number" value="1800" oninput="render()"></div>
+
+    <p>Semak bajet bulanan atau kelayakan gaji customer.</p>
+
+
+    <!-- PILIH MODE -->
+
+    <div class="modeTabs">
+
+      <button class="active" id="budgetModeBtn"
+      onclick="setMode('budget')">
+      💰 Bajet Bulanan
+      </button>
+
+      <button id="salaryModeBtn"
+      onclick="setMode('salary')">
+      👤 Semak Gaji
+      </button>
+
+    </div>
+
+
+    <!-- BAJET -->
+
+    <div id="budgetBox">
+
+      <div class="amount">
+        <b>RM</b>
+
+        <input
+        id="budget"
+        type="number"
+        value="1800"
+        placeholder="Bajet bulanan"
+        oninput="render()">
+
+      </div>
+
+    </div>
+
+
+    <!-- GAJI -->
+
+    <div id="salaryBox" class="salaryBox" style="display:none">
+
+      <label>Gaji Bersih Customer</label>
+
+      <input
+      id="salary"
+      type="number"
+      value="3000"
+      placeholder="Contoh: 3000"
+      oninput="render()">
+
+
+      <label>Komitmen Bulanan</label>
+
+      <input
+      id="commitment"
+      type="number"
+      value="500"
+      placeholder="Contoh: 500"
+      oninput="render()">
+
+
+      <div class="resultBox">
+
+        <small>ANGGARAN BAJET KELAYAKAN BULANAN</small>
+
+        <br>
+
+        <b id="eligibilityResult">RM 0</b>
+
+      </div>
+
+
+      <div class="info">
+
+        *Anggaran sahaja. Kelulusan sebenar bergantung kepada bank,
+        CCRIS, CTOS dan dokumen customer.
+
+      </div>
+
+    </div>
+
   </div>
+
+
+  <!-- TEMPOH -->
+
   <div class="tabs" id="tabs">
+
     <button onclick="setYear(5,this)">5 Tahun</button>
+
     <button onclick="setYear(7,this)">7 Tahun</button>
-    <button class="active" onclick="setYear(9,this)">9 Tahun</button>
+
+    <button class="active"
+    onclick="setYear(9,this)">
+    9 Tahun
+    </button>
+
   </div>
+
+
   <div class="summary" id="summary"></div>
+
   <div class="grid" id="grid"></div>
+
 </section>
+
+
+
+<!-- DETAIL MODEL -->
 
 <section class="detail" id="detail">
-  <button class="back" onclick="goHome()">← Kembali</button>
+
+  <button class="back" onclick="goHome()">
+    ← Kembali
+  </button>
+
   <div class="detailHead" id="detailHead"></div>
+
+
   <div class="tabs">
-    <button onclick="setDetailYear(5,this)">5 Tahun</button>
-    <button onclick="setDetailYear(7,this)">7 Tahun</button>
-    <button class="active" onclick="setDetailYear(9,this)">9 Tahun</button>
+
+    <button onclick="setDetailYear(5,this)">
+      5 Tahun
+    </button>
+
+    <button onclick="setDetailYear(7,this)">
+      7 Tahun
+    </button>
+
+    <button class="active"
+    onclick="setDetailYear(9,this)">
+      9 Tahun
+    </button>
+
   </div>
+
+
   <div id="variants"></div>
+
 </section>
+
 </main>
 
-<button class="fab" onclick="openAdmin()">✏️ EDIT HARGA / GAMBAR</button>
 
-<div class="modal" id="adminModal"><div class="box">
-<h2>Edit Harga & Gambar</h2>
-<p style="color:#667085;font-size:13px">Semua perubahan disimpan dalam browser telefon ini.</p>
-<button class="save" onclick="newCar()">+ Tambah Model</button>
+<button class="fab" onclick="openAdmin()">
+  ✏️ EDIT SISTEM
+</button>
+
+
+
+<!-- ADMIN -->
+
+<div class="modal" id="adminModal">
+
+<div class="box">
+
+<h2>⚙️ Edit Sistem</h2>
+
+<p style="color:#667085;font-size:13px">
+Semua perubahan disimpan dalam browser telefon ini.
+</p>
+
+
+<button class="settingBtn" onclick="openSettings()">
+
+👤 EDIT KELAYAKAN GAJI
+
+</button>
+
+
+<button class="settingBtn" onclick="newCar()">
+
+🚗 + TAMBAH MODEL
+
+</button>
+
+
+<h3>Senarai Model</h3>
+
 <div id="adminList"></div>
-<button class="close" onclick="closeAdmin()">Tutup</button>
-</div></div>
 
-<div class="modal" id="editModal"><div class="box form">
+
+<button class="close" onclick="closeAdmin()">
+Tutup
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- EDIT MODEL -->
+
+<div class="modal" id="editModal">
+
+<div class="box form">
+
 <h2 id="editTitle">Edit Model</h2>
+
 <input id="name" placeholder="Nama model">
+
 <input id="min" type="number" placeholder="Harga minimum">
+
 <input id="max" type="number" placeholder="Harga maksimum">
+
+
 <label>Gambar Kereta</label>
+
 <input id="image" type="file" accept="image/*">
+
+
 <h3>Varian & Harga</h3>
+
 <div id="varEdit"></div>
-<button class="edit" onclick="addVar()">+ Tambah Varian</button><br><br>
-<button class="save" onclick="saveCar()">Simpan</button>
-<button class="close" onclick="closeEdit()">Batal</button>
-</div></div>
+
+
+<button class="edit" onclick="addVar()">
++ Tambah Varian
+</button>
+
+<br><br>
+
+
+<button class="save" onclick="saveCar()">
+Simpan
+</button>
+
+<button class="close" onclick="closeEdit()">
+Batal
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- TETAPAN KELAYAKAN -->
+
+<div class="modal" id="settingsModal">
+
+<div class="box form">
+
+<h2>👤 Edit Kelayakan Gaji</h2>
+
+
+<label>DSR Maksimum (%)</label>
+
+<input
+id="dsr"
+type="number"
+placeholder="Contoh: 70">
+
+
+<label>Interest Rate Setahun (%)</label>
+
+<input
+id="interest"
+type="number"
+step="0.01"
+placeholder="Contoh: 3.25">
+
+
+<label>Down Payment (%)</label>
+
+<input
+id="downpayment"
+type="number"
+placeholder="Contoh: 10">
+
+
+<div class="info">
+
+<b>Contoh Formula:</b><br><br>
+
+Gaji Bersih RM3,000<br>
+
+DSR 70% = RM2,100<br>
+
+Tolak Komitmen RM500<br>
+
+Bajet Loan = RM1,600 sebulan
+
+</div>
+
+
+<br>
+
+
+<button class="save" onclick="saveSettings()">
+💾 Simpan Tetapan
+</button>
+
+<button class="close" onclick="closeSettings()">
+Batal
+</button>
+
+</div>
+
+</div>
+
+
 
 <script>
+
+
+/* ===============================
+   DATA MODEL
+================================ */
+
 const defaults=[
-["BEZZA",36197,52047,[["1.0 G (MT)",36197],["1.0 G (AT)",38697],["1.0 X (AT)",41597],["1.0 AV (AT)",52047]]],
-["AXIA",23276,51054,[["1.0 E (MT)",23276],["1.0 G (CVT)",38500],["1.0 X (CVT)",44700],["1.0 AV (CVT)",51054]]],
-["MYVI",48474,62302,[["1.3 G",48474],["1.3 X",51000],["1.5 X",56000],["1.5 H",59000],["1.5 AV",62302]]],
-["ALZA",64993,78358,[["1.5 X",64993],["1.5 H",70387],["1.5 AV",78358]]],
-["ATIVA",64919,76127,[["1.0 X",64919],["1.0 H",70000],["1.0 AV",76127]]],
-["ARUZ",75762,80902,[["1.5 X",75762],["1.5 AV",80902]]]
+
+["BEZZA",36197,52047,[
+["1.0 G (MT)",36197],
+["1.0 G (AT)",38697],
+["1.0 X (AT)",41597],
+["1.0 AV (AT)",52047]
+]],
+
+["AXIA",23276,51054,[
+["1.0 E (MT)",23276],
+["1.0 G (CVT)",38500],
+["1.0 X (CVT)",44700],
+["1.0 AV (CVT)",51054]
+]],
+
+["MYVI",48474,62302,[
+["1.3 G",48474],
+["1.3 X",51000],
+["1.5 X",56000],
+["1.5 H",59000],
+["1.5 AV",62302]
+]],
+
+["ALZA",64993,78358,[
+["1.5 X",64993],
+["1.5 H",70387],
+["1.5 AV",78358]
+]],
+
+["ATIVA",64919,76127,[
+["1.0 X",64919],
+["1.0 H",70000],
+["1.0 AV",76127]
+]],
+
+["ARUZ",75762,80902,[
+["1.5 X",75762],
+["1.5 AV",80902]
+]]
+
 ];
 
-let cars=JSON.parse(localStorage.getItem("amirCars")||"null")||
-defaults.map(x=>({name:x[0],min:x[1],max:x[2],variants:x[3],img:""}));
-let years=9,selected=0,editing=null;
 
-const money=n=>Number(n).toLocaleString("en-MY");
+
+let cars=
+JSON.parse(localStorage.getItem("amirCars")||"null")
+||
+defaults.map(x=>({
+
+name:x[0],
+min:x[1],
+max:x[2],
+variants:x[3],
+img:""
+
+}));
+
+
+
+/* ===============================
+   SETTINGS
+================================ */
+
+let settings=
+JSON.parse(localStorage.getItem("amirSettings")||"null")
+||
+{
+
+dsr:70,
+interest:3.25,
+downpayment:10
+
+};
+
+
+
+let years=9;
+let selected=0;
+let editing=null;
+let mode="budget";
+
+
+
+const money=n=>
+Number(n||0).toLocaleString("en-MY");
+
+
+
+/* ===============================
+   KIRA MONTHLY
+================================ */
+
 function pay(p,y=years){
-  let r=.0325/12,n=y*12,L=Number(p)*.9;
-  return Math.round(L*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1));
+
+let rate=
+Number(settings.interest)/100/12;
+
+let n=y*12;
+
+let loan=
+Number(p)*
+(1-Number(settings.downpayment)/100);
+
+
+if(rate===0){
+
+return Math.round(loan/n);
+
 }
-function pic(c){
-  return c.img?'<div class="car"><img src="'+c.img+'"></div>':'<div class="car">🚗</div>';
+
+
+return Math.round(
+
+loan*
+(rate*Math.pow(1+rate,n))
+/
+(Math.pow(1+rate,n)-1)
+
+);
+
 }
-function render(){
-  let b=Number(document.getElementById("budget").value||0),pass=0;
-  document.getElementById("grid").innerHTML=cars.map((c,i)=>{
-    let n=c.variants.filter(v=>pay(v[1])<=b).length,ok=n>0;
-    if(ok)pass++;
-    return '<div class="card '+(ok?'ok':'no')+'" onclick="showCar('+i+')">'+pic(c)+
-    '<h2>'+c.name+'</h2><div class="price">RM '+money(c.min)+' – RM '+money(c.max)+
-    '</div><span class="badge">'+(ok?'✓ LULUS '+n+'/'+c.variants.length+' varian':'✕ GAGAL')+
-    '</span></div>';
-  }).join("");
-  document.getElementById("summary").innerHTML='<span class="oktxt">'+pass+' model LULUS</span> • <span class="notxt">'+(cars.length-pass)+' model GAGAL</span>';
+
+
+
+/* ===============================
+   KELAYAKAN GAJI
+================================ */
+
+function getSalaryBudget(){
+
+let salary=
+Number(
+document.getElementById("salary").value||0
+);
+
+let commitment=
+Number(
+document.getElementById("commitment").value||0
+);
+
+
+let maxDebt=
+salary*
+(Number(settings.dsr)/100);
+
+
+let eligible=
+maxDebt-commitment;
+
+
+return Math.max(0,eligible);
+
 }
-function setYear(y,b){
-  years=y;
-  document.querySelectorAll("#tabs button").forEach(x=>x.classList.remove("active"));
-  b.classList.add("active");render();
+
+
+
+function getBudget(){
+
+if(mode==="salary"){
+
+return getSalaryBudget();
+
 }
-function showCar(i){
-  selected=i;
-  document.getElementById("home").style.display="none";
-  document.getElementById("detail").style.display="block";
-  document.getElementById("detailHead").innerHTML=pic(cars[i])+'<h2>'+cars[i].name+'</h2><p>Senarai varian dan anggaran bulanan</p>';
-  showVars();
+
+return Number(
+document.getElementById("budget").value||0
+);
+
 }
-function goHome(){
-  document.getElementById("detail").style.display="none";
-  document.getElementById("home").style.display="block";
-}
-function setDetailYear(y,b){
-  years=y;
-  document.querySelectorAll("#detail .tabs button").forEach(x=>x.classList.remove("active"));
-  b.classList.add("active");showVars();
-}
-function showVars(){
-  let b=Number(document.getElementById("budget").value||0),c=cars[selected];
-  document.getElementById("variants").innerHTML=c.variants.map(v=>{
-    let m=pay(v[1]),ok=m<=b;
-    return '<div class="variant"><div><b>'+v[0]+'</b><br><small>RM '+money(v[1])+
-    ' '+(ok?'✓ Layak':'✕ Melebihi bajet')+'</small></div><div class="monthly">RM'+
-    money(m)+'<small>/bulan</small></div></div>';
-  }).join("");
-}
-function openAdmin(){
-  document.getElementById("adminModal").style.display="block";
-  document.getElementById("adminList").innerHTML=cars.map((c,i)=>
-    '<div class="admin"><div><b>'+c.name+'</b><br><small>RM '+money(c.min)+' – RM '+money(c.max)+
-    '</small></div><div><button class="edit" onclick="editCar('+i+')">Edit</button> '+
-    '<button class="del" onclick="delCar('+i+')">Padam</button></div></div>').join("");
-}
-function closeAdmin(){document.getElementById("adminModal").style.display="none";}
-function delCar(i){if(confirm("Padam model?")){cars.splice(i,1);persist();openAdmin();}}
-function newCar(){
-  editing=null;document.getElementById("editTitle").innerText="Tambah Model";
-  document.getElementById("name").value=document.getElementById("min").value=document.getElementById("max").value="";
-  document.getElementById("image").value="";document.getElementById("varEdit").innerHTML="";
-  addVar();document.getElementById("editModal").style.display="block";
-}
-function editCar(i){
-  editing=i;let c=cars[i];document.getElementById("editTitle").innerText="Edit "+c.name;
-  document.getElementById("name").value=c.name;document.getElementById("min").value=c.min;
-  document.getElementById("max").value=c.max;document.getElementById("image").value="";
-  document.getElementById("varEdit").innerHTML=c.variants.map(v=>varRow(v[0],v[1])).join("");
-  document.getElementById("editModal").style.display="block";
-}
-function varRow(n="",p=""){
-  return '<div class="row"><input value="'+n+'" placeholder="Nama varian"><input type="number" value="'+p+
-  '" placeholder="Harga"><button class="del" onclick="this.parentElement.remove()">×</button></div>';
-}
-function addVar(){document.getElementById("varEdit").insertAdjacentHTML("beforeend",varRow());}
-function closeEdit(){document.getElementById("editModal").style.display="none";}
-function saveCar(){
-  let vars=[...document.getElementById("varEdit").children].map(r=>{
-    let a=r.querySelectorAll("input");return[a[0].value||"Varian",Number(a[1].value||0)];
-  }).filter(v=>v[1]);
-  let c=editing===null?
-    {name:document.getElementById("name").value||"MODEL BARU",min:Number(document.getElementById("min").value),max:Number(document.getElementById("max").value),variants:vars,img:""}:
-    {...cars[editing],name:document.getElementById("name").value||cars[editing].name,min:Number(document.getElementById("min").value),max:Number(document.getElementById("max").value),variants:vars};
-  let f=document.getElementById("image").files[0];
-  if(f){let rd=new FileReader();rd.onload=e=>{c.img=e.target.result;finish(c)};rd.readAsDataURL(f);}
-  else finish(c);
-}
-function finish(c){
-  if(editing===null)cars.push(c);else cars[editing]=c;
-  persist();closeEdit();openAdmin();
-}
-function persist(){localStorage.setItem("amirCars",JSON.stringify(cars));render();}
+
+
+
+/* ===============================
+   MODE
+================================ */
+
+function setMode(m){
+
+mode=m;
+
+
+document
+.getElementById("budgetModeBtn")
+.classList
+.toggle("active",m==="budget");
+
+
+document
+.getElementById("salaryModeBtn")
+.classList
+.toggle("active",m==="salary");
+
+
+document
+.getElementById("budgetBox")
+.style.display=
+m==="budget"?"block":"none";
+
+
+document
+.getElementById("salaryBox")
+.style.display=
+m==="salary"?"block":"none";
+
+
 render();
+
+}
+
+
+
+/* ===============================
+   GAMBAR
+================================ */
+
+function pic(c){
+
+return c.img
+
+?
+
+'<div class="car"><img src="'+c.img+'"></div>'
+
+:
+
+'<div class="car">🚗</div>';
+
+}
+
+
+
+/* ===============================
+   RENDER MODEL
+================================ */
+
+function render(){
+
+let b=getBudget();
+
+let pass=0;
+
+
+if(mode==="salary"){
+
+document
+.getElementById("eligibilityResult")
+.innerText=
+"RM "+money(b);
+
+}
+
+
+document
+.getElementById("grid")
+.innerHTML=
+
+cars.map((c,i)=>{
+
+let n=
+c.variants
+.filter(v=>pay(v[1])<=b)
+.length;
+
+
+let ok=n>0;
+
+
+if(ok)pass++;
+
+
+return
+
+'<div class="card '+
+
+(ok?'ok':'no')+
+
+'" onclick="showCar('+i+')">'+
+
+pic(c)+
+
+'<h2>'+c.name+'</h2>'+
+
+'<div class="price">RM '+
+money(c.min)+
+' – RM '+
+money(c.max)+
+'</div>'+
+
+'<span class="badge">'+
+
+(ok
+
+?'✓ LAYAK '+n+'/'+c.variants.length+' varian'
+
+:'✕ TIDAK LAYAK'
+
+)+
+
+'</span></div>';
+
+}).join("");
+
+
+
+document
+.getElementById("summary")
+.innerHTML=
+
+'<span class="oktxt">'+
+pass+
+' model LAYAK</span> • '+
+
+'<span class="notxt">'+
+(cars.length-pass)+
+' model TIDAK LAYAK</span>';
+
+}
+
+
+
+/* ===============================
+   TEMPOH
+================================ */
+
+function setYear(y,b){
+
+years=y;
+
+
+document
+.querySelectorAll("#tabs button")
+.forEach(x=>x.classList.remove("active"));
+
+
+b.classList.add("active");
+
+
+render();
+
+}
+
+
+
+function showCar(i){
+
+selected=i;
+
+
+document
+.getElementById("home")
+.style.display="none";
+
+
+document
+.getElementById("detail")
+.style.display="block";
+
+
+document
+.getElementById("detailHead")
+.innerHTML=
+
+pic(cars[i])+
+
+'<h2>'+
+cars[i].name+
+'</h2>'+
+
+'<p>Senarai varian dan anggaran bulanan</p>';
+
+
+showVars();
+
+}
+
+
+
+function goHome(){
+
+document
+.getElementById("detail")
+.style.display="none";
+
+
+document
+.getElementById("home")
+.style.display="block";
+
+}
+
+
+
+function setDetailYear(y,b){
+
+years=y;
+
+
+document
+.querySelectorAll("#detail .tabs button")
+.forEach(x=>x.classList.remove("active"));
+
+
+b.classList.add("active");
+
+
+showVars();
+
+}
+
+
+
+/* ===============================
+   VARIANT
+================================ */
+
+function showVars(){
+
+let b=getBudget();
+
+let c=cars[selected];
+
+
+document
+.getElementById("variants")
+.innerHTML=
+
+c.variants.map(v=>{
+
+let m=pay(v[1]);
+
+let ok=m<=b;
+
+
+return
+
+'<div class="variant">'+
+
+'<div>'+
+
+'<b>'+v[0]+'</b><br>'+
+
+'<small>RM '+
+money(v[1])+
+
+' '+
+
+(ok
+
+?'✓ Layak'
+
+:'✕ Melebihi kelayakan'
+
+)+
+
+'</small></div>'+
+
+'<div class="monthly">RM'+
+money(m)+
+'<small>/bulan</small></div>'+
+
+'</div>';
+
+}).join("");
+
+}
+
+
+
+/* ===============================
+   ADMIN
+================================ */
+
+function openAdmin(){
+
+document
+.getElementById("adminModal")
+.style.display="block";
+
+
+document
+.getElementById("adminList")
+.innerHTML=
+
+cars.map((c,i)=>
+
+'<div class="admin">'+
+
+'<div>'+
+
+'<b>'+c.name+'</b><br>'+
+
+'<small>RM '+
+money(c.min)+
+' – RM '+
+money(c.max)+
+'</small>'+
+
+'</div>'+
+
+'<div>'+
+
+'<button class="edit" onclick="editCar('+i+')">Edit</button> '+
+
+'<button class="del" onclick="delCar('+i+')">Padam</button>'+
+
+'</div>'+
+
+'</div>'
+
+).join("");
+
+}
+
+
+
+function closeAdmin(){
+
+document
+.getElementById("adminModal")
+.style.display="none";
+
+}
+
+
+
+/* ===============================
+   SETTINGS GAJI
+================================ */
+
+function openSettings(){
+
+document
+.getElementById("settingsModal")
+.style.display="block";
+
+
+document
+.getElementById("dsr")
+.value=settings.dsr;
+
+
+document
+.getElementById("interest")
+.value=settings.interest;
+
+
+document
+.getElementById("downpayment")
+.value=settings.downpayment;
+
+}
+
+
+
+function closeSettings(){
+
+document
+.getElementById("settingsModal")
+.style.display="none";
+
+}
+
+
+
+function saveSettings(){
+
+settings.dsr=
+Number(
+document.getElementById("dsr").value||70
+);
+
+
+settings.interest=
+Number(
+document.getElementById("interest").value||3.25
+);
+
+
+settings.downpayment=
+Number(
+document.getElementById("downpayment").value||10
+);
+
+
+localStorage.setItem(
+
+"amirSettings",
+
+JSON.stringify(settings)
+
+);
+
+
+closeSettings();
+
+
+render();
+
+
+alert("Tetapan kelayakan berjaya disimpan!");
+
+}
+
+
+
+/* ===============================
+   DELETE MODEL
+================================ */
+
+function delCar(i){
+
+if(confirm("Padam model?")){
+
+cars.splice(i,1);
+
+persist();
+
+openAdmin();
+
+}
+
+}
+
+
+
+/* ===============================
+   TAMBAH MODEL
+================================ */
+
+function newCar(){
+
+editing=null;
+
+
+document
+.getElementById("editTitle")
+.innerText="Tambah Model";
+
+
+document
+.getElementById("name")
+.value="";
+
+
+document
+.getElementById("min")
+.value="";
+
+
+document
+.getElementById("max")
+.value="";
+
+
+document
+.getElementById("image")
+.value="";
+
+
+document
+.getElementById("varEdit")
+.innerHTML="";
+
+
+addVar();
+
+
+document
+.getElementById("editModal")
+.style.display="block";
+
+}
+
+
+
+/* ===============================
+   EDIT MODEL
+================================ */
+
+function editCar(i){
+
+editing=i;
+
+
+let c=cars[i];
+
+
+document
+.getElementById("editTitle")
+.innerText="Edit "+c.name;
+
+
+document
+.getElementById("name")
+.value=c.name;
+
+
+document
+.getElementById("min")
+.value=c.min;
+
+
+document
+.getElementById("max")
+.value=c.max;
+
+
+document
+.getElementById("image")
+.value="";
+
+
+document
+.getElementById("varEdit")
+.innerHTML=
+
+c.variants
+.map(v=>varRow(v[0],v[1]))
+.join("");
+
+
+document
+.getElementById("editModal")
+.style.display="block";
+
+}
+
+
+
+function varRow(n="",p=""){
+
+return
+
+'<div class="row">'+
+
+'<input value="'+
+n+
+'" placeholder="Nama varian">'+
+
+'<input type="number" value="'+
+p+
+'" placeholder="Harga">'+
+
+'<button class="del" onclick="this.parentElement.remove()">×</button>'+
+
+'</div>';
+
+}
+
+
+
+function addVar(){
+
+document
+.getElementById("varEdit")
+.insertAdjacentHTML(
+
+"beforeend",
+
+varRow()
+
+);
+
+}
+
+
+
+function closeEdit(){
+
+document
+.getElementById("editModal")
+.style.display="none";
+
+}
+
+
+
+/* ===============================
+   SAVE MODEL
+================================ */
+
+function saveCar(){
+
+let vars=
+
+[...
+document
+.getElementById("varEdit")
+.children]
+
+.map(r=>{
+
+let a=r.querySelectorAll("input");
+
+return[
+
+a[0].value||"Varian",
+
+Number(a[1].value||0)
+
+];
+
+})
+
+.filter(v=>v[1]);
+
+
+
+let c=
+
+
+editing===null
+
+
+?
+
+
+{
+
+name:
+document.getElementById("name").value
+||"MODEL BARU",
+
+min:
+Number(
+document.getElementById("min").value
+),
+
+max:
+Number(
+document.getElementById("max").value
+),
+
+variants:vars,
+
+img:""
+
+}
+
+
+:
+
+
+{
+
+...cars[editing],
+
+name:
+document.getElementById("name").value
+||cars[editing].name,
+
+min:
+Number(
+document.getElementById("min").value
+),
+
+max:
+Number(
+document.getElementById("max").value
+),
+
+variants:vars
+
+};
+
+
+
+let f=
+document
+.getElementById("image")
+.files[0];
+
+
+
+if(f){
+
+let rd=new FileReader();
+
+
+rd.onload=e=>{
+
+c.img=e.target.result;
+
+finish(c);
+
+};
+
+
+rd.readAsDataURL(f);
+
+}
+
+else{
+
+finish(c);
+
+}
+
+}
+
+
+
+function finish(c){
+
+if(editing===null){
+
+cars.push(c);
+
+}
+
+else{
+
+cars[editing]=c;
+
+}
+
+
+persist();
+
+
+closeEdit();
+
+
+openAdmin();
+
+}
+
+
+
+/* ===============================
+   SIMPAN
+================================ */
+
+function persist(){
+
+localStorage.setItem(
+
+"amirCars",
+
+JSON.stringify(cars)
+
+);
+
+
+render();
+
+}
+
+
+
+/* ===============================
+   START
+================================ */
+
+render();
+
 </script>
+
 </body>
 </html>
