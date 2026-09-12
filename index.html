@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <html lang="ms">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <title>AMIR PERODUA Auto Calculate System</title>
 
 <style>
-
-/* =========================================
-ROOT
-========================================= */
 
 :root{
   --green:#006b52;
@@ -34,10 +26,6 @@ ROOT
   --bg:#eef1f6;
   --card:#ffffff;
 }
-
-/* =========================================
-GLOBAL
-========================================= */
 
 *{
   box-sizing:border-box;
@@ -71,9 +59,7 @@ button:active{
   transform:scale(.98);
 }
 
-/* =========================================
-HEADER
-========================================= */
+/* HEADER */
 
 .header{
   background:linear-gradient(
@@ -130,9 +116,7 @@ HEADER
   object-fit:contain;
 }
 
-/* =========================================
-APP
-========================================= */
+/* APP */
 
 .app{
   max-width:1100px;
@@ -140,9 +124,7 @@ APP
   padding:0 18px 30px;
 }
 
-/* =========================================
-MODE BUTTON
-========================================= */
+/* MODE */
 
 .mode-box{
   background:white;
@@ -196,9 +178,7 @@ MODE BUTTON
   rgba(0,107,82,.25);
 }
 
-/* =========================================
-INPUT SECTION
-========================================= */
+/* INPUT */
 
 .input-section{
   padding:28px 10px 8px;
@@ -284,9 +264,7 @@ INPUT SECTION
   margin-right:16px;
 }
 
-/* =========================================
-YEAR BUTTON
-========================================= */
+/* YEAR */
 
 .year-row{
   display:grid;
@@ -333,9 +311,7 @@ YEAR BUTTON
   rgba(21,84,189,.22);
 }
 
-/* =========================================
-STATUS
-========================================= */
+/* STATUS */
 
 .status{
   text-align:center;
@@ -354,9 +330,7 @@ STATUS
   color:#c92736;
 }
 
-/* =========================================
-MODEL GRID
-========================================= */
+/* MODEL */
 
 .model-grid{
   display:grid;
@@ -366,10 +340,6 @@ MODEL GRID
 
   gap:24px;
 }
-
-/* =========================================
-CAR CARD
-========================================= */
 
 .car-card{
   background:white;
@@ -470,9 +440,7 @@ CAR CARD
   color:#bd2635;
 }
 
-/* =========================================
-BOTTOM NAV
-========================================= */
+/* BOTTOM NAV */
 
 .bottom-nav{
   position:fixed;
@@ -529,9 +497,7 @@ BOTTOM NAV
   font-weight:900;
 }
 
-/* =========================================
-MODAL
-========================================= */
+/* MODAL */
 
 .modal{
   display:none;
@@ -613,9 +579,7 @@ MODAL
   margin-bottom:20px;
 }
 
-/* =========================================
-VARIANT
-========================================= */
+/* VARIANT */
 
 .variant-row{
   background:
@@ -689,9 +653,7 @@ VARIANT
   color:#687386;
 }
 
-/* =========================================
-CALCULATOR
-========================================= */
+/* CALCULATOR */
 
 .calc-card{
   background:#f4f6f9;
@@ -819,9 +781,7 @@ CALCULATOR
   color:#687386;
 }
 
-/* =========================================
-SETTINGS
-========================================= */
+/* SETTINGS */
 
 .setting-card{
   border:1px solid #dce2ea;
@@ -860,6 +820,28 @@ SETTINGS
   1fr 1fr;
 
   gap:10px;
+}
+
+.image-preview{
+  width:100%;
+  height:150px;
+
+  border-radius:15px;
+
+  background:#f1f4f8;
+
+  object-fit:contain;
+
+  margin:8px 0;
+
+  display:none;
+}
+
+.image-note{
+  font-size:12px;
+  color:#687386;
+
+  margin:4px 0 10px;
 }
 
 .save-btn{
@@ -922,9 +904,7 @@ SETTINGS
   margin-top:8px;
 }
 
-/* =========================================
-MOBILE
-========================================= */
+/* MOBILE */
 
 @media(max-width:750px){
 
@@ -1057,7 +1037,6 @@ MOBILE
 }
 
 </style>
-
 </head>
 
 <body>
@@ -1346,14 +1325,16 @@ Tempoh Pinjaman
 
 <select id="calcYear">
 
-<option value="5">5 Tahun</option>
+<option value="5">
+5 Tahun
+</option>
 
-<option value="7">7 Tahun</option>
+<option value="7">
+7 Tahun
+</option>
 
-<option
-value="9"
-selected
->
+<option value="9"
+selected>
 9 Tahun
 </option>
 
@@ -1507,80 +1488,103 @@ onclick="resetDefaultCars()"
 
 /* =========================================
 DEFAULT DATA
+7 MODEL PERODUA
 ========================================= */
 
 const defaultCars = [
 
 {
-name:"BEZZA",
-price:"36,197 – 52,047",
-image:"bezza.png",
+name:"AXIA",
+price:"33,900 – 49,000",
+image:"axia.png",
+
 variants:[
-["1.0 G (MT)","36197"],
-["1.0 G (AT)","38000"],
-["1.3 X (AT)","44000"],
-["1.3 AV (AT)","52047"]
+["1.0 G","33900"],
+["1.0 X","38500"],
+["1.0 SE","43000"],
+["1.0 AV","49000"]
 ]
+
 },
 
 {
-name:"AXIA",
-price:"23,276 – 51,054",
-image:"axia.png",
+name:"BEZZA",
+price:"34,580 – 49,980",
+image:"bezza.png",
+
 variants:[
-["1.0 E (MT)","23276"],
-["1.0 G (AT)","38000"],
-["1.0 X (AT)","44000"],
-["1.0 SE (AT)","51054"]
+["1.0 G (MT)","34580"],
+["1.0 G (AT)","36580"],
+["1.3 X (AT)","43890"],
+["1.3 AV (AT)","49980"]
 ]
+
 },
 
 {
 name:"MYVI",
-price:"48,474 – 62,302",
+price:"46,500 – 59,900",
 image:"myvi.png",
-variants:[
-["1.3 G (CVT)","48474"],
-["1.3 X (CVT)","51900"],
-["1.5 X (CVT)","55900"],
-["1.5 H (CVT)","59900"],
-["1.5 AV (CVT)","62302"]
-]
-},
 
-{
-name:"ALZA",
-price:"64,993 – 78,358",
-image:"alza.png",
 variants:[
-["1.5 X","64993"],
-["1.5 H","70993"],
-["1.5 AV","78358"]
+["1.3 G (CVT)","46500"],
+["1.3 X (CVT)","49900"],
+["1.5 X (CVT)","53900"],
+["1.5 H (CVT)","56900"],
+["1.5 AV (CVT)","59900"]
 ]
+
 },
 
 {
 name:"ATIVA",
-price:"61,919 – 76,127",
+price:"62,500 – 72,000",
 image:"ativa.png",
+
 variants:[
-["1.0 X Metallic (AT)","61919"],
-["1.0 H Metallic (AT)","69859"],
-["1.0 H S/Metallic (AT)","70387"],
-["1.0 AV Metallic (AT)","75299"],
-["1.0 AV S/Metallic (AT)","75827"],
-["1.0 AV 2T S/Metallic (AT)","76127"]
+["1.0 X","62500"],
+["1.0 H","68500"],
+["1.0 AV","72000"]
 ]
+
+},
+
+{
+name:"ALZA",
+price:"62,500 – 75,500",
+image:"alza.png",
+
+variants:[
+["1.5 X","62500"],
+["1.5 H","68000"],
+["1.5 AV","75500"]
+]
+
 },
 
 {
 name:"ARUZ",
-price:"75,762 – 80,902",
+price:"72,900 – 77,900",
 image:"aruz.png",
+
 variants:[
-["1.5 X","75762"],
-["1.5 AV","80902"]
+["1.5 X","72900"],
+["1.5 AV","77900"]
 ]
+
+},
+
+{
+name:"TRAZ",
+price:"76,100 – 82,000",
+image:"traz.png",
+
+variants:[
+["1.5 X","76100"],
+["1.5 H","79000"],
+["1.5 AV","82000"]
+]
+
 }
 
 ];
@@ -1590,31 +1594,40 @@ LOAD DATA
 ========================================= */
 
 let cars =
-JSON.parse(localStorage.getItem("amirPeroduaCars"))
+JSON.parse(
+localStorage.getItem(
+"amirPeroduaCars"
+)
+)
 ||
-JSON.parse(JSON.stringify(defaultCars));
+JSON.parse(
+JSON.stringify(defaultCars)
+);
 
 let selectedYear = 9;
 
 let currentMode = "budget";
 
 /* =========================================
-FORMAT MONEY - FIXED
+FORMAT MONEY
 ========================================= */
 
-function formatMoney(number) {
+function formatMoney(number){
 
-  const value = Number(
-    String(number || 0).replace(/,/g,"")
-  );
+const value =
+Number(
+String(number || 0)
+.replace(/,/g,"")
+);
 
-  return Math.round(value).toLocaleString("en-MY");
+return Math.round(value)
+.toLocaleString("en-MY");
 
 }
 
 /* =========================================
-CALCULATE MONTHLY
-FLAT RATE HIRE PURCHASE
+CALCULATION
+LOGIC ASAL AMIR
 ========================================= */
 
 function calculateMonthly(price){
@@ -1627,7 +1640,8 @@ String(price)
 
 const annualRate = 0.0325;
 
-const years = selectedYear;
+const years =
+selectedYear;
 
 const totalInterest =
 carPrice *
@@ -1639,7 +1653,8 @@ carPrice +
 totalInterest;
 
 const months =
-years * 12;
+years *
+12;
 
 const monthly =
 totalPayment /
@@ -1650,12 +1665,13 @@ return Math.round(monthly);
 }
 
 /* =========================================
-SET MODE
+MODE
 ========================================= */
 
 function setMode(mode){
 
-currentMode = mode;
+currentMode =
+mode;
 
 document
 .getElementById("budgetMode")
@@ -1674,21 +1690,31 @@ mode === "salary"
 );
 
 const input =
-document.getElementById("budgetInput");
+document.getElementById(
+"budgetInput"
+);
 
 const title =
-document.getElementById("inputTitle");
+document.getElementById(
+"inputTitle"
+);
 
-if(mode === "budget"){
+if(
+mode === "budget"
+){
 
-input.placeholder = "1800";
+input.placeholder =
+"1800";
 
 title.textContent =
 "MASUKKAN BAJET BULANAN ANDA";
 
-}else{
+}
 
-input.placeholder = "3000";
+else{
+
+input.placeholder =
+"3000";
 
 title.textContent =
 "MASUKKAN GAJI BULANAN ANDA";
@@ -1700,13 +1726,15 @@ renderModels();
 }
 
 /* =========================================
-CLEAR INPUT
+CLEAR
 ========================================= */
 
 function clearBudget(){
 
 document
-.getElementById("budgetInput")
+.getElementById(
+"budgetInput"
+)
 .value = "";
 
 renderModels();
@@ -1714,57 +1742,79 @@ renderModels();
 }
 
 /* =========================================
-SET YEAR
+YEAR
 ========================================= */
 
-function setYear(year,button){
+function setYear(
+year,
+button
+){
 
-selectedYear = year;
+selectedYear =
+year;
 
 document
-.querySelectorAll(".year-btn")
-.forEach(btn=>{
+.querySelectorAll(
+".year-btn"
+)
+.forEach(
+btn =>
+btn.classList.remove(
+"active"
+)
+);
 
-btn.classList.remove("active");
-
-});
-
-button.classList.add("active");
+button.classList.add(
+"active"
+);
 
 renderModels();
 
 }
 
 /* =========================================
-CHECK VARIANT ELIGIBILITY
+ELIGIBILITY
 ========================================= */
 
-function isVariantEligible(price){
+function isVariantEligible(
+price
+){
 
 const input =
 Number(
 document
-.getElementById("budgetInput")
+.getElementById(
+"budgetInput"
+)
 .value
-|| 0
+||
+0
 );
 
-if(input <= 0){
+if(
+input <= 0
+){
 
 return false;
 
 }
 
 const monthly =
-calculateMonthly(price);
+calculateMonthly(
+price
+);
 
-if(currentMode === "budget"){
+if(
+currentMode === "budget"
+){
 
 return input >= monthly;
 
 }
 
-if(currentMode === "salary"){
+if(
+currentMode === "salary"
+){
 
 return input >= monthly * 3;
 
@@ -1775,13 +1825,75 @@ return false;
 }
 
 /* =========================================
+IMAGE CHECK
+========================================= */
+
+function validImage(
+src
+){
+
+if(
+!src
+){
+
+return false;
+
+}
+
+return (
+
+src.startsWith("data:")
+||
+src.startsWith("http://")
+||
+src.startsWith("https://")
+||
+/\.(png|jpg|jpeg|webp|gif)$/i.test(src)
+
+);
+
+}
+
+/* =========================================
+ESCAPE HTML
+========================================= */
+
+function escapeHTML(
+value
+){
+
+return String(
+value ?? ""
+)
+.replace(
+/[&<>"']/g,
+function(match){
+
+return {
+
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+
+}[match];
+
+}
+);
+
+}
+
+/* =========================================
 RENDER MODELS
 ========================================= */
 
 function renderModels(){
 
 const grid =
-document.getElementById("modelGrid");
+document.getElementById(
+"modelGrid"
+);
 
 grid.innerHTML = "";
 
@@ -1789,98 +1901,115 @@ let passModels = 0;
 
 let failModels = 0;
 
-cars.forEach((car,index)=>{
+cars.forEach(
+function(
+car,
+index
+){
 
 let passVariants = 0;
 
-let failVariants = 0;
+car.variants.forEach(
+function(
+variant
+){
 
-car.variants.forEach(variant=>{
-
-const eligible =
+if(
 isVariantEligible(
 variant[1]
-);
-
-if(eligible){
+)
+){
 
 passVariants++;
 
-}else{
-
-failVariants++;
-
 }
 
-});
+}
+);
 
 const modelEligible =
 passVariants > 0;
 
-if(modelEligible){
+if(
+modelEligible
+){
 
 passModels++;
 
-}else{
+}
+
+else{
 
 failModels++;
 
 }
 
-let imageHTML = "";
+const src =
+validImage(
+car.image
+)
+?
+car.image
+:
+"";
+
+let imageHTML;
 
 if(
-car.image &&
-(
-car.image.startsWith("data:")
-||
-car.image.startsWith("http")
-||
-car.image.includes(".png")
-||
-car.image.includes(".jpg")
-||
-car.image.includes(".jpeg")
-||
-car.image.includes(".webp")
-)
+src
 ){
 
 imageHTML = `
 
 <img
-src="${car.image}"
-alt="${car.name}"
-onerror="this.style.display='none';this.parentElement.innerHTML='<div class=car-emoji>🚗</div>'"
+src="${src}"
+alt="${escapeHTML(car.name)}"
+
+onerror="
+this.style.display='none';
+this.parentElement.innerHTML='<div class=car-emoji>🚗</div>'
+"
 >
 
 `;
 
-}else{
+}
+
+else{
 
 imageHTML = `
 
 <div class="car-emoji">
-
-${car.image || "🚗"}
-
+🚗
 </div>
 
 `;
 
 }
 
-let badgeText = "";
+let badgeText;
 
-if(passVariants > 0){
-
-badgeText =
-`✓ LULUS ${passVariants}/${car.variants.length} VARIAN`;
-
-}else{
+if(
+passVariants > 0
+){
 
 badgeText =
-`× GAGAL SEMUA VARIAN`;
+"✓ LULUS "
++
+passVariants
++
+"/"
++
+car.variants.length
++
+" VARIAN";
+
+}
+
+else{
+
+badgeText =
+"× GAGAL SEMUA VARIAN";
 
 }
 
@@ -1901,20 +2030,22 @@ ${imageHTML}
 
 <div class="car-name">
 
-${car.name}
+${escapeHTML(car.name)}
 
 </div>
 
 <div class="car-price">
 
-RM ${car.price}
+RM ${escapeHTML(car.price)}
 
 </div>
 
 <div
 class="
 result-badge
-${modelEligible ? "badge-pass" : "badge-fail"}
+${modelEligible
+? "badge-pass"
+: "badge-fail"}
 "
 >
 
@@ -1928,32 +2059,45 @@ ${badgeText}
 
 `;
 
-});
+}
+);
 
 document
-.getElementById("passCount")
+.getElementById(
+"passCount"
+)
 .textContent =
-passModels + " model LULUS";
+passModels +
+" model LULUS";
 
 document
-.getElementById("failCount")
+.getElementById(
+"failCount"
+)
 .textContent =
-failModels + " model GAGAL";
+failModels +
+" model GAGAL";
 
 }
 
 /* =========================================
-OPEN CAR DETAIL
+OPEN CAR
 ========================================= */
 
-function openCar(index){
+function openCar(
+index
+){
 
 const car =
 cars[index];
 
-let variantsHTML = "";
+let variantsHTML =
+"";
 
-car.variants.forEach(variant=>{
+car.variants.forEach(
+function(
+variant
+){
 
 const monthly =
 calculateMonthly(
@@ -1970,7 +2114,9 @@ variantsHTML += `
 <div
 class="
 variant-row
-${layak ? "" : "fail-variant"}
+${layak
+? ""
+: "fail-variant"}
 "
 >
 
@@ -1978,13 +2124,17 @@ ${layak ? "" : "fail-variant"}
 
 <div class="variant-name">
 
-${variant[0]}
+${escapeHTML(
+variant[0]
+)}
 
 </div>
 
 <div class="variant-price">
 
-RM ${formatMoney(variant[1])}
+RM ${formatMoney(
+variant[1]
+)}
 
 <br>
 
@@ -1992,15 +2142,13 @@ RM ${formatMoney(variant[1])}
 class="
 ${layak
 ? "variant-status-pass"
-: "variant-status-fail"
-}
+: "variant-status-fail"}
 "
 >
 
 ${layak
 ? "✓ LULUS"
-: "× GAGAL"
-}
+: "× GAGAL"}
 
 </span>
 
@@ -2010,9 +2158,13 @@ ${layak
 
 <div class="variant-month">
 
-RM ${formatMoney(monthly)}
+RM ${formatMoney(
+monthly
+)}
 
-<small>/bulan</small>
+<small>
+/bulan
+</small>
 
 </div>
 
@@ -2020,21 +2172,28 @@ RM ${formatMoney(monthly)}
 
 `;
 
-});
+}
+);
 
 document
-.getElementById("detailContent")
+.getElementById(
+"detailContent"
+)
 .innerHTML = `
 
 <div class="modal-title">
 
-${car.name}
+${escapeHTML(
+car.name
+)}
 
 </div>
 
 <div class="modal-subtitle">
 
-ANGGARAN ${selectedYear} TAHUN
+ANGGARAN
+${selectedYear}
+TAHUN
 
 </div>
 
@@ -2043,8 +2202,11 @@ ${variantsHTML}
 `;
 
 document
-.getElementById("detailModal")
-.style.display = "block";
+.getElementById(
+"detailModal"
+)
+.style.display =
+"block";
 
 }
 
@@ -2052,11 +2214,16 @@ document
 CLOSE MODAL
 ========================================= */
 
-function closeModal(id){
+function closeModal(
+id
+){
 
 document
-.getElementById(id)
-.style.display = "none";
+.getElementById(
+id
+)
+.style.display =
+"none";
 
 }
 
@@ -2064,48 +2231,76 @@ document
 NAVIGATION
 ========================================= */
 
-function setNav(button){
+function setNav(
+button
+){
 
 document
-.querySelectorAll(".nav-btn")
-.forEach(btn=>{
+.querySelectorAll(
+".nav-btn"
+)
+.forEach(
+btn =>
+btn.classList.remove(
+"active"
+)
+);
 
-btn.classList.remove("active");
-
-});
-
-button.classList.add("active");
+button.classList.add(
+"active"
+);
 
 }
 
-function showModels(button){
+function showModels(
+button
+){
 
-setNav(button);
+setNav(
+button
+);
 
 window.scrollTo({
+
 top:0,
+
 behavior:"smooth"
+
 });
 
 }
 
-function showCalculator(button){
+function showCalculator(
+button
+){
 
-setNav(button);
+setNav(
+button
+);
 
 document
-.getElementById("calculatorModal")
-.style.display = "block";
+.getElementById(
+"calculatorModal"
+)
+.style.display =
+"block";
 
 }
 
-function showInfo(button){
+function showInfo(
+button
+){
 
-setNav(button);
+setNav(
+button
+);
 
 document
-.getElementById("infoModal")
-.style.display = "block";
+.getElementById(
+"infoModal"
+)
+.style.display =
+"block";
 
 }
 
@@ -2113,14 +2308,21 @@ document
 LOAN MODE
 ========================================= */
 
-function setLoanMode(dp){
+function setLoanMode(
+dp
+){
 
 document
-.getElementById("calcDP")
-.value = dp;
+.getElementById(
+"calcDP"
+)
+.value =
+dp;
 
 document
-.getElementById("fullLoanBtn")
+.getElementById(
+"fullLoanBtn"
+)
 .classList
 .toggle(
 "active",
@@ -2128,7 +2330,9 @@ dp === 0
 );
 
 document
-.getElementById("dpLoanBtn")
+.getElementById(
+"dpLoanBtn"
+)
 .classList
 .toggle(
 "active",
@@ -2146,47 +2350,67 @@ function manualCalculate(){
 const price =
 Number(
 document
-.getElementById("calcPrice")
+.getElementById(
+"calcPrice"
+)
 .value
-|| 0
+||
+0
 );
 
 const dp =
 Number(
 document
-.getElementById("calcDP")
+.getElementById(
+"calcDP"
+)
 .value
-|| 0
+||
+0
 );
 
 const years =
 Number(
 document
-.getElementById("calcYear")
+.getElementById(
+"calcYear"
+)
 .value
 );
 
 const rate =
 Number(
 document
-.getElementById("calcRate")
+.getElementById(
+"calcRate"
+)
 .value
-|| 3.25
-) / 100;
+||
+3.25
+)
+/
+100;
 
-if(price <= 0){
+if(
+price <= 0
+){
 
-alert("Sila masukkan harga kereta.");
+alert(
+"Sila masukkan harga kereta."
+);
 
 return;
 
 }
 
 const downpayment =
-price * dp / 100;
+price *
+dp /
+100;
 
 const loan =
-price - downpayment;
+price -
+downpayment;
 
 const totalInterest =
 loan *
@@ -2198,31 +2422,53 @@ loan +
 totalInterest;
 
 const months =
-years * 12;
+years *
+12;
 
 const monthly =
 totalPayment /
 months;
 
 document
-.getElementById("calcResult")
+.getElementById(
+"calcResult"
+)
 .textContent =
-"RM " +
-formatMoney(monthly) +
+"RM "
++
+formatMoney(
+monthly
+)
++
 " /bulan";
 
 document
-.getElementById("calcDetail")
+.getElementById(
+"calcDetail"
+)
 .textContent =
 
-"Loan RM " +
-formatMoney(loan) +
-" • DP RM " +
-formatMoney(downpayment) +
-" • " +
-years +
-" Tahun • " +
-(rate * 100).toFixed(2) +
+"Loan RM "
++
+formatMoney(
+loan
+)
++
+" • DP RM "
++
+formatMoney(
+downpayment
+)
++
+" • "
++
+years
++
+" Tahun • "
++
+(rate * 100)
+.toFixed(2)
++
 "%";
 
 }
@@ -2236,8 +2482,11 @@ function openSettings(){
 renderSettings();
 
 document
-.getElementById("settingsModal")
-.style.display = "block";
+.getElementById(
+"settingsModal"
+)
+.style.display =
+"block";
 
 }
 
@@ -2248,58 +2497,146 @@ RENDER SETTINGS
 function renderSettings(){
 
 const list =
-document.getElementById("settingsList");
+document.getElementById(
+"settingsList"
+);
 
-list.innerHTML = "";
+list.innerHTML =
+"";
 
-cars.forEach((car,index)=>{
+cars.forEach(
+function(
+car,
+index
+){
+
+const src =
+validImage(
+car.image
+)
+?
+car.image
+:
+"";
 
 list.innerHTML += `
 
 <div class="setting-card">
 
 <h3>
-${car.name}
+
+${escapeHTML(
+car.name
+)}
+
 </h3>
 
 <div class="setting-row">
 
 <input
+
 data-index="${index}"
+
 data-field="name"
-value="${car.name}"
+
+value="${escapeHTML(
+car.name
+)}"
+
 placeholder="Nama Model"
+
 >
 
 <input
+
 data-index="${index}"
+
 data-field="price"
-value="${car.price}"
+
+value="${escapeHTML(
+car.price
+)}"
+
 placeholder="Harga"
+
 >
 
 </div>
 
 <label>
+
+<b>
 Gambar Kereta
+</b>
+
 </label>
 
-<input
-data-index="${index}"
-data-field="image"
-value="${car.image || ""}"
-placeholder="Contoh: bezza.png atau URL gambar"
+<div class="image-note">
+
+Pilih gambar terus dari
+Photos / Files iPhone.
+
+</div>
+
+<img
+
+id="preview-${index}"
+
+class="image-preview"
+
+${src
+? `style="display:block"
+src="${src}"`
+: ""}
+
+alt="Preview"
+
 >
 
 <input
+
+data-index="${index}"
+
+data-field="image"
+
+value="${escapeHTML(
+car.image || ""
+)}"
+
+placeholder="
+Contoh: axia.png
+atau URL gambar
+"
+
+oninput="
+previewImageText(
+${index},
+this.value
+)
+"
+
+>
+
+<input
+
 type="file"
+
 accept="image/*"
-onchange="uploadImage(event,${index})"
+
+onchange="
+uploadImage(
+event,
+${index}
+)
+"
+
 >
 
 <label>
 
+<b>
 Varian
+</b>
 
 <br>
 
@@ -2313,14 +2650,36 @@ Nama Varian | Harga
 </label>
 
 <textarea
+
 rows="6"
+
 data-index="${index}"
+
 data-field="variants"
->${car.variants.map(v=>v[0]+"|"+v[1]).join("\n")}</textarea>
+
+>${car.variants
+.map(
+v =>
+v[0]
++
+"|"
++
+v[1]
+)
+.join(
+"\n"
+)}</textarea>
 
 <button
+
 class="delete-btn"
-onclick="deleteCar(${index})"
+
+onclick="
+deleteCar(
+${index}
+)
+"
+
 >
 
 Padam Model
@@ -2331,20 +2690,107 @@ Padam Model
 
 `;
 
-});
+}
+);
 
 }
 
 /* =========================================
-UPLOAD IMAGE
+IMAGE PREVIEW
 ========================================= */
 
-function uploadImage(event,index){
+function previewImageText(
+index,
+value
+){
+
+const img =
+document.getElementById(
+"preview-" +
+index
+);
+
+if(
+!img
+){
+
+return;
+
+}
+
+if(
+validImage(
+value.trim()
+)
+){
+
+img.src =
+value.trim();
+
+img.style.display =
+"block";
+
+}
+
+else{
+
+img.removeAttribute(
+"src"
+);
+
+img.style.display =
+"none";
+
+}
+
+}
+
+/* =========================================
+UPLOAD IMAGE FROM IPHONE
+========================================= */
+
+function uploadImage(
+event,
+index
+){
 
 const file =
 event.target.files[0];
 
-if(!file){
+if(
+!file
+){
+
+return;
+
+}
+
+if(
+!file.type.startsWith(
+"image/"
+)
+){
+
+alert(
+"Sila pilih fail gambar."
+);
+
+return;
+
+}
+
+/*
+Maximum 4MB
+*/
+
+if(
+file.size >
+4 * 1024 * 1024
+){
+
+alert(
+"Gambar terlalu besar. Sila pilih gambar bawah 4MB."
+);
 
 return;
 
@@ -2353,23 +2799,49 @@ return;
 const reader =
 new FileReader();
 
-reader.onload = function(e){
+reader.onload =
+function(e){
 
 cars[index].image =
 e.target.result;
 
+const preview =
+document.getElementById(
+"preview-" +
+index
+);
+
+if(
+preview
+){
+
+preview.src =
+e.target.result;
+
+preview.style.display =
+"block";
+
+}
+
 localStorage.setItem(
+
 "amirPeroduaCars",
-JSON.stringify(cars)
+
+JSON.stringify(
+cars
+)
+
 );
 
 alert(
-"Gambar berjaya dimasukkan. Tekan SIMPAN SEMUA PERUBAHAN untuk simpan data lain."
+"Gambar berjaya dimasukkan. Tekan SIMPAN SEMUA PERUBAHAN."
 );
 
 };
 
-reader.readAsDataURL(file);
+reader.readAsDataURL(
+file
+);
 
 }
 
@@ -2380,58 +2852,86 @@ SAVE SETTINGS
 function saveSettings(){
 
 document
-.querySelectorAll("[data-index]")
-.forEach(input=>{
+.querySelectorAll(
+"[data-index]"
+)
+.forEach(
+function(
+input
+){
 
 const index =
-input.dataset.index;
+Number(
+input.dataset.index
+);
 
 const field =
 input.dataset.field;
 
-if(field === "variants"){
+if(
+field === "variants"
+){
 
 cars[index].variants =
 
 input.value
 
-.split("\n")
+.split(
+"\n"
+)
 
-.filter(x =>
+.filter(
+x =>
 x.trim() !== ""
 )
 
-.map(line=>{
+.map(
+function(
+line
+){
 
 const parts =
-line.split("|");
+line.split(
+"|"
+);
 
 return [
 
-parts[0].trim(),
+parts[0]
+.trim(),
 
 (parts[1] || "0")
-.replace(/,/g,"")
+.replace(
+/,/g,
+""
+)
 .trim()
 
 ];
 
-});
+}
+);
 
 }
 
 else{
 
 cars[index][field] =
-input.value;
+input.value.trim();
 
 }
 
-});
+}
+);
 
 localStorage.setItem(
+
 "amirPeroduaCars",
-JSON.stringify(cars)
+
+JSON.stringify(
+cars
+)
+
 );
 
 closeModal(
@@ -2454,14 +2954,20 @@ function addNewCar(){
 
 cars.push({
 
-name:"MODEL BARU",
+name:
+"MODEL BARU",
 
-price:"0 – 0",
+price:
+"0 – 0",
 
-image:"🚗",
+image:
+"",
 
 variants:[
-["Varian Baru","0"]
+[
+"Varian Baru",
+"0"
+]
 ]
 
 });
@@ -2474,7 +2980,9 @@ renderSettings();
 DELETE CAR
 ========================================= */
 
-function deleteCar(index){
+function deleteCar(
+index
+){
 
 if(
 !confirm(
@@ -2486,14 +2994,17 @@ return;
 
 }
 
-cars.splice(index,1);
+cars.splice(
+index,
+1
+);
 
 renderSettings();
 
 }
 
 /* =========================================
-RESET DEFAULT
+RESET
 ========================================= */
 
 function resetDefaultCars(){
@@ -2510,7 +3021,9 @@ return;
 
 cars =
 JSON.parse(
-JSON.stringify(defaultCars)
+JSON.stringify(
+defaultCars
+)
 );
 
 localStorage.removeItem(
@@ -2532,32 +3045,44 @@ CLOSE OUTSIDE
 ========================================= */
 
 window.onclick =
-function(event){
+function(
+event
+){
 
 document
-.querySelectorAll(".modal")
-.forEach(modal=>{
+.querySelectorAll(
+".modal"
+)
+.forEach(
+function(
+modal
+){
 
 if(
 event.target === modal
 ){
 
-modal.style.display = "none";
+modal.style.display =
+"none";
 
 }
 
-});
+}
+);
 
 };
 
 /* =========================================
-START APP
+START
 ========================================= */
 
 renderModels();
 
+setLoanMode(
+10
+);
+
 </script>
 
 </body>
-
 </html>
