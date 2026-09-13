@@ -2855,7 +2855,7 @@ accept="image/*"
 
 onchange="
 uploadImage(
-event,
+this.files[0],
 ${index}
 )
 "
@@ -2985,7 +2985,7 @@ index
 ){
 
 const file =
-event.target.files[0];
+event;
 
 if(
 !file
