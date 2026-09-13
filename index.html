@@ -3035,16 +3035,6 @@ function(e){
 cars[index].image =
 e.target.result;
 
-const imageInput =
-document.querySelector(
-`[data-index="${index}"][data-field="image"]`
-);
-
-if(imageInput){
-imageInput.value =
-e.target.result;
-}
-
 const preview =
 document.getElementById(
 "preview-" +
