@@ -3146,8 +3146,29 @@ parts[0]
 
 else{
 
+if(field === "image"){
+
+const value =
+input.value.trim();
+
+if(
+value &&
+!cars[index].image.startsWith("data:")
+){
+
+cars[index].image =
+value;
+
+}
+
+}
+
+else{
+
 cars[index][field] =
 input.value.trim();
+
+}
 
 }
 
