@@ -3251,10 +3251,18 @@ function saveSettings(){
 
       else{
 
-        cars[index][field] =
-          input.value;
+  if(
+    field === "image" &&
+    cars[index].image &&
+    cars[index].image.startsWith("data:")
+  ){
+    return;
+  }
 
-      }
+  cars[index][field] =
+    input.value;
+
+}
 
     });
 
