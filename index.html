@@ -3081,121 +3081,77 @@ SAVE SETTINGS
 
 function saveSettings(){
 
-document
-.querySelectorAll(
-"[data-index]"
-)
-.forEach(
-function(
-input
-){
+  document
+    .querySelectorAll("[data-index]")
+    .forEach(function(input){
 
-const index =
-Number(
-input.dataset.index
-);
+      const index =
+        Number(input.dataset.index);
 
-const field =
-input.dataset.field;
+      const field =
+        input.dataset.field;
 
-if(
-field === "variants"
-){
+      if(
+        !cars[index] ||
+        !field
+      ){
+        return;
+      }
 
-cars[index].variants =
+      if(field === "variants"){
 
-input.value
+        cars[index].variants =
+          input.value
+            .split("\n")
+            .map(function(x){
 
-.split(
-"\n"
-)
+              return x
+                .split("|")
+                .map(function(v){
+                  return v.trim();
+                });
 
-.filter(
-x =>
-x.trim() !== ""
-)
+            })
+            .filter(function(x){
+              return x[0] && x[1];
+            });
 
-.map(
-function(
-line
-){
+      }else{
 
-const parts =
-line.split(
-"|"
-);
+        cars[index][field] =
+          input.value;
 
-return [
+      }
 
-parts[0]
-.trim(),
+    });
 
-(parts[1] || "0")
-.replace(
-/,/g,
-""
-)
-.trim()
 
-];
+  const saved = saveCars();
 
-}
-);
 
-}
+  closeModal("settingsModal");
 
-else{
+  renderModels();
 
-if(field === "image"){
 
-const value =
-input.value.trim();
+  if(saved){
 
-if(
-value &&
-!cars[index].image.startsWith("data:")
-){
+    alert("✅ Berjaya disimpan!");
 
-cars[index].image =
-value;
+  }else{
+
+    alert(
+      "✅ Perubahan berjaya digunakan!\n\n" +
+      "HTML Creator Preview tidak membenarkan " +
+      "simpanan kekal. Bila aplikasi di-host, " +
+      "fungsi simpan boleh digunakan."
+    );
+
+  }
 
 }
 
-}
 
-else{
-
-cars[index][field] =
-input.value.trim();
-
-}
-
-}
-
-}
-);
-
-localStorage.setItem(
-
-"amirPeroduaCars",
-
-JSON.stringify(
-cars
-)
-
-);
-
-closeModal(
-"settingsModal"
-);
-
-renderModels();
-
-alert(
-"Berjaya disimpan!"
-);
-
-}
 
 /* =========================================
 ADD NEW CAR
