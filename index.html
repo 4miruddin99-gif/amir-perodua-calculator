@@ -2804,9 +2804,7 @@ car.name
 <div class="setting-row">
 
 <input
-
 data-index="${index}"
-
 data-field="name"
 
 value="${escapeHTML(
@@ -2818,9 +2816,7 @@ placeholder="Nama Model"
 >
 
 <input
-
 data-index="${index}"
-
 data-field="price"
 
 value="${escapeHTML(
@@ -2866,7 +2862,6 @@ alt="Preview"
 <input
 
 data-index="${index}"
-
 data-field="image"
 
 value="${escapeHTML(
@@ -2913,7 +2908,7 @@ Varian
 <small>
 
 Format:
-Nama Varian | Harga
+Nama Varian | Harga | Rebate
 
 </small>
 
@@ -2924,7 +2919,6 @@ Nama Varian | Harga
 rows="6"
 
 data-index="${index}"
-
 data-field="variants"
 
 >${car.variants
@@ -2935,6 +2929,10 @@ v[0]
 "|"
 +
 v[1]
++
+"|"
++
+(v[2] || "0")
 )
 .join(
 "\n"
@@ -2961,6 +2959,7 @@ Padam Model
 `;
 
 }
+
 );
 
 }
