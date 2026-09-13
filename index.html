@@ -1613,15 +1613,58 @@ LOAD DATA
 ========================================= */
 
 let cars =
-JSON.parse(
-localStorage.getItem(
-"amirPeroduaCars"
-)
-)
-||
-JSON.parse(
-JSON.stringify(defaultCars)
-);
+  JSON.parse(
+    JSON.stringify(defaultCars)
+  );
+
+
+function loadSavedCars(){
+
+  try{
+
+    if(
+      typeof localStorage === "undefined"
+    ){
+      return;
+    }
+
+    const saved =
+      localStorage.getItem(
+        "amirPeroduaCars"
+      );
+
+    if(saved){
+
+      const parsed =
+        JSON.parse(saved);
+
+      if(
+        Array.isArray(parsed)
+      ){
+
+        cars = parsed;
+
+      }
+
+    }
+
+  }catch(error){
+
+    console.log(
+      "Storage tidak tersedia dalam HTML Creator Preview."
+    );
+
+  }
+
+}
+
+
+loadSavedCars();
+
+
+let selectedYear = 9;
+
+let currentMode = "budget";
 
 let selectedYear = 9;
 
