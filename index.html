@@ -3076,7 +3076,70 @@ file
 }
 
 /* =========================================
-SAVE SETTINGS
+   SAFE SAVE SYSTEM
+========================================= */
+
+function saveCars(){
+
+  try{
+
+    if(
+      typeof localStorage === "undefined"
+    ){
+      return false;
+    }
+
+    localStorage.setItem(
+      "amirPeroduaCars",
+      JSON.stringify(cars)
+    );
+
+    return true;
+
+  }catch(error){
+
+    console.log(
+      "Storage tidak tersedia dalam HTML Creator Preview."
+    );
+
+    return false;
+
+  }
+
+}
+
+
+/* =========================================
+   REMOVE SAVED DATA
+========================================= */
+
+function removeSavedCars(){
+
+  try{
+
+    if(
+      typeof localStorage !== "undefined"
+    ){
+
+      localStorage.removeItem(
+        "amirPeroduaCars"
+      );
+
+    }
+
+  }catch(error){
+
+    console.log(
+      "Storage tidak tersedia."
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   SAVE SETTINGS
 ========================================= */
 
 function saveSettings(){
@@ -3086,7 +3149,9 @@ function saveSettings(){
     .forEach(function(input){
 
       const index =
-        Number(input.dataset.index);
+        Number(
+          input.dataset.index
+        );
 
       const field =
         input.dataset.field;
@@ -3098,25 +3163,53 @@ function saveSettings(){
         return;
       }
 
-      if(field === "variants"){
+
+      /* VARIANTS */
+
+      if(
+        field === "variants"
+      ){
 
         cars[index].variants =
+
           input.value
+
             .split("\n")
-            .map(function(x){
 
-              return x
-                .split("|")
-                .map(function(v){
-                  return v.trim();
-                });
+            .map(
+              function(x){
 
-            })
-            .filter(function(x){
-              return x[0] && x[1];
-            });
+                return x
 
-      }else{
+                  .split("|")
+
+                  .map(
+                    function(v){
+
+                      return v.trim();
+
+                    }
+                  );
+
+              }
+            )
+
+            .filter(
+              function(x){
+
+                return (
+                  x[0] &&
+                  x[1]
+                );
+
+              }
+            );
+
+      }
+
+      /* NORMAL FIELD */
+
+      else{
 
         cars[index][field] =
           input.value;
@@ -3126,17 +3219,31 @@ function saveSettings(){
     });
 
 
-  const saved = saveCars();
+  /* SAVE */
+
+  const saved =
+    saveCars();
 
 
-  closeModal("settingsModal");
+  /* CLOSE SETTINGS */
+
+  closeModal(
+    "settingsModal"
+  );
+
+
+  /* REFRESH MODEL */
 
   renderModels();
 
 
+  /* MESSAGE */
+
   if(saved){
 
-    alert("✅ Berjaya disimpan!");
+    alert(
+      "✅ Berjaya disimpan!"
+    );
 
   }else{
 
@@ -3148,6 +3255,36 @@ function saveSettings(){
     );
 
   }
+
+}
+
+
+/* =========================================
+   RESET DEFAULT CARS
+========================================= */
+
+function resetDefaultCars(){
+
+  cars =
+    JSON.parse(
+      JSON.stringify(
+        defaultCars
+      )
+    );
+
+
+  removeSavedCars();
+
+
+  renderSettings();
+
+
+  renderModels();
+
+
+  alert(
+    "✅ Tetapan asal telah dipulihkan!"
+  );
 
 }
 
