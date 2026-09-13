@@ -1263,14 +1263,44 @@ Kira anggaran bayaran bulanan customer.
 <div class="calc-card">
 
 <label>
-Harga Kereta
+Model Kereta
 </label>
 
+<select id="calcModel" onchange="calcModelChanged()">
+  <option value="">Pilih Model</option>
+</select>
+
+<label>
+Variant
+</label>
+
+<select id="calcVariant" onchange="calcVariantChanged()">
+  <option value="">Pilih Variant</option>
+</select>
+
+<div class="calc-price-info">
+
+  <div>
+    <span>Harga Asal</span>
+    <b id="calcOriginalPrice">RM 0</b>
+  </div>
+
+  <div>
+    <span>Rebate</span>
+    <b id="calcRebate">RM 0</b>
+  </div>
+
+  <div class="calc-net-price">
+    <span>Harga Selepas Rebate</span>
+    <b id="calcPriceDisplay">RM 0</b>
+  </div>
+
+</div>
+
 <input
-id="calcPrice"
-type="number"
-placeholder="50000"
-inputmode="numeric"
+  id="calcPrice"
+  type="hidden"
+  value="0"
 >
 
 <label>
@@ -2200,6 +2230,217 @@ document
 }
 
 /* =========================================
+CALCULATOR MODEL + VARIANT + REBATE
+========================================= */
+
+function initLoanCarPicker(){
+
+const modelSelect =
+document.getElementById("calcModel");
+
+if(!modelSelect){
+return;
+}
+
+modelSelect.innerHTML =
+'<option value="">Pilih Model</option>';
+
+cars.forEach(function(car,index){
+
+modelSelect.innerHTML +=
+`
+<option value="${index}">
+${escapeHTML(car.name)}
+</option>
+`;
+
+});
+
+const variantSelect =
+document.getElementById("calcVariant");
+
+variantSelect.innerHTML =
+'<option value="">Pilih Variant</option>';
+
+document.getElementById(
+"calcOriginalPrice"
+).textContent = "RM 0";
+
+document.getElementById(
+"calcRebate"
+).textContent = "RM 0";
+
+document.getElementById(
+"calcPriceDisplay"
+).textContent = "RM 0";
+
+document.getElementById(
+"calcPrice"
+).value = "0";
+
+}
+
+
+function calcModelChanged(){
+
+const modelIndex =
+Number(
+document.getElementById(
+"calcModel"
+).value
+);
+
+const variantSelect =
+document.getElementById(
+"calcVariant"
+);
+
+variantSelect.innerHTML =
+'<option value="">Pilih Variant</option>';
+
+if(
+!Number.isInteger(modelIndex)
+||
+!cars[modelIndex]
+){
+
+updateLoanPriceDisplay(
+0,
+0
+);
+
+return;
+
+}
+
+const car =
+cars[modelIndex];
+
+car.variants.forEach(
+function(variant,index){
+
+variantSelect.innerHTML +=
+`
+<option value="${index}">
+${escapeHTML(variant[0])}
+</option>
+`;
+
+});
+
+updateLoanPriceDisplay(
+0,
+0
+);
+
+}
+
+
+function calcVariantChanged(){
+
+const modelIndex =
+Number(
+document.getElementById(
+"calcModel"
+).value
+);
+
+const variantIndex =
+Number(
+document.getElementById(
+"calcVariant"
+).value
+);
+
+if(
+!cars[modelIndex]
+||
+!cars[modelIndex].variants[variantIndex]
+){
+
+updateLoanPriceDisplay(
+0,
+0
+);
+
+return;
+
+}
+
+const variant =
+cars[modelIndex].variants[
+variantIndex
+];
+
+const originalPrice =
+Number(
+variant[1]
+) || 0;
+
+const rebate =
+Number(
+variant[2]
+) || 0;
+
+const netPrice =
+Math.max(
+0,
+originalPrice - rebate
+);
+
+updateLoanPriceDisplay(
+originalPrice,
+rebate,
+netPrice
+);
+
+}
+
+
+function updateLoanPriceDisplay(
+originalPrice,
+rebate,
+netPrice
+){
+
+document.getElementById(
+"calcOriginalPrice"
+).textContent =
+"RM " +
+formatMoney(
+originalPrice
+);
+
+document.getElementById(
+"calcRebate"
+).textContent =
+"RM " +
+formatMoney(
+rebate
+);
+
+document.getElementById(
+"calcPriceDisplay"
+).textContent =
+"RM " +
+formatMoney(
+netPrice || Math.max(
+0,
+originalPrice - rebate
+)
+);
+
+document.getElementById(
+"calcPrice"
+).value =
+netPrice || Math.max(
+0,
+originalPrice - rebate
+);
+
+}
+
+/* =========================================
 CLOSE MODAL
 ========================================= */
 
@@ -3066,6 +3307,8 @@ START
 ========================================= */
 
 renderModels();
+
+initLoanCarPicker();
 
 setLoanMode(
 10
