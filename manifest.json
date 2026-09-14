@@ -1,0 +1,11 @@
+{
+  "name": "AMIR PERODUA Auto Calculate System",
+  "short_name": "AMIR PERODUA",
+  "description": "Perodua Auto Calculate System",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f6",
+  "theme_color": "#006b52",
+  "orientation": "portrait"
+}
