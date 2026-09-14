@@ -2158,14 +2158,33 @@ function(
 variant
 ){
 
+const originalPrice =
+Number(
+variant[1]
+) || 0;
+
+const rebate =
+Number(
+String(
+variant[2] || 0
+)
+.replace(/RM|,/g,"")
+) || 0;
+
+const netPrice =
+Math.max(
+0,
+originalPrice - rebate
+);
+
 const monthly =
 calculateMonthly(
-variant[1]
+netPrice
 );
 
 const layak =
 isVariantEligible(
-variant[1]
+netPrice
 );
 
 variantsHTML += `
@@ -2191,9 +2210,46 @@ variant[0]
 
 <div class="variant-price">
 
+Harga Asal:
 RM ${formatMoney(
-variant[1]
+originalPrice
 )}
+
+${rebate > 0 ? `
+
+<br>
+
+<span
+style="
+color:#c92736;
+font-weight:800;
+"
+>
+
+Rebate:
+-RM ${formatMoney(
+rebate
+)}
+
+</span>
+
+<br>
+
+<span
+style="
+color:#167152;
+font-weight:800;
+"
+>
+
+Harga Selepas Rebate:
+RM ${formatMoney(
+netPrice
+)}
+
+</span>
+
+` : ""}
 
 <br>
 
