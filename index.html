@@ -3084,102 +3084,242 @@ img.style.display =
 }
 
 /* =========================================
-UPLOAD IMAGE FROM IPHONE
+   UPLOAD IMAGE + AUTO SAVE
 ========================================= */
 
-function uploadImage(
-event,
-index
-){
+async function uploadImage(file, index){
 
-const file =
-event;
+  if(!file){
+    return;
+  }
 
-if(
-!file
-){
+  if(!file.type.startsWith("image/")){
 
-return;
+    alert("Sila pilih fail gambar.");
 
-}
+    return;
+  }
 
-if(
-!file.type.startsWith(
-"image/"
-)
-){
+  if(!cars[index]){
 
-alert(
-"Sila pilih fail gambar."
-);
+    alert("Model tidak dijumpai.");
 
-return;
+    return;
+  }
 
-}
+  /*
+    Had gambar asal 15MB
+  */
 
-/*
-Maximum 4MB
-*/
+  if(file.size > 15 * 1024 * 1024){
 
-if(
-file.size >
-4 * 1024 * 1024
-){
+    alert(
+      "Gambar terlalu besar.\n\n" +
+      "Sila pilih gambar bawah 15MB."
+    );
 
-alert(
-"Gambar terlalu besar. Sila pilih gambar bawah 4MB."
-);
+    return;
+  }
 
-return;
+  const reader = new FileReader();
 
-}
+  reader.onload = function(event){
 
-const reader =
-new FileReader();
+    const source = event.target.result;
 
-reader.onload =
-function(e){
+    const image = new Image();
 
-cars[index].image =
-e.target.result;
+    image.onload = async function(){
 
-const preview =
-document.getElementById(
-"preview-" +
-index
-);
+      /*
+        Kecilkan gambar supaya storage
+        tidak terlalu berat.
+      */
 
-if(
-preview
-){
+      const maxSide = 1400;
 
-preview.src =
-e.target.result;
+      const scale =
+        Math.min(
+          1,
+          maxSide /
+          Math.max(
+            image.width,
+            image.height
+          )
+        );
 
-preview.style.display =
-"block";
+      const canvas =
+        document.createElement(
+          "canvas"
+        );
 
-}
+      canvas.width =
+        Math.max(
+          1,
+          Math.round(
+            image.width * scale
+          )
+        );
 
-localStorage.setItem(
+      canvas.height =
+        Math.max(
+          1,
+          Math.round(
+            image.height * scale
+          )
+        );
 
-"amirPeroduaCars",
+      const ctx =
+        canvas.getContext("2d");
 
-JSON.stringify(
-cars
-)
+      /*
+        Kekalkan keseluruhan gambar.
+        Tiada crop.
+      */
 
-);
+      ctx.drawImage(
+        image,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
 
-alert(
-"Gambar berjaya dimasukkan. Tekan SIMPAN SEMUA PERUBAHAN."
-);
+      /*
+        Tukar kepada JPEG yang lebih ringan.
+      */
 
-};
+      const compressed =
+        canvas.toDataURL(
+          "image/jpeg",
+          0.84
+        );
 
-reader.readAsDataURL(
-file
-);
+      /*
+        MASUKKAN GAMBAR BARU
+        TERUS KE MODEL
+      */
+
+      cars[index].image =
+        compressed;
+
+
+      /*
+        UPDATE PREVIEW
+      */
+
+      const preview =
+        document.getElementById(
+          "preview-" + index
+        );
+
+      if(preview){
+
+        preview.src =
+          compressed;
+
+        preview.style.display =
+          "block";
+      }
+
+
+      /*
+        UPDATE INPUT GAMBAR
+      */
+
+      const imageInput =
+        document.querySelector(
+          '#settingsList input[data-index="' +
+          index +
+          '"][data-field="image"]'
+        );
+
+      if(imageInput){
+
+        imageInput.value =
+          "Gambar dipilih dari Photos / Files";
+      }
+
+
+      /*
+        =====================================
+        AUTO SAVE
+        =====================================
+
+        Tidak perlu tekan:
+        SIMPAN SEMUA PERUBAHAN
+
+        Gambar terus disimpan.
+      */
+
+      const saved =
+        await saveCars();
+
+
+      /*
+        BERJAYA
+      */
+
+      if(saved && saved.ok){
+
+        alert(
+          "✅ GAMBAR BERJAYA DITUKAR!\n\n" +
+          "Gambar telah disimpan secara automatik.\n\n" +
+          "Bila aplikasi dibuka semula, " +
+          "gambar ini akan kekal."
+        );
+
+      }
+
+      /*
+        STORAGE TIDAK BOLEH DIGUNAKAN
+      */
+
+      else{
+
+        alert(
+          "⚠️ Gambar berjaya ditukar.\n\n" +
+          "Tetapi browser/HTML Creator Preview " +
+          "tidak membenarkan simpanan kekal.\n\n" +
+          "Bila aplikasi sudah di-host sebagai " +
+          "website/PWA, fungsi simpan automatik " +
+          "boleh digunakan."
+        );
+
+      }
+
+    };
+
+
+    image.onerror =
+      function(){
+
+        alert(
+          "Gambar tidak dapat diproses."
+        );
+
+      };
+
+
+    image.src =
+      source;
+
+  };
+
+
+  reader.onerror =
+    function(){
+
+      alert(
+        "Gagal membaca gambar."
+      );
+
+    };
+
+
+  reader.readAsDataURL(
+    file
+  );
 
 }
 
