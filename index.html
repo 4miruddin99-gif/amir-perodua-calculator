@@ -1048,6 +1048,228 @@ button:active{
   width:100%;
 }
 
+/* =========================================================
+   AMIR PERODUA - PAPARAN LIVE TABLET
+========================================================= */
+
+@media (min-width:700px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  /* Kurangkan ruang header */
+  .topbar{
+    padding:12px 18px !important;
+    min-height:75px !important;
+  }
+
+  /* Kurangkan ruang statistik */
+  .stats{
+    padding:8px 15px 3px !important;
+    gap:8px !important;
+  }
+
+  .stat-card{
+    padding:8px !important;
+  }
+
+  .stat-number{
+    font-size:21px !important;
+  }
+
+  .stat-label{
+    font-size:8px !important;
+  }
+
+  /* Butang Bajet / Gaji */
+  .mode-section{
+    padding:8px 15px 0 !important;
+  }
+
+  .mode-btn{
+    padding:9px !important;
+  }
+
+  /* Kotak bajet */
+  .input-card{
+    padding:10px 14px !important;
+  }
+
+  /* Tempoh & jenis pinjaman */
+  .settings-card{
+    margin:7px 15px 0 !important;
+    padding:9px 12px !important;
+  }
+
+  .choice-btn{
+    padding:8px 5px !important;
+  }
+
+  /* Bahagian model */
+  .section{
+    padding:12px 15px 0 !important;
+  }
+
+  .section-heading{
+    margin-bottom:7px !important;
+  }
+
+  /* 3 MODEL SATU BARIS */
+  .model-grid{
+    display:grid !important;
+    grid-template-columns:
+      repeat(3,minmax(0,1fr)) !important;
+
+    gap:9px !important;
+  }
+
+  /* Kad kereta lebih padat */
+  .model-card{
+    border-radius:15px !important;
+  }
+
+  /* Gambar kereta */
+  .car-image-wrap{
+    height:115px !important;
+  }
+
+  .car-image{
+    padding:6px !important;
+  }
+
+  /* Nama model */
+  .model-name{
+    font-size:14px !important;
+  }
+
+  /* Harga */
+  .model-range{
+    font-size:8px !important;
+    margin-top:3px !important;
+  }
+
+  /* Status LULUS */
+  .model-action{
+    margin-top:5px !important;
+    font-size:7px !important;
+  }
+
+  /* Rebate */
+  .rebate-badge{
+    top:6px !important;
+    right:6px !important;
+    padding:5px 7px !important;
+    font-size:7px !important;
+  }
+
+  /* Bottom menu lebih rendah */
+  .bottom-nav{
+    padding:
+      4px 10px
+      calc(4px + env(safe-area-inset-bottom))
+      !important;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET PORTRAIT
+========================================================= */
+
+@media
+(min-width:700px)
+and
+(max-width:1000px)
+and
+(orientation:portrait){
+
+  .brand-features{
+    display:none !important;
+  }
+
+  .topbar{
+    min-height:70px !important;
+  }
+
+  .car-image-wrap{
+    height:120px !important;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET LANDSCAPE - SESUAI UNTUK LIVE
+========================================================= */
+
+@media
+(min-width:700px)
+and
+(orientation:landscape){
+
+  .topbar{
+    padding:8px 15px !important;
+    min-height:60px !important;
+  }
+
+  .brand-logo{
+    width:42px !important;
+    height:42px !important;
+  }
+
+  .brand-title{
+    font-size:16px !important;
+  }
+
+  .brand-subtitle{
+    font-size:7px !important;
+  }
+
+  .stats{
+    padding:6px 15px 2px !important;
+  }
+
+  .mode-section{
+    padding-top:5px !important;
+  }
+
+  .input-card{
+    padding:7px 12px !important;
+  }
+
+  .settings-card{
+    padding:7px 10px !important;
+    margin-top:5px !important;
+  }
+
+  .section{
+    padding-top:8px !important;
+  }
+
+  .model-grid{
+    gap:8px !important;
+  }
+
+  .car-image-wrap{
+    height:105px !important;
+  }
+
+  .model-card-content{
+    padding:7px 9px !important;
+  }
+
+  .model-name{
+    font-size:13px !important;
+  }
+
+  .model-range{
+    font-size:8px !important;
+  }
+
+}
+
 </style>
 
 <link rel="manifest" href="./manifest.json">
