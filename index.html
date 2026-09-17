@@ -3925,35 +3925,19 @@ setLoanMode(
 </script>
 
 <script>
+function enterFullScreen(){
+  const el = document.documentElement;
 
-if ("serviceWorker" in navigator) {
-
-  window.addEventListener("load", function() {
-
-    navigator.serviceWorker
-      .register("./service-worker.js")
-
-      .then(function() {
-
-        console.log(
-          "AMIR PERODUA Service Worker aktif."
-        );
-
-      })
-
-      .catch(function(error) {
-
-        console.log(
-          "Service Worker gagal:",
-          error
-        );
-
-      });
-
-  });
-
+  if(el.requestFullscreen){
+    el.requestFullscreen().catch(()=>{});
+  }else if(el.webkitRequestFullscreen){
+    el.webkitRequestFullscreen();
+  }
 }
 
+document.addEventListener("click", function(){
+  enterFullScreen();
+},{once:true});
 </script>
 
 </body>
