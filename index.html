@@ -230,8 +230,8 @@ button:active{transform:scale(.98)}
 
 <div class="app">
   <div class="mode-box">
-    <button id="budgetMode" class="mode-btn active" onclick="setMode('budget')">ð¼ Bajet Bulanan</button>
-    <button id="salaryMode" class="mode-btn" onclick="setMode('salary')">ð¤ Semak Gaji</button>
+    <button id="budgetMode" class="mode-btn active" onclick="setMode('budget')">💼 Bajet Bulanan</button>
+    <button id="salaryMode" class="mode-btn" onclick="setMode('salary')">👤 Semak Gaji</button>
   </div>
 
   <div class="input-section">
@@ -239,7 +239,7 @@ button:active{transform:scale(.98)}
     <div class="money-box">
       <div class="rm-label">RM</div>
       <input id="budgetInput" type="number" placeholder="1800" inputmode="numeric" value="1800" oninput="renderModels()">
-      <button class="clear-btn" onclick="clearBudget()">Ã</button>
+      <button class="clear-btn" onclick="clearBudget()">×</button>
     </div>
   </div>
 
@@ -250,7 +250,7 @@ button:active{transform:scale(.98)}
   </div>
 
   <div class="status">
-    <span id="passCount" class="pass-text">0 model LULUS</span> â¢
+    <span id="passCount" class="pass-text">0 model LULUS</span> •
     <span id="failCount" class="fail-text">0 model GAGAL</span>
   </div>
 
@@ -258,22 +258,22 @@ button:active{transform:scale(.98)}
 </div>
 
 <nav class="bottom-nav">
-  <button class="nav-btn active" onclick="showModels(this)"><span class="nav-icon">ð</span>Senarai Model</button>
-  <button class="nav-btn" onclick="showCalculator(this)"><span class="nav-icon">â£</span>Kalkulator</button>
-  <button class="nav-btn" onclick="showInfo(this)"><span class="nav-icon">ð</span>Info</button>
-  <button class="nav-btn" onclick="openSettings();setNav(this)"><span class="nav-icon">âï¸</span>Tetapan</button>
+  <button class="nav-btn active" onclick="showModels(this)"><span class="nav-icon">🚗</span>Senarai Model</button>
+  <button class="nav-btn" onclick="showCalculator(this)"><span class="nav-icon">▣</span>Kalkulator</button>
+  <button class="nav-btn" onclick="showInfo(this)"><span class="nav-icon">📄</span>Info</button>
+  <button class="nav-btn" onclick="openSettings();setNav(this)"><span class="nav-icon">⚙️</span>Tetapan</button>
 </nav>
 
 <div id="detailModal" class="modal" onclick="modalBackdrop(event,'detailModal')">
   <div class="modal-box">
-    <button class="close-modal" onclick="closeModal('detailModal')">Ã</button>
+    <button class="close-modal" onclick="closeModal('detailModal')">×</button>
     <div id="detailContent"></div>
   </div>
 </div>
 
 <div id="calculatorModal" class="modal" onclick="modalBackdrop(event,'calculatorModal')">
   <div class="modal-box">
-    <button class="close-modal" onclick="closeModal('calculatorModal')">Ã</button>
+    <button class="close-modal" onclick="closeModal('calculatorModal')">×</button>
     <div class="modal-title">Kalkulator Loan</div>
     <div class="modal-subtitle">Kira anggaran bayaran bulanan customer.</div>
     <div class="calc-card">
@@ -318,52 +318,52 @@ button:active{transform:scale(.98)}
 
 <div id="infoModal" class="modal" onclick="modalBackdrop(event,'infoModal')">
   <div class="modal-box">
-    <button class="close-modal" onclick="closeModal('infoModal')">Ã</button>
+    <button class="close-modal" onclick="closeModal('infoModal')">×</button>
     <div class="modal-title">AMIR PERODUA</div>
     <div class="modal-subtitle">AUTO CALCULATE SYSTEM</div>
     <hr>
     <div class="info-list">
-      <p><b>ð¼ Bajet Bulanan</b><br>Masukkan jumlah maksimum bayaran bulanan yang customer mampu bayar.</p>
-      <p><b>ð¤ Semak Gaji</b><br>Sistem menggunakan anggaran 1/3 daripada gaji untuk komitmen kereta.</p>
-      <p><b>âï¸ Interest Rate</b><br>Setiap model sekarang mempunyai kadar faedah sendiri. Amir boleh ubah kadar setiap kereta melalui Tetapan.</p>
-      <p>â ï¸ Semua kiraan adalah anggaran sahaja. Kelulusan sebenar tertakluk kepada pihak bank dan profil pelanggan.</p>
+      <p><b>💼 Bajet Bulanan</b><br>Masukkan jumlah maksimum bayaran bulanan yang customer mampu bayar.</p>
+      <p><b>👤 Semak Gaji</b><br>Sistem menggunakan anggaran 1/3 daripada gaji untuk komitmen kereta.</p>
+      <p><b>⚙️ Interest Rate</b><br>Setiap model sekarang mempunyai kadar faedah sendiri. Amir boleh ubah kadar setiap kereta melalui Tetapan.</p>
+      <p>⚠️ Semua kiraan adalah anggaran sahaja. Kelulusan sebenar tertakluk kepada pihak bank dan profil pelanggan.</p>
     </div>
   </div>
 </div>
 
 <div id="settingsModal" class="modal" onclick="modalBackdrop(event,'settingsModal')">
   <div class="modal-box">
-    <button class="close-modal" onclick="closeModal('settingsModal')">Ã</button>
-    <div class="modal-title">âï¸ Tetapan Sistem</div>
+    <button class="close-modal" onclick="closeModal('settingsModal')">×</button>
+    <div class="modal-title">⚙️ Tetapan Sistem</div>
     <div class="modal-subtitle">Edit nama model, harga, gambar, varian, rebate dan <b>interest rate setiap kereta</b>.</div>
     <div id="settingsList"></div>
-    <button class="save-btn" onclick="addNewCar()">ï¼ TAMBAH MODEL BARU</button>
-    <button class="save-btn" onclick="saveSettings()">ð¾ SIMPAN SEMUA PERUBAHAN</button>
-    <button class="reset-btn" onclick="resetDefaultCars()">â» RESET KE DATA ASAL</button>
+    <button class="save-btn" onclick="addNewCar()">＋ TAMBAH MODEL BARU</button>
+    <button class="save-btn" onclick="saveSettings()">💾 SIMPAN SEMUA PERUBAHAN</button>
+    <button class="reset-btn" onclick="resetDefaultCars()">↻ RESET KE DATA ASAL</button>
   </div>
 </div>
 
 <script>
 const defaultCars = [
-  {name:"AXIA",price:"35,533 â 51,054",image:"axia.png",rate:3.25,variants:[
+  {name:"AXIA",price:"35,533 – 51,054",image:"axia.png",rate:3.25,variants:[
     ["1.0 G","35533","500"],["1.0 X","40245","500"],["1.0 SE","44886","500"],["1.0 AV","51054","500"]
   ]},
-  {name:"BEZZA",price:"36,277 â 52,126",image:"bezza.png",rate:3.25,variants:[
+  {name:"BEZZA",price:"36,277 – 52,126",image:"bezza.png",rate:3.25,variants:[
     ["1.0 G (MT)","36277","1500"],["1.0 G (AT)","38334","1500"],["1.3 X (AT)","45958","1500"],["1.3 AV (AT)","52126","1500"]
   ]},
-  {name:"MYVI",price:"48,509 â 62,302",image:"myvi.png",rate:3.25,variants:[
+  {name:"MYVI",price:"48,509 – 62,302",image:"myvi.png",rate:3.25,variants:[
     ["1.3 G (CVT)","48509","1500"],["1.3 X (CVT)","51900","1500"],["1.5 X (CVT)","55900","1500"],["1.5 H (CVT)","59900","1500"],["1.5 AV (CVT)","62302","1500"]
   ]},
-  {name:"ATIVA",price:"64,919 â 75,828",image:"ativa.png",rate:3.25,variants:[
+  {name:"ATIVA",price:"64,919 – 75,828",image:"ativa.png",rate:3.25,variants:[
     ["1.0 X","64919","9500"],["1.0 H","69859","9500"],["1.0 H S/Metallic","70387","9500"],["1.0 AV","75299","9500"],["1.0 AV S/Metallic","75828","9500"]
   ]},
-  {name:"ALZA",price:"64,993 â 78,358",image:"alza.png",rate:3.25,variants:[
+  {name:"ALZA",price:"64,993 – 78,358",image:"alza.png",rate:3.25,variants:[
     ["1.5 X","64993","0"],["1.5 H","70662","0"],["1.5 AV","78358","0"]
   ]},
-  {name:"ARUZ",price:"75,762 â 80,961",image:"aruz.png",rate:3.25,variants:[
+  {name:"ARUZ",price:"75,762 – 80,961",image:"aruz.png",rate:3.25,variants:[
     ["1.5 X","75762","4000"],["1.5 AV","80961","4000"]
   ]},
-  {name:"TRAZ",price:"79,055 â 85,124",image:"traz.png",rate:3.25,variants:[
+  {name:"TRAZ",price:"79,055 – 85,124",image:"traz.png",rate:3.25,variants:[
     ["1.5 X","79055","0"],["1.5 H","82000","0"],["1.5 AV","85124","0"]
   ]}
 ];
@@ -439,12 +439,12 @@ function renderModels(){
 
     const src=validImage(car.image)?car.image:"";
     const imageHTML=src
-      ? `<img src="${src}" alt="${escapeHTML(car.name)}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=car-emoji>ð</div>'">`
-      : `<div class="car-emoji">ð</div>`;
+      ? `<img src="${src}" alt="${escapeHTML(car.name)}" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=car-emoji>🚗</div>'">`
+      : `<div class="car-emoji">🚗</div>`;
 
     const badgeText=passVariants
-      ? `â LULUS ${passVariants}/${car.variants.length} VARIAN`
-      : `Ã GAGAL SEMUA VARIAN`;
+      ? `✓ LULUS ${passVariants}/${car.variants.length} VARIAN`
+      : `× GAGAL SEMUA VARIAN`;
 
     grid.innerHTML+=`
       <div class="car-card ${modelEligible?"pass":""}" onclick="openCar(${index})">
@@ -481,7 +481,7 @@ function openCar(index){
             Harga Asal: RM ${formatMoney(originalPrice)}
             ${rebate>0?`<br><span style="color:#c92736;font-weight:800">Rebate: -RM ${formatMoney(rebate)}</span>
             <br><span style="color:#167152;font-weight:800">Harga Selepas Rebate: RM ${formatMoney(netPrice)}</span>`:""}
-            <br><span class="${layak?"variant-status-pass":"variant-status-fail"}">${layak?"â LULUS":"Ã GAGAL"}</span>
+            <br><span class="${layak?"variant-status-pass":"variant-status-fail"}">${layak?"✓ LULUS":"× GAGAL"}</span>
           </div>
         </div>
         <div class="variant-month">RM ${formatMoney(monthly)}<small>/bulan</small></div>
@@ -490,13 +490,13 @@ function openCar(index){
 
   const src=validImage(car.image)?car.image:"";
   const hero=src
-    ? `<img src="${src}" alt="${escapeHTML(car.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="car-emoji" style="display:none">ð</div>`
-    : `<div class="car-emoji">ð</div>`;
+    ? `<img src="${src}" alt="${escapeHTML(car.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="car-emoji" style="display:none">🚗</div>`
+    : `<div class="car-emoji">🚗</div>`;
 
   document.getElementById("detailContent").innerHTML=`
     <div class="modal-title">${escapeHTML(car.name)}</div>
-    <div class="modal-subtitle">ANGGARAN ${selectedYear} TAHUN â¢ SEMAK KELAYAKAN</div>
-    <div class="detail-rate">ð° KADAR FAEDAH: ${getRate(car).toFixed(2)}% SETAHUN</div>
+    <div class="modal-subtitle">ANGGARAN ${selectedYear} TAHUN • SEMAK KELAYAKAN</div>
+    <div class="detail-rate">💰 KADAR FAEDAH: ${getRate(car).toFixed(2)}% SETAHUN</div>
     <div class="detail-hero">${hero}</div>
     ${variantsHTML}
   `;
@@ -555,7 +555,7 @@ function manualCalculate(){
   const down=price*dp/100,loan=price-down;
   const monthly=(loan+(loan*rate*years))/(years*12);
   document.getElementById("calcResult").textContent="RM "+formatMoney(monthly)+" /bulan";
-  document.getElementById("calcDetail").textContent=`Loan RM ${formatMoney(loan)} â¢ DP RM ${formatMoney(down)} â¢ ${years} Tahun â¢ ${(rate*100).toFixed(2)}%`;
+  document.getElementById("calcDetail").textContent=`Loan RM ${formatMoney(loan)} • DP RM ${formatMoney(down)} • ${years} Tahun • ${(rate*100).toFixed(2)}%`;
 }
 
 function openSettings(){renderSettings();document.getElementById("settingsModal").style.display="flex"}
@@ -573,7 +573,7 @@ function renderSettings(){
         </div>
 
         <div class="rate-box">
-          <label>ð° INTEREST RATE UNTUK ${escapeHTML(car.name)} (% SETAHUN)</label>
+          <label>💰 INTEREST RATE UNTUK ${escapeHTML(car.name)} (% SETAHUN)</label>
           <input data-index="${index}" data-field="rate" type="number" step="0.01" min="0" max="20" value="${getRate(car).toFixed(2)}" inputmode="decimal">
           <small>Kadar ini digunakan automatik untuk kiraan ${escapeHTML(car.name)}.</small>
         </div>
@@ -620,7 +620,7 @@ async function uploadImage(file,index){
       const input=document.querySelector(`#settingsList input[data-index="${index}"][data-field="image"]`);
       if(input)input.value="Gambar dipilih dari Photos / Files";
       const saved=saveCars();
-      alert(saved?"â Gambar berjaya ditukar & disimpan!":"â ï¸ Gambar berjaya ditukar. Simpanan kekal tidak tersedia dalam preview ini.");
+      alert(saved?"✅ Gambar berjaya ditukar & disimpan!":"⚠️ Gambar berjaya ditukar. Simpanan kekal tidak tersedia dalam preview ini.");
       renderModels();
     };
     image.onerror=()=>alert("Gambar tidak dapat diproses.");
@@ -650,17 +650,17 @@ function saveSettings(){
   closeModal("settingsModal");
   renderModels();
   initLoanCarPicker();
-  alert(saved?"â Semua perubahan berjaya disimpan!":"â Perubahan digunakan. Simpanan kekal bergantung kepada browser/hosting.");
+  alert(saved?"✅ Semua perubahan berjaya disimpan!":"✅ Perubahan digunakan. Simpanan kekal bergantung kepada browser/hosting.");
 }
 function resetDefaultCars(){
   if(!confirm("Reset semua model, rebate, gambar dan interest rate kepada data asal?"))return;
   cars=JSON.parse(JSON.stringify(defaultCars));
   try{localStorage.removeItem("amirPeroduaCars")}catch(e){}
   renderSettings();renderModels();initLoanCarPicker();
-  alert("â Tetapan asal telah dipulihkan.");
+  alert("✅ Tetapan asal telah dipulihkan.");
 }
 function addNewCar(){
-  cars.push({name:"MODEL BARU",price:"0 â 0",image:"",rate:3.25,variants:[["Varian Baru","0","0"]]});
+  cars.push({name:"MODEL BARU",price:"0 – 0",image:"",rate:3.25,variants:[["Varian Baru","0","0"]]});
   renderSettings();
 }
 function deleteCar(index){
