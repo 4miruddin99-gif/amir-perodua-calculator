@@ -1,24 +1,28 @@
 {
   "name": "AMIR PERODUA Auto Calculate System",
   "short_name": "AMIR PERODUA",
-  "description": "AMIR PERODUA Auto Calculate System",
-  "lang": "ms-MY",
+  "description": "AMIR PERODUA Loan Eligibility & Auto Calculate System",
+  "id": "./",
   "start_url": "./",
   "scope": "./",
   "display": "fullscreen",
-  "display_override": ["fullscreen", "standalone"],
+  "display_override": [
+    "fullscreen",
+    "standalone",
+    "minimal-ui"
+  ],
   "orientation": "any",
   "background_color": "#003c31",
   "theme_color": "#006b52",
   "icons": [
     {
-      "src": "amir-perodua-header.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "amir-perodua-header.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
