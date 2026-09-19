@@ -672,5 +672,16 @@ renderModels();
 initLoanCarPicker();
 setLoanMode(10);
 </script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js", { scope: "./" })
+      .then(reg => console.log("AMIR PERODUA Service Worker aktif:", reg.scope))
+      .catch(err => console.error("Service Worker gagal:", err));
+  });
+}
+</script>
+
 </body>
 </html>
