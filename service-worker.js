@@ -1,4 +1,4 @@
-const CACHE_NAME = "amir-perodua-v2";
+const CACHE_NAME = "amir-perodua-pwa-v4";
 
 const ASSETS = [
   "./",
