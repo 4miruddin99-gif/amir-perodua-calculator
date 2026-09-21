@@ -75,13 +75,22 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
 .calc-rebate-row span,.calc-rebate-row b{font-size:17px;font-weight:900;color:#c92736}
 .rebate-toggle-row{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid #dce2eb;border-radius:14px;padding:12px 14px;margin-top:12px}
 .rebate-toggle-text b{display:block;font-size:14px}.rebate-toggle-text small{color:#687386;font-size:11px}
+.rebate-status{display:inline-block;padding:3px 7px;border-radius:8px;font-size:10px;vertical-align:middle;margin-left:4px}
+.rebate-status.on{background:#e3f5ed;color:#006b52}.rebate-status.off{background:#edf1f5;color:#687386}
 .toggle-switch{position:relative;width:54px;height:30px;flex:none}.toggle-switch input{display:none}
 .toggle-slider{position:absolute;inset:0;background:#c7ced8;border-radius:30px;cursor:pointer;transition:.2s}
 .toggle-slider:before{content:"";position:absolute;width:24px;height:24px;left:3px;top:3px;background:white;border-radius:50%;transition:.2s;box-shadow:0 2px 5px rgba(0,0,0,.2)}
 .toggle-switch input:checked+.toggle-slider{background:#006b52}.toggle-switch input:checked+.toggle-slider:before{transform:translateX(24px)}
 .loan-mode-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:9px}
-.loan-mode-btn{border:2px solid #dce2eb;background:#fff;padding:13px;border-radius:13px;font-weight:800;cursor:pointer}
+.loan-mode-row-3{grid-template-columns:repeat(3,1fr)}
+.loan-mode-btn{border:2px solid #dce2eb;background:#fff;padding:13px 9px;border-radius:13px;font-weight:800;cursor:pointer}
 .loan-mode-btn.active{background:#006b52;color:#fff;border-color:#006b52}
+.custom-dp-box{background:#fff;border:1px solid #dce2eb;border-radius:15px;padding:13px;margin-top:12px}
+.custom-dp-box label{margin-top:0!important}
+.custom-dp-input-wrap{display:flex;align-items:center;background:#f7f9fb;border:1px solid #ccd5df;border-radius:12px;overflow:hidden;margin-top:6px}
+.custom-dp-input-wrap span{padding:13px 12px;font-weight:900;color:#263d62;background:#eef2f6}
+.custom-dp-input-wrap input{border:0!important;outline:none!important;margin:0!important;border-radius:0!important;background:#fff!important;font-size:20px!important;font-weight:900}
+.custom-dp-box small{display:block;color:#687386;margin-top:7px;font-size:11px}
 .calculate-btn{width:100%;padding:16px;margin-top:18px;background:#006b52;color:#fff;border:0;border-radius:14px;font-size:17px;font-weight:900;cursor:pointer}
 .calc-result-box{text-align:center;margin-top:17px;padding:18px;background:#fff;border-radius:16px;border:1px solid #e2e7ee}
 .calc-result-title{font-size:12px;color:#687386;font-weight:700}.calc-result{font-size:32px;color:#006b52;font-weight:900;margin-top:5px}.calc-detail{margin-top:7px;font-size:12px;color:#687386}
@@ -105,6 +114,7 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
   .modal{padding:9px}.modal-box{width:96vw;max-height:94vh;padding:17px;border-radius:22px}.modal-title{font-size:23px}
   .detail-hero img{height:190px}.variant-row{padding:12px}.variant-name{font-size:15px}.variant-month{font-size:19px}.setting-row{grid-template-columns:1fr}
   .calc-price-info>div{padding:6px 0}.calc-otr-row span,.calc-otr-row b{font-size:17px}.calc-net-price span,.calc-net-price b{font-size:18px}
+  .loan-mode-row-3{grid-template-columns:1fr}.loan-mode-btn{padding:12px 8px}
 }
 @media(min-width:700px){
   body{overflow-x:hidden}.app{max-width:1180px}.mode-box{padding:13px}.mode-btn{padding:14px}.input-section{padding:13px 8px 4px}
@@ -195,7 +205,7 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
 
       <div class="rebate-toggle-row">
         <div class="rebate-toggle-text">
-          <b>GUNA REBATE?</b>
+          <b>GUNA REBATE? <span id="rebateStatus" class="rebate-status on">ON</span></b>
           <small id="rebateToggleText">Rebate akan ditolak daripada OTR.</small>
         </div>
         <label class="toggle-switch">
@@ -207,12 +217,22 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
       <input id="calcPrice" type="hidden" value="0">
 
       <label>Pilihan Pembiayaan</label>
-      <div class="loan-mode-row">
-        <button id="fullLoanBtn" class="loan-mode-btn" onclick="setLoanMode(0)">Full Loan</button>
-        <button id="dpLoanBtn" class="loan-mode-btn active" onclick="setLoanMode(10)">10% Downpayment</button>
+      <div class="loan-mode-row loan-mode-row-3">
+        <button id="fullLoanBtn" class="loan-mode-btn" onclick="setLoanMode('full')">Full Loan</button>
+        <button id="dpLoanBtn" class="loan-mode-btn active" onclick="setLoanMode('10')">10% DP</button>
+        <button id="customLoanBtn" class="loan-mode-btn" onclick="setLoanMode('custom')">Custom DP</button>
       </div>
 
-      <label>Downpayment (%)</label>
+      <div id="customDPBox" class="custom-dp-box" style="display:none">
+        <label>Custom Downpayment (RM)</label>
+        <div class="custom-dp-input-wrap">
+          <span>RM</span>
+          <input id="customDP" type="number" min="0" step="100" placeholder="Contoh: 8000" inputmode="decimal" oninput="updateCustomDPPreview()">
+        </div>
+        <small id="customDPPreview">Masukkan jumlah DP customer.</small>
+      </div>
+
+      <label id="dpPercentLabel">Downpayment (%)</label>
       <input id="calcDP" type="number" value="10" inputmode="decimal">
 
       <label>Tempoh Pinjaman</label>
@@ -441,28 +461,82 @@ function calcModelChanged(){
   document.getElementById("calcRate").value=getRate(cars[i]).toFixed(2);
   updateLoanPriceDisplay(0,0,0);
 }
-function calcVariantChanged(){
+function getSelectedVariantData(){
   const mi=Number(document.getElementById("calcModel").value);
   const vi=Number(document.getElementById("calcVariant").value);
-  if(!cars[mi]||!cars[mi].variants[vi]){updateLoanPriceDisplay(0,0,0);return}
+  if(!Number.isInteger(mi)||!Number.isInteger(vi)||!cars[mi]||!cars[mi].variants[vi]) return null;
   const v=cars[mi].variants[vi];
-  const original=Number(v[1])||0,rebate=Number(v[2])||0;
-  document.getElementById("calcRate").value=getRate(cars[mi]).toFixed(2);
-  updateLoanPriceDisplay(original,rebate,useRebate?Math.max(0,original-rebate):original);
+  return {
+    car:cars[mi],
+    original:Number(v[1])||0,
+    rebate:Number(v[2])||0
+  };
 }
+
+function calcModelChanged(){
+  const i=Number(document.getElementById("calcModel").value);
+  const vs=document.getElementById("calcVariant");
+  vs.innerHTML='<option value="">Pilih Variant</option>';
+  if(!Number.isInteger(i)||!cars[i]){
+    updateLoanPriceDisplay(0,0,0);
+    return;
+  }
+  cars[i].variants.forEach((v,j)=>vs.innerHTML+=`<option value="${j}">${escapeHTML(v[0])}</option>`);
+  document.getElementById("calcRate").value=getRate(cars[i]).toFixed(2);
+  updateLoanPriceDisplay(0,0,0);
+}
+
+function calcVariantChanged(){
+  const data=getSelectedVariantData();
+  if(!data){
+    updateLoanPriceDisplay(0,0,0);
+    return;
+  }
+  document.getElementById("calcRate").value=getRate(data.car).toFixed(2);
+  refreshRebateCalculation();
+}
+
+function refreshRebateCalculation(){
+  const data=getSelectedVariantData();
+  if(!data){
+    updateLoanPriceDisplay(0,0,0);
+    return;
+  }
+
+  const net=useRebate
+    ? Math.max(0,data.original-data.rebate)
+    : data.original;
+
+  updateLoanPriceDisplay(data.original,data.rebate,net);
+}
+
 function updateLoanPriceDisplay(original,rebate,net){
   document.getElementById("calcOriginalPrice").textContent="RM "+formatMoney(original);
-  document.getElementById("calcRebate").textContent=rebate>0?"- RM "+formatMoney(rebate):"RM 0";
+  document.getElementById("calcRebate").textContent=rebate>0
+    ? "- RM "+formatMoney(rebate)
+    : "RM 0";
   document.getElementById("calcPriceDisplay").textContent="RM "+formatMoney(net);
   document.getElementById("calcPrice").value=net;
+
+  const status=document.getElementById("rebateStatus");
+  if(status){
+    status.textContent=useRebate?"ON":"OFF";
+    status.className="rebate-status "+(useRebate?"on":"off");
+  }
+
   document.getElementById("rebateToggleText").textContent=useRebate
-    ? "Rebate akan ditolak daripada OTR."
-    : "Rebate tidak digunakan. Kiraan berdasarkan OTR.";
+    ? "Rebate sedang digunakan. Harga loan ditolak dengan rebate."
+    : "Rebate tidak digunakan. Kiraan berdasarkan OTR asal.";
+
+  if(currentLoanMode==="custom") updateCustomDPPreview();
 }
+
 function toggleRebate(){
-  useRebate=document.getElementById("useRebate").checked;
-  calcVariantChanged();
+  const toggle=document.getElementById("useRebate");
+  useRebate=!!toggle.checked;
+  refreshRebateCalculation();
 }
+
 function closeModal(id){document.getElementById(id).style.display="none"}
 function modalBackdrop(e,id){if(e.target===e.currentTarget)closeModal(id)}
 function setNav(button){document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));button.classList.add("active")}
@@ -471,27 +545,91 @@ function showCalculator(button){
   setNav(button);
   document.getElementById("calculatorModal").style.display="flex";
   document.getElementById("useRebate").checked=useRebate;
-  document.getElementById("rebateToggleText").textContent=useRebate
-    ? "Rebate akan ditolak daripada OTR."
-    : "Rebate tidak digunakan. Kiraan berdasarkan OTR.";
+  refreshRebateCalculation();
 }
 function showInfo(button){setNav(button);document.getElementById("infoModal").style.display="flex"}
 
-function setLoanMode(dp){
-  document.getElementById("calcDP").value=dp;
-  document.getElementById("fullLoanBtn").classList.toggle("active",dp===0);
-  document.getElementById("dpLoanBtn").classList.toggle("active",dp===10);
+let currentLoanMode="10";
+
+function setLoanMode(mode){
+  currentLoanMode=String(mode);
+  const full=document.getElementById("fullLoanBtn");
+  const dp10=document.getElementById("dpLoanBtn");
+  const custom=document.getElementById("customLoanBtn");
+  const customBox=document.getElementById("customDPBox");
+  const dpInput=document.getElementById("calcDP");
+  const dpLabel=document.getElementById("dpPercentLabel");
+
+  full.classList.toggle("active",currentLoanMode==="full");
+  dp10.classList.toggle("active",currentLoanMode==="10");
+  custom.classList.toggle("active",currentLoanMode==="custom");
+
+  if(currentLoanMode==="full"){
+    dpInput.value=0;
+    dpInput.disabled=true;
+    dpLabel.style.display="none";
+    dpInput.style.display="none";
+    customBox.style.display="none";
+  }else if(currentLoanMode==="10"){
+    dpInput.value=10;
+    dpInput.disabled=true;
+    dpLabel.style.display="block";
+    dpInput.style.display="block";
+    customBox.style.display="none";
+  }else{
+    dpInput.value=0;
+    dpInput.disabled=true;
+    dpLabel.style.display="none";
+    dpInput.style.display="none";
+    customBox.style.display="block";
+    updateCustomDPPreview();
+  }
 }
+
+function updateCustomDPPreview(){
+  const price=Number(document.getElementById("calcPrice").value||0);
+  const custom=Number(document.getElementById("customDP").value||0);
+  const preview=document.getElementById("customDPPreview");
+  if(price<=0){
+    preview.textContent="Pilih model dan variant dahulu.";
+    return;
+  }
+  if(custom<=0){
+    preview.textContent="Masukkan jumlah DP customer.";
+    return;
+  }
+  if(custom>=price){
+    preview.textContent="DP mesti kurang daripada harga selepas rebate.";
+    return;
+  }
+  const loan=price-custom;
+  preview.textContent=`Loan selepas DP: RM ${formatMoney(loan)}`;
+}
+
 function manualCalculate(){
   const price=Number(document.getElementById("calcPrice").value||0);
-  const dp=Math.max(0,Math.min(100,Number(document.getElementById("calcDP").value||0)));
   const years=Number(document.getElementById("calcYear").value);
   const rate=Number(document.getElementById("calcRate").value||3.25)/100;
   if(price<=0){alert("Sila pilih model dan variant.");return}
-  const down=price*dp/100,loan=price-down;
+
+  let down=0;
+  let dpText="Full Loan";
+
+  if(currentLoanMode==="10"){
+    down=price*0.10;
+    dpText=`DP 10% RM ${formatMoney(down)}`;
+  }else if(currentLoanMode==="custom"){
+    down=Math.max(0,Number(document.getElementById("customDP").value||0));
+    if(down<=0){alert("Sila masukkan jumlah Custom Downpayment.");return}
+    if(down>=price){alert("Custom Downpayment mesti kurang daripada Harga Selepas Rebate.");return}
+    dpText=`Custom DP RM ${formatMoney(down)}`;
+  }
+
+  const loan=Math.max(0,price-down);
   const monthly=(loan+(loan*rate*years))/(years*12);
+
   document.getElementById("calcResult").textContent="RM "+formatMoney(monthly)+" /bulan";
-  document.getElementById("calcDetail").textContent=`OTR RM ${formatMoney(getCurrentOTR())} • ${useRebate?`Rebate -RM ${formatMoney(getCurrentRebate())}`:"Rebate OFF"} • ${dp>0?`DP ${dp}% RM ${formatMoney(down)}`:"Full Loan"} • Loan RM ${formatMoney(loan)} • ${years} Tahun • ${(rate*100).toFixed(2)}%`;
+  document.getElementById("calcDetail").textContent=`OTR RM ${formatMoney(getCurrentOTR())} • ${useRebate?`Rebate -RM ${formatMoney(getCurrentRebate())}`:"Rebate OFF"} • ${dpText} • Loan RM ${formatMoney(loan)} • ${years} Tahun • ${(rate*100).toFixed(2)}%`;
 }
 function getCurrentOTR(){
   const mi=Number(document.getElementById("calcModel").value);
@@ -591,7 +729,7 @@ function deleteCar(index){if(!confirm("Padam model ini?"))return;cars.splice(ind
 
 renderModels();
 initLoanCarPicker();
-setLoanMode(10);
+setLoanMode('10');
 </script>
 
 <script>
