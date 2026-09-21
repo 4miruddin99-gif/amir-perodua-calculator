@@ -58,12 +58,34 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
 .modal-title{font-size:27px;font-weight:900;margin-bottom:5px}.modal-subtitle{color:#687386;margin-bottom:14px}
 .detail-hero{background:linear-gradient(135deg,#f7faf8,#edf5f0);border-radius:20px;padding:10px;text-align:center;margin:5px 0 16px}
 .detail-hero img{width:100%;height:220px;object-fit:contain;display:block}.detail-hero .car-emoji{font-size:120px;padding:25px}
-.variant-row{background:linear-gradient(135deg,#f7faf8,#edf5f0);padding:15px 16px;border-radius:18px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+
+/* ===== TEKS DETAIL VARIANT DIBESARKAN ===== */
+.variant-row{
+  background:linear-gradient(135deg,#f7faf8,#edf5f0);
+  padding:15px 16px;
+  border-radius:18px;
+  margin-bottom:10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:14px;
+}
 .variant-row.fail-variant{background:linear-gradient(135deg,#fff7f7,#faeeee)}
-.variant-name{font-size:17px;font-weight:800}.variant-price{color:#667085;margin-top:5px;font-size:13px;line-height:1.45}
-.variant-status-pass{color:#167152;font-weight:900}.variant-status-fail{color:#c92736;font-weight:900}
-.variant-month{color:#167152;font-size:22px;font-weight:900;text-align:right;white-space:nowrap}
-.variant-row.fail-variant .variant-month{color:#c92736}.variant-month small{display:block;font-size:11px;color:#687386}
+.variant-name{font-size:19px;font-weight:900}
+.variant-price{
+  color:#667085;
+  margin-top:7px;
+  font-size:17px;
+  line-height:1.55;
+  font-weight:700;
+}
+.variant-price span{font-size:17px !important;line-height:1.55}
+.variant-status-pass{color:#167152;font-weight:900;font-size:17px !important}
+.variant-status-fail{color:#c92736;font-weight:900;font-size:17px !important}
+.variant-month{color:#167152;font-size:25px;font-weight:900;text-align:right;white-space:nowrap}
+.variant-row.fail-variant .variant-month{color:#c92736}
+.variant-month small{display:block;font-size:12px;color:#687386;font-weight:700}
+
 .detail-rate{background:#e8f0ff;color:#1458c8;border-radius:12px;padding:9px 12px;font-weight:900;margin-bottom:12px;display:inline-block}
 .calc-card{background:#f4f6f9;border-radius:20px;padding:18px}.calc-card label{display:block;font-weight:800;margin-top:13px}
 .calc-card input,.calc-card select{width:100%;padding:13px;border:1px solid #ccd5df;border-radius:13px;margin-top:6px;font-size:17px;background:#fff}
@@ -113,24 +135,47 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
   .model-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.car-image{height:125px}
   .car-name{font-size:18px}.car-price{font-size:12px}.car-rate{font-size:11px}.result-badge{font-size:10px;padding:7px 8px}
   .modal{padding:9px}.modal-box{width:96vw;max-height:94vh;padding:17px;border-radius:22px}.modal-title{font-size:23px}
-  .detail-hero img{height:190px}.variant-row{padding:12px}.variant-name{font-size:15px}.variant-month{font-size:19px}.setting-row{grid-template-columns:1fr}
+  .detail-hero img{height:190px}
+
+  .variant-row{
+    padding:15px 14px;
+    gap:14px;
+  }
+  .variant-name{font-size:17px}
+  .variant-price{font-size:16px;line-height:1.55}
+  .variant-price span{font-size:16px !important}
+  .variant-status-pass,.variant-status-fail{font-size:16px !important}
+  .variant-month{font-size:22px}
+
+  .setting-row{grid-template-columns:1fr}
   .calc-price-info>div{padding:6px 0}.calc-otr-row span,.calc-otr-row b{font-size:17px}.calc-net-price span,.calc-net-price b{font-size:18px}
   .loan-mode-row-3{grid-template-columns:1fr}.loan-mode-btn{padding:12px 8px}
 }
+
 @media(min-width:700px){
   body{overflow-x:hidden}.app{max-width:1180px}.mode-box{padding:13px}.mode-btn{padding:14px}.input-section{padding:13px 8px 4px}
   .money-box{height:70px}.year-row{margin:11px 8px}.status{margin:13px 0 15px}.model-grid{gap:11px}.car-image{height:165px}
   .car-info{padding:11px 13px 12px}.car-name{font-size:19px}.car-price{font-size:12px}.result-badge{margin-top:7px;padding:7px 9px}
+
+  /* Besarkan teks detail variant pada tablet */
+  .variant-price{font-size:17px;line-height:1.6}
+  .variant-price span{font-size:17px !important}
+  .variant-status-pass,.variant-status-fail{font-size:17px !important}
+  .variant-name{font-size:19px}
+
   .modal-box{max-width:820px}.detail-car-image-wrap{height:300px}
 }
+
 @media(min-width:700px) and (orientation:landscape){
   .header-banner{max-height:180px;object-fit:cover}.model-grid{gap:9px}.car-image{height:135px}
   .car-info{padding:8px 10px}.car-name{font-size:16px}.car-price{font-size:10px}.car-rate{font-size:10px}
   .result-badge{font-size:9px;padding:6px 7px}.modal-box{max-height:90vh}
 }
+
 @media(min-width:700px) and (max-width:1000px) and (orientation:portrait){
   .header-banner{max-height:235px;object-fit:cover}.car-image{height:155px}
 }
+
 @media print{
   body{background:#fff;padding:0}.header,.mode-box,.input-section,.year-row,.status,.model-grid,.bottom-nav{display:none!important}
   .modal{position:static!important;display:flex!important;background:#fff!important;padding:0!important}.modal-box{box-shadow:none!important;max-height:none!important;width:100%!important;border-radius:0!important}
@@ -364,7 +409,7 @@ function validImage(src){
   return !!src && (src.startsWith("data:")||src.startsWith("http://")||src.startsWith("https://")||/\.(png|jpg|jpeg|webp|gif)$/i.test(src));
 }
 function escapeHTML(value){
-  return String(value??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+  return String(value??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]||m));
 }
 
 function renderModels(){
@@ -453,26 +498,6 @@ function initLoanCarPicker(){
   document.getElementById("calcResult").textContent="RM 0";
   document.getElementById("calcDetail").textContent="Pilih model dan variant untuk kira.";
 }
-function calcModelChanged(){
-  const i=Number(document.getElementById("calcModel").value);
-  const vs=document.getElementById("calcVariant");
-  vs.innerHTML='<option value="">Pilih Variant</option>';
-  if(!Number.isInteger(i)||!cars[i]){updateLoanPriceDisplay(0,0,0);return}
-  cars[i].variants.forEach((v,j)=>vs.innerHTML+=`<option value="${j}">${escapeHTML(v[0])}</option>`);
-  document.getElementById("calcRate").value=getRate(cars[i]).toFixed(2);
-  updateLoanPriceDisplay(0,0,0);
-}
-function getSelectedVariantData(){
-  const mi=Number(document.getElementById("calcModel").value);
-  const vi=Number(document.getElementById("calcVariant").value);
-  if(!Number.isInteger(mi)||!Number.isInteger(vi)||!cars[mi]||!cars[mi].variants[vi]) return null;
-  const v=cars[mi].variants[vi];
-  return {
-    car:cars[mi],
-    original:Number(v[1])||0,
-    rebate:Number(v[2])||0
-  };
-}
 
 function calcModelChanged(){
   const i=Number(document.getElementById("calcModel").value);
@@ -485,6 +510,18 @@ function calcModelChanged(){
   cars[i].variants.forEach((v,j)=>vs.innerHTML+=`<option value="${j}">${escapeHTML(v[0])}</option>`);
   document.getElementById("calcRate").value=getRate(cars[i]).toFixed(2);
   updateLoanPriceDisplay(0,0,0);
+}
+
+function getSelectedVariantData(){
+  const mi=Number(document.getElementById("calcModel").value);
+  const vi=Number(document.getElementById("calcVariant").value);
+  if(!Number.isInteger(mi)||!Number.isInteger(vi)||!cars[mi]||!cars[mi].variants[vi]) return null;
+  const v=cars[mi].variants[vi];
+  return {
+    car:cars[mi],
+    original:Number(v[1])||0,
+    rebate:Number(v[2])||0
+  };
 }
 
 function calcVariantChanged(){
@@ -514,9 +551,6 @@ function refreshRebateCalculation(){
 function updateLoanPriceDisplay(original,rebate,net){
   document.getElementById("calcOriginalPrice").textContent="RM "+formatMoney(original);
 
-  // Rebate mesti ikut status toggle:
-  // ON  = tunjuk nilai rebate sebenar
-  // OFF = tunjuk RM 0 kerana rebate tidak digunakan
   document.getElementById("calcRebate").textContent =
     useRebate && rebate>0
       ? "- RM "+formatMoney(rebate)
@@ -641,6 +675,7 @@ function manualCalculate(){
   document.getElementById("calcResult").textContent="RM "+formatMoney(monthly)+" /bulan";
   document.getElementById("calcDetail").textContent=`OTR RM ${formatMoney(getCurrentOTR())} • ${useRebate?`Rebate -RM ${formatMoney(getCurrentRebate())}`:"Rebate OFF"} • ${dpText} • Loan RM ${formatMoney(loan)} • ${years} Tahun • ${(rate*100).toFixed(2)}%`;
 }
+
 function getCurrentOTR(){
   const mi=Number(document.getElementById("calcModel").value);
   const vi=Number(document.getElementById("calcVariant").value);
@@ -653,6 +688,7 @@ function getCurrentRebate(){
 }
 
 function openSettings(){renderSettings();document.getElementById("settingsModal").style.display="flex"}
+
 function renderSettings(){
   const list=document.getElementById("settingsList");list.innerHTML="";
   cars.forEach((car,index)=>{
@@ -680,11 +716,13 @@ function renderSettings(){
       </div>`;
   });
 }
+
 function previewImageText(index,value){
   const img=document.getElementById("preview-"+index);if(!img)return;
   if(validImage(value.trim())){img.src=value.trim();img.style.display="block"}
   else{img.removeAttribute("src");img.style.display="none"}
 }
+
 async function uploadImage(file,index){
   if(!file)return;
   if(!file.type.startsWith("image/")){alert("Sila pilih fail gambar.");return}
@@ -696,46 +734,79 @@ async function uploadImage(file,index){
     image.onload=async()=>{
       const maxSide=1600,scale=Math.min(1,maxSide/Math.max(image.width,image.height));
       const canvas=document.createElement("canvas");
-      canvas.width=Math.max(1,Math.round(image.width*scale));canvas.height=Math.max(1,Math.round(image.height*scale));
-      const ctx=canvas.getContext("2d");ctx.drawImage(image,0,0,canvas.width,canvas.height);
+      canvas.width=Math.max(1,Math.round(image.width*scale));
+      canvas.height=Math.max(1,Math.round(image.height*scale));
+      const ctx=canvas.getContext("2d");
+      ctx.drawImage(image,0,0,canvas.width,canvas.height);
       cars[index].image=canvas.toDataURL("image/jpeg",.86);
-      const preview=document.getElementById("preview-"+index);if(preview){preview.src=cars[index].image;preview.style.display="block"}
+      const preview=document.getElementById("preview-"+index);
+      if(preview){preview.src=cars[index].image;preview.style.display="block"}
       const input=document.querySelector(`#settingsList input[data-index="${index}"][data-field="image"]`);
       if(input)input.value="Gambar dipilih dari Photos / Files";
       const saved=saveCars();
       alert(saved?"✅ Gambar berjaya ditukar & disimpan!":"⚠️ Gambar berjaya ditukar. Simpanan kekal tidak tersedia dalam preview ini.");
       renderModels();
     };
-    image.onerror=()=>alert("Gambar tidak dapat diproses.");image.src=e.target.result;
+    image.onerror=()=>alert("Gambar tidak dapat diproses.");
+    image.src=e.target.result;
   };
-  reader.onerror=()=>alert("Gagal membaca gambar.");reader.readAsDataURL(file);
+  reader.onerror=()=>alert("Gagal membaca gambar.");
+  reader.readAsDataURL(file);
 }
+
 function saveCars(){
   try{localStorage.setItem("amirPeroduaCars",JSON.stringify(cars));return true}
   catch(e){console.log("Storage tidak tersedia.");return false}
 }
+
 function saveSettings(){
   document.querySelectorAll("#settingsList [data-index]").forEach(el=>{
-    const i=Number(el.dataset.index),field=el.dataset.field;if(!cars[i]||!field)return;
+    const i=Number(el.dataset.index),field=el.dataset.field;
+    if(!cars[i]||!field)return;
     if(field==="variants"){
-      cars[i].variants=el.value.split("\n").map(x=>x.split("|").map(v=>v.trim())).filter(x=>x[0]&&x[1]).map(x=>[x[0],x[1],x[2]||"0"]);
+      cars[i].variants=el.value.split("\n")
+        .map(x=>x.split("|").map(v=>v.trim()))
+        .filter(x=>x[0]&&x[1])
+        .map(x=>[x[0],x[1],x[2]||"0"]);
     }else if(field==="rate"){
       cars[i].rate=Math.max(0,Number(el.value)||3.25);
     }else if(!(field==="image"&&cars[i].image&&cars[i].image.startsWith("data:"))){
       cars[i][field]=el.value;
     }
   });
-  const saved=saveCars();closeModal("settingsModal");renderModels();initLoanCarPicker();
+  const saved=saveCars();
+  closeModal("settingsModal");
+  renderModels();
+  initLoanCarPicker();
   alert(saved?"✅ Semua perubahan berjaya disimpan!":"✅ Perubahan digunakan. Simpanan kekal bergantung kepada browser/hosting.");
 }
+
 function resetDefaultCars(){
   if(!confirm("Reset semua model, rebate, gambar dan interest rate kepada data asal?"))return;
   cars=JSON.parse(JSON.stringify(defaultCars));
   try{localStorage.removeItem("amirPeroduaCars")}catch(e){}
-  renderSettings();renderModels();initLoanCarPicker();alert("✅ Tetapan asal telah dipulihkan.");
+  renderSettings();
+  renderModels();
+  initLoanCarPicker();
+  alert("✅ Tetapan asal telah dipulihkan.");
 }
-function addNewCar(){cars.push({name:"MODEL BARU",price:"0 – 0",image:"",rate:3.25,variants:[["Varian Baru","0","0"]]});renderSettings()}
-function deleteCar(index){if(!confirm("Padam model ini?"))return;cars.splice(index,1);renderSettings()}
+
+function addNewCar(){
+  cars.push({
+    name:"MODEL BARU",
+    price:"0 – 0",
+    image:"",
+    rate:3.25,
+    variants:[["Varian Baru","0","0"]]
+  });
+  renderSettings();
+}
+
+function deleteCar(index){
+  if(!confirm("Padam model ini?"))return;
+  cars.splice(index,1);
+  renderSettings();
+}
 
 renderModels();
 initLoanCarPicker();
