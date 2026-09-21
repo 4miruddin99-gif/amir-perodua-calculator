@@ -73,6 +73,7 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
 .calc-net-price span,.calc-net-price b{font-size:19px;font-weight:900;color:#006b52}
 .calc-otr-row span,.calc-otr-row b{font-size:19px;font-weight:900;color:#172238}
 .calc-rebate-row span,.calc-rebate-row b{font-size:17px;font-weight:900;color:#c92736}
+.calc-rebate-row.rebate-off span,.calc-rebate-row.rebate-off b{color:#687386}
 .rebate-toggle-row{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid #dce2eb;border-radius:14px;padding:12px 14px;margin-top:12px}
 .rebate-toggle-text b{display:block;font-size:14px}.rebate-toggle-text small{color:#687386;font-size:11px}
 .rebate-status{display:inline-block;padding:3px 7px;border-radius:8px;font-size:10px;vertical-align:middle;margin-left:4px}
@@ -512,9 +513,18 @@ function refreshRebateCalculation(){
 
 function updateLoanPriceDisplay(original,rebate,net){
   document.getElementById("calcOriginalPrice").textContent="RM "+formatMoney(original);
-  document.getElementById("calcRebate").textContent=rebate>0
-    ? "- RM "+formatMoney(rebate)
-    : "RM 0";
+
+  // Rebate mesti ikut status toggle:
+  // ON  = tunjuk nilai rebate sebenar
+  // OFF = tunjuk RM 0 kerana rebate tidak digunakan
+  document.getElementById("calcRebate").textContent =
+    useRebate && rebate>0
+      ? "- RM "+formatMoney(rebate)
+      : "RM 0";
+
+  const rebateRow = document.getElementById("calcRebate")?.closest(".calc-rebate-row");
+  if(rebateRow) rebateRow.classList.toggle("rebate-off", !useRebate);
+
   document.getElementById("calcPriceDisplay").textContent="RM "+formatMoney(net);
   document.getElementById("calcPrice").value=net;
 
