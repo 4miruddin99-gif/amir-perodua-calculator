@@ -37,6 +37,13 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
 .year-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 8px}
 .year-btn{border:2px solid var(--border);background:#fff;color:#26364d;border-radius:18px;padding:14px 8px;font-size:17px;font-weight:800;cursor:pointer}
 .year-btn.active{background:linear-gradient(135deg,#2870db,#104db8);color:#fff;border-color:#1554bd;box-shadow:0 7px 18px rgba(21,84,189,.22)}
+
+/* GLOBAL FULL LOAN / 10% DP BUTTON */
+.global-loan-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 8px 5px}
+.global-loan-btn{border:2px solid #dce2eb;background:#fff;color:#26364d;border-radius:18px;padding:16px 10px;font-size:18px;font-weight:900;cursor:pointer;transition:.2s}
+.global-loan-btn.active{background:linear-gradient(135deg,#00846a,#00684f);color:#fff;border-color:#006b52;box-shadow:0 7px 18px rgba(0,107,82,.20)}
+.global-loan-note{text-align:center;color:#687386;font-size:11px;font-weight:700;margin:7px 8px 0}
+
 .status{text-align:center;font-size:20px;font-weight:900;margin:18px 0 20px}
 .pass-text{color:#167152}.fail-text{color:#c92736}
 .model-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
@@ -58,34 +65,15 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
 .modal-title{font-size:27px;font-weight:900;margin-bottom:5px}.modal-subtitle{color:#687386;margin-bottom:14px}
 .detail-hero{background:linear-gradient(135deg,#f7faf8,#edf5f0);border-radius:20px;padding:10px;text-align:center;margin:5px 0 16px}
 .detail-hero img{width:100%;height:220px;object-fit:contain;display:block}.detail-hero .car-emoji{font-size:120px;padding:25px}
-
-/* ===== TEKS DETAIL VARIANT DIBESARKAN ===== */
-.variant-row{
-  background:linear-gradient(135deg,#f7faf8,#edf5f0);
-  padding:15px 16px;
-  border-radius:18px;
-  margin-bottom:10px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:14px;
-}
+.detail-loan-mode{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}
+.detail-loan-pill{border:2px solid #dce2eb;background:#fff;border-radius:14px;padding:11px;text-align:center;font-size:13px;font-weight:900;color:#687386}
+.detail-loan-pill.active{background:#e3f5ed;color:#006b52;border-color:#8bc9b6}
+.variant-row{background:linear-gradient(135deg,#f7faf8,#edf5f0);padding:15px 16px;border-radius:18px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px}
 .variant-row.fail-variant{background:linear-gradient(135deg,#fff7f7,#faeeee)}
-.variant-name{font-size:19px;font-weight:900}
-.variant-price{
-  color:#667085;
-  margin-top:7px;
-  font-size:17px;
-  line-height:1.55;
-  font-weight:700;
-}
-.variant-price span{font-size:17px !important;line-height:1.55}
-.variant-status-pass{color:#167152;font-weight:900;font-size:17px !important}
-.variant-status-fail{color:#c92736;font-weight:900;font-size:17px !important}
-.variant-month{color:#167152;font-size:25px;font-weight:900;text-align:right;white-space:nowrap}
-.variant-row.fail-variant .variant-month{color:#c92736}
-.variant-month small{display:block;font-size:12px;color:#687386;font-weight:700}
-
+.variant-name{font-size:17px;font-weight:800}.variant-price{color:#667085;margin-top:5px;font-size:13px;line-height:1.45}
+.variant-status-pass{color:#167152;font-weight:900}.variant-status-fail{color:#c92736;font-weight:900}
+.variant-month{color:#167152;font-size:22px;font-weight:900;text-align:right;white-space:nowrap}
+.variant-row.fail-variant .variant-month{color:#c92736}.variant-month small{display:block;font-size:11px;color:#687386}
 .detail-rate{background:#e8f0ff;color:#1458c8;border-radius:12px;padding:9px 12px;font-weight:900;margin-bottom:12px;display:inline-block}
 .calc-card{background:#f4f6f9;border-radius:20px;padding:18px}.calc-card label{display:block;font-weight:800;margin-top:13px}
 .calc-card input,.calc-card select{width:100%;padding:13px;border:1px solid #ccd5df;border-radius:13px;margin-top:6px;font-size:17px;background:#fff}
@@ -132,52 +120,30 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
   .app{padding:0 10px 25px}.mode-box{padding:12px;gap:8px}.mode-btn{padding:14px 5px;font-size:16px}
   .money-box{height:72px}.rm-label{width:72px;font-size:22px}.money-box input{font-size:32px}
   .year-row{margin:12px 0}.year-btn{font-size:15px;padding:13px 4px}.status{font-size:17px;margin:15px 0}
+  .global-loan-row{margin:10px 0 4px}.global-loan-btn{font-size:16px;padding:14px 7px}
   .model-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.car-image{height:125px}
   .car-name{font-size:18px}.car-price{font-size:12px}.car-rate{font-size:11px}.result-badge{font-size:10px;padding:7px 8px}
   .modal{padding:9px}.modal-box{width:96vw;max-height:94vh;padding:17px;border-radius:22px}.modal-title{font-size:23px}
-  .detail-hero img{height:190px}
-
-  .variant-row{
-    padding:15px 14px;
-    gap:14px;
-  }
-  .variant-name{font-size:17px}
-  .variant-price{font-size:16px;line-height:1.55}
-  .variant-price span{font-size:16px !important}
-  .variant-status-pass,.variant-status-fail{font-size:16px !important}
-  .variant-month{font-size:22px}
-
-  .setting-row{grid-template-columns:1fr}
+  .detail-hero img{height:190px}.variant-row{padding:12px}.variant-name{font-size:15px}.variant-month{font-size:19px}.setting-row{grid-template-columns:1fr}
   .calc-price-info>div{padding:6px 0}.calc-otr-row span,.calc-otr-row b{font-size:17px}.calc-net-price span,.calc-net-price b{font-size:18px}
   .loan-mode-row-3{grid-template-columns:1fr}.loan-mode-btn{padding:12px 8px}
 }
-
 @media(min-width:700px){
   body{overflow-x:hidden}.app{max-width:1180px}.mode-box{padding:13px}.mode-btn{padding:14px}.input-section{padding:13px 8px 4px}
   .money-box{height:70px}.year-row{margin:11px 8px}.status{margin:13px 0 15px}.model-grid{gap:11px}.car-image{height:165px}
   .car-info{padding:11px 13px 12px}.car-name{font-size:19px}.car-price{font-size:12px}.result-badge{margin-top:7px;padding:7px 9px}
-
-  /* Besarkan teks detail variant pada tablet */
-  .variant-price{font-size:17px;line-height:1.6}
-  .variant-price span{font-size:17px !important}
-  .variant-status-pass,.variant-status-fail{font-size:17px !important}
-  .variant-name{font-size:19px}
-
   .modal-box{max-width:820px}.detail-car-image-wrap{height:300px}
 }
-
 @media(min-width:700px) and (orientation:landscape){
   .header-banner{max-height:180px;object-fit:cover}.model-grid{gap:9px}.car-image{height:135px}
   .car-info{padding:8px 10px}.car-name{font-size:16px}.car-price{font-size:10px}.car-rate{font-size:10px}
   .result-badge{font-size:9px;padding:6px 7px}.modal-box{max-height:90vh}
 }
-
 @media(min-width:700px) and (max-width:1000px) and (orientation:portrait){
   .header-banner{max-height:235px;object-fit:cover}.car-image{height:155px}
 }
-
 @media print{
-  body{background:#fff;padding:0}.header,.mode-box,.input-section,.year-row,.status,.model-grid,.bottom-nav{display:none!important}
+  body{background:#fff;padding:0}.header,.mode-box,.input-section,.year-row,.global-loan-row,.status,.model-grid,.bottom-nav{display:none!important}
   .modal{position:static!important;display:flex!important;background:#fff!important;padding:0!important}.modal-box{box-shadow:none!important;max-height:none!important;width:100%!important;border-radius:0!important}
 }
 </style>
@@ -208,6 +174,13 @@ button,input,textarea,select{font-family:inherit}button{-webkit-appearance:none}
     <button class="year-btn" onclick="setYear(7,this)">7 Tahun</button>
     <button class="year-btn active" onclick="setYear(9,this)">9 Tahun</button>
   </div>
+
+  <!-- SATU BUTTON SAHAJA UNTUK KAWAL SEMUA MODEL -->
+  <div class="global-loan-row">
+    <button id="globalFullLoanBtn" class="global-loan-btn active" onclick="setGlobalLoanMode('full')">💰 FULL LOAN</button>
+    <button id="globalDpLoanBtn" class="global-loan-btn" onclick="setGlobalLoanMode('10')">💵 10% DP</button>
+  </div>
+  <div id="globalLoanNote" class="global-loan-note">Pilihan ini akan digunakan automatik apabila anda buka mana-mana model.</div>
 
   <div class="status">
     <span id="passCount" class="pass-text">0 model LULUS</span> •
@@ -358,6 +331,12 @@ let selectedYear=9;
 let currentMode="budget";
 let useRebate=true;
 
+/* GLOBAL LOAN MODE
+   'full' = 100% loan
+   '10'   = 10% DP
+*/
+let globalLoanMode="full";
+
 function loadSavedCars(){
   try{
     const saved=localStorage.getItem("amirPeroduaCars");
@@ -377,12 +356,38 @@ function formatMoney(number){
   return Math.round(value).toLocaleString("en-MY");
 }
 function getRate(car){return Number(car?.rate)||3.25}
-function calculateMonthly(price,rate=getRate(cars.find(c=>c.variants.some(v=>Number(v[1])===Number(price))))){
+
+/* Kiraan asas: flat rate */
+function calculateMonthly(price,rate=3.25,years=selectedYear,loanMode=globalLoanMode){
   const p=Number(String(price||0).replace(/,/g,""));
+  if(p<=0)return 0;
+
   const r=(Number(rate)||3.25)/100;
-  const total=p+(p*r*selectedYear);
-  return Math.round(total/(selectedYear*12));
+  const loanModeValue=String(loanMode);
+  const down=loanModeValue==="10" ? p*0.10 : 0;
+  const loan=Math.max(0,p-down);
+  const total=loan+(loan*r*years);
+
+  return Math.round(total/(years*12));
 }
+
+function setGlobalLoanMode(mode){
+  globalLoanMode=String(mode)==="10"?"10":"full";
+
+  const fullBtn=document.getElementById("globalFullLoanBtn");
+  const dpBtn=document.getElementById("globalDpLoanBtn");
+
+  fullBtn.classList.toggle("active",globalLoanMode==="full");
+  dpBtn.classList.toggle("active",globalLoanMode==="10");
+
+  document.getElementById("globalLoanNote").textContent =
+    globalLoanMode==="full"
+      ? "FULL LOAN dipilih • 100% daripada harga selepas rebate."
+      : "10% DP dipilih • Loan 90% daripada harga selepas rebate.";
+
+  renderModels();
+}
+
 function setMode(mode){
   currentMode=mode;
   document.getElementById("budgetMode").classList.toggle("active",mode==="budget");
@@ -402,14 +407,14 @@ function setYear(year,button){
 function isVariantEligible(price,rate){
   const input=Number(document.getElementById("budgetInput").value||0);
   if(input<=0)return false;
-  const monthly=calculateMonthly(price,rate);
+  const monthly=calculateMonthly(price,rate,selectedYear,globalLoanMode);
   return currentMode==="budget" ? input>=monthly : input>=monthly*3;
 }
 function validImage(src){
   return !!src && (src.startsWith("data:")||src.startsWith("http://")||src.startsWith("https://")||/\.(png|jpg|jpeg|webp|gif)$/i.test(src));
 }
 function escapeHTML(value){
-  return String(value??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]||m));
+  return String(value??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 }
 
 function renderModels(){
@@ -419,7 +424,13 @@ function renderModels(){
 
   cars.forEach((car,index)=>{
     let passVariants=0;
-    car.variants.forEach(v=>{if(isVariantEligible(Number(v[1]),getRate(car)))passVariants++});
+    car.variants.forEach(v=>{
+      const originalPrice=Number(v[1])||0;
+      const rebate=Number(v[2])||0;
+      const netPrice=Math.max(0,originalPrice-rebate);
+      if(isVariantEligible(netPrice,getRate(car)))passVariants++;
+    });
+
     const modelEligible=passVariants>0;
     modelEligible?passModels++:failModels++;
 
@@ -456,7 +467,7 @@ function openCar(index){
     const originalPrice=Number(v[1])||0;
     const rebate=Number(v[2])||0;
     const netPrice=Math.max(0,originalPrice-rebate);
-    const monthly=calculateMonthly(netPrice,getRate(car));
+    const monthly=calculateMonthly(netPrice,getRate(car),selectedYear,globalLoanMode);
     const layak=isVariantEligible(netPrice,getRate(car));
 
     variantsHTML+=`
@@ -479,13 +490,20 @@ function openCar(index){
     ? `<img src="${src}" alt="${escapeHTML(car.name)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><div class="car-emoji" style="display:none">🚗</div>`
     : `<div class="car-emoji">🚗</div>`;
 
+  const loanLabel=globalLoanMode==="full" ? "💰 FULL LOAN" : "💵 10% DP";
+
   document.getElementById("detailContent").innerHTML=`
     <div class="modal-title">${escapeHTML(car.name)}</div>
     <div class="modal-subtitle">ANGGARAN ${selectedYear} TAHUN • SEMAK KELAYAKAN</div>
     <div class="detail-rate">💰 KADAR FAEDAH: ${getRate(car).toFixed(2)}% SETAHUN</div>
+    <div class="detail-loan-mode">
+      <div class="detail-loan-pill ${globalLoanMode==="full"?"active":""}">${globalLoanMode==="full"?"✓ ":""}FULL LOAN</div>
+      <div class="detail-loan-pill ${globalLoanMode==="10"?"active":""}">${globalLoanMode==="10"?"✓ ":""}10% DP</div>
+    </div>
     <div class="detail-hero">${hero}</div>
     ${variantsHTML}
   `;
+
   document.getElementById("detailModal").style.display="flex";
 }
 
@@ -688,7 +706,6 @@ function getCurrentRebate(){
 }
 
 function openSettings(){renderSettings();document.getElementById("settingsModal").style.display="flex"}
-
 function renderSettings(){
   const list=document.getElementById("settingsList");list.innerHTML="";
   cars.forEach((car,index)=>{
@@ -716,13 +733,11 @@ function renderSettings(){
       </div>`;
   });
 }
-
 function previewImageText(index,value){
   const img=document.getElementById("preview-"+index);if(!img)return;
   if(validImage(value.trim())){img.src=value.trim();img.style.display="block"}
   else{img.removeAttribute("src");img.style.display="none"}
 }
-
 async function uploadImage(file,index){
   if(!file)return;
   if(!file.type.startsWith("image/")){alert("Sila pilih fail gambar.");return}
@@ -734,83 +749,51 @@ async function uploadImage(file,index){
     image.onload=async()=>{
       const maxSide=1600,scale=Math.min(1,maxSide/Math.max(image.width,image.height));
       const canvas=document.createElement("canvas");
-      canvas.width=Math.max(1,Math.round(image.width*scale));
-      canvas.height=Math.max(1,Math.round(image.height*scale));
-      const ctx=canvas.getContext("2d");
-      ctx.drawImage(image,0,0,canvas.width,canvas.height);
+      canvas.width=Math.max(1,Math.round(image.width*scale));canvas.height=Math.max(1,Math.round(image.height*scale));
+      const ctx=canvas.getContext("2d");ctx.drawImage(image,0,0,canvas.width,canvas.height);
       cars[index].image=canvas.toDataURL("image/jpeg",.86);
-      const preview=document.getElementById("preview-"+index);
-      if(preview){preview.src=cars[index].image;preview.style.display="block"}
+      const preview=document.getElementById("preview-"+index);if(preview){preview.src=cars[index].image;preview.style.display="block"}
       const input=document.querySelector(`#settingsList input[data-index="${index}"][data-field="image"]`);
       if(input)input.value="Gambar dipilih dari Photos / Files";
       const saved=saveCars();
       alert(saved?"✅ Gambar berjaya ditukar & disimpan!":"⚠️ Gambar berjaya ditukar. Simpanan kekal tidak tersedia dalam preview ini.");
       renderModels();
     };
-    image.onerror=()=>alert("Gambar tidak dapat diproses.");
-    image.src=e.target.result;
+    image.onerror=()=>alert("Gambar tidak dapat diproses.");image.src=e.target.result;
   };
-  reader.onerror=()=>alert("Gagal membaca gambar.");
-  reader.readAsDataURL(file);
+  reader.onerror=()=>alert("Gagal membaca gambar.");reader.readAsDataURL(file);
 }
-
 function saveCars(){
   try{localStorage.setItem("amirPeroduaCars",JSON.stringify(cars));return true}
   catch(e){console.log("Storage tidak tersedia.");return false}
 }
-
 function saveSettings(){
   document.querySelectorAll("#settingsList [data-index]").forEach(el=>{
-    const i=Number(el.dataset.index),field=el.dataset.field;
-    if(!cars[i]||!field)return;
+    const i=Number(el.dataset.index),field=el.dataset.field;if(!cars[i]||!field)return;
     if(field==="variants"){
-      cars[i].variants=el.value.split("\n")
-        .map(x=>x.split("|").map(v=>v.trim()))
-        .filter(x=>x[0]&&x[1])
-        .map(x=>[x[0],x[1],x[2]||"0"]);
+      cars[i].variants=el.value.split("\n").map(x=>x.split("|").map(v=>v.trim())).filter(x=>x[0]&&x[1]).map(x=>[x[0],x[1],x[2]||"0"]);
     }else if(field==="rate"){
       cars[i].rate=Math.max(0,Number(el.value)||3.25);
     }else if(!(field==="image"&&cars[i].image&&cars[i].image.startsWith("data:"))){
       cars[i][field]=el.value;
     }
   });
-  const saved=saveCars();
-  closeModal("settingsModal");
-  renderModels();
-  initLoanCarPicker();
+  const saved=saveCars();closeModal("settingsModal");renderModels();initLoanCarPicker();
   alert(saved?"✅ Semua perubahan berjaya disimpan!":"✅ Perubahan digunakan. Simpanan kekal bergantung kepada browser/hosting.");
 }
-
 function resetDefaultCars(){
   if(!confirm("Reset semua model, rebate, gambar dan interest rate kepada data asal?"))return;
   cars=JSON.parse(JSON.stringify(defaultCars));
   try{localStorage.removeItem("amirPeroduaCars")}catch(e){}
-  renderSettings();
-  renderModels();
-  initLoanCarPicker();
-  alert("✅ Tetapan asal telah dipulihkan.");
+  renderSettings();renderModels();initLoanCarPicker();alert("✅ Tetapan asal telah dipulihkan.");
 }
-
-function addNewCar(){
-  cars.push({
-    name:"MODEL BARU",
-    price:"0 – 0",
-    image:"",
-    rate:3.25,
-    variants:[["Varian Baru","0","0"]]
-  });
-  renderSettings();
-}
-
-function deleteCar(index){
-  if(!confirm("Padam model ini?"))return;
-  cars.splice(index,1);
-  renderSettings();
-}
+function addNewCar(){cars.push({name:"MODEL BARU",price:"0 – 0",image:"",rate:3.25,variants:[["Varian Baru","0","0"]]});renderSettings()}
+function deleteCar(index){if(!confirm("Padam model ini?"))return;cars.splice(index,1);renderSettings()}
 
 renderModels();
 initLoanCarPicker();
 setLoanMode('10');
+setGlobalLoanMode('full');
 </script>
 
 <script>
